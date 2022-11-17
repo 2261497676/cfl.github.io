@@ -1,0 +1,1804 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker-base, cflxl">
+    <meta name="description" content="1. Docker概述1.1. Docker为什么出现
+一款产品从开发到上线，从操作系统，到运行环境，再到应用配置。作为开发+运维之间的协作我们需要关心很多东西，这也是很多互联网公司都不得不面对的问题，特别是各种版本的迭代之后，不同版本环境">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>docker-base | cflxl</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="cflxl" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">cflxl</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">cflxl</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">docker-base</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-07-17
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-11-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    3.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    13 Min
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1-Docker概述"><a href="#1-Docker概述" class="headerlink" title="1. Docker概述"></a>1. Docker概述</h1><h2 id="1-1-Docker为什么出现"><a href="#1-1-Docker为什么出现" class="headerlink" title="1.1. Docker为什么出现"></a>1.1. Docker为什么出现</h2><blockquote>
+<p>一款产品从开发到上线，从操作系统，到运行环境，再到应用配置。作为开发+运维之间的协作我们需要关心很多东西，这也是很多互联网公司都不得不面对的问题，特别是各种版本的迭代之后，不同版本环境的兼容，对运维人员是极大的考验！<br>环境配置如此麻烦，换一台机器，就要重来一次，费力费时。很多人想到，能不能从根本上解决问题，软件可以带环境安装？也就是说，安装的时候，把原始环境一模一样地复制过来。解决开发人员说的“ 在我的机器上可正常工作”的问题。<br>之前在服务器配置一个应用的运行环境，要安装各种软件，就拿一个基本的工程项目的环境来说吧，Java&#x2F;Tomcat&#x2F;MySQL&#x2F;JDBC驱动包等。安装和配置这些东西有多麻烦就不说了，它还不能跨平台。假如我们是在 Windows 上安装的这些环境，到了 Linux 又得重新装。况且就算不跨操作系统，换另一台同样操作系统的服务器，要移植应用也是非常麻烦的。<br>传统上认为，软件编码开发&#x2F;测试结束后，所产出的成果即是程序或是能够编译执行的二进制字节码文件等（Java为例）。而为了让这些程序可以顺利执行，开发团队也得准备完整的部署文件，让维运团队得以部署应用程式，开发需要清楚的告诉运维部署团队，用的全部配置文件+所有软件环境。不过，即便如此，仍然常常发生部署失败的状况。<br>Docker之所以发展如此迅速，也是因为它对此给出了一个标准化的解决方案。<br>Docker镜像的设计，使得Docker得以打破过去「程序即应用」的观念。通过Docker镜像 ( images ) 将应用程序所需要的系统环境，由下而上打包，达到应用程序跨平台间的无缝接轨运作。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107211354377.png" alt="image-20221107211354377"></p>
+<blockquote>
+<p>Docker的思想来自于集装箱，集装箱解决了什么问题？在一艘大船上，可以把货物规整的摆放起来。并且各种各样的货物被集装箱标准化了，集装箱和集装箱之间不会互相影响。那么我就不需要专门运送水果的船和专门运送化学品的船了。只要这些货物在集装箱里封装的好好的，那我就可以用一艘大船把他们都运走。</p>
+</blockquote>
+<p>docker就是类似的理念。</p>
+<h3 id="1-1-1-历史"><a href="#1-1-1-历史" class="headerlink" title="1.1.1. 历史"></a>1.1.1. 历史</h3><blockquote>
+<p>2010年，几个搞IT的年轻人，在美国旧金山成立了一家名叫“dotCloud”的公司。<br>这家公司主要提供基于PaaS的云计算技术服务。具体来说，是和LXC有关的容器技术。<br>后来，dotCloud公司将自己的容器技术进行了简化和标准化，并命名为——Docker。<br>Docker技术诞生之后，并没有引起行业的关注。而dotCloud公司，作为一家小型创业企业，在激烈的竞争之下，也步履维艰。<br>正当他们快要坚持不下去的时候，脑子里蹦出了“开源”的想法。<br>什么是“开源”？开源，就是开放源代码。也就是将原来内部保密的程序源代码开放给所有人，然后让大家一起参与进来，贡献代码和意见。<br>有的软件是一开始就开源的。也有的软件，是混不下去，创造者又不想放弃，所以选择开源。自己养不活，就吃“百家饭”嘛。<br>2013年3月，dotCloud公司的创始人之一，Docker之父，28岁的Solomon Hykes正式决定，将Docker项目开源。<br>不开则已，一开惊人。<br>越来越多的IT工程师发现了Docker的优点，然后蜂拥而至，加入Docker开源社区。<br>Docker的人气迅速攀升，速度之快，令人瞠目结舌。<br>开源当月，Docker 0.1 版本发布。此后的每一个月，Docker都会发布一个版本。到2014年6月9日，Docker 1.0 版本正式发布。<br>此时的Docker，已经成为行业里人气最火爆的开源技术，没有之一。甚至像Google、微软、Amazon、VMware这样的巨头，都对它青睐有加，表示将全力支持。<br>Docker和容器技术为什么会这么火爆？说白了，就是因为它“轻”。<br>在容器技术之前，业界的网红是虚拟机。虚拟机技术的代表，是VMWare和OpenStack。<br>相信很多人都用过虚拟机。虚拟机，就是在你的操作系统里面，装一个软件，然后通过这个软件，再模拟一台甚至多台“子电脑”出来。<br>在“子电脑”里，你可以和正常电脑一样运行程序，例如开QQ。如果你愿意，你可以变出好几个“子电脑”，里面都开上QQ。“子电脑”和“子电脑”之间，是相互隔离的，互不影响。<br>虚拟机属于虚拟化技术。而Docker这样的容器技术，也是虚拟化技术，属于轻量级的虚拟化。<br>虚拟机虽然可以隔离出很多“子电脑”，但占用空间更大，启动更慢，虚拟机软件可能还要花钱（例如VMWare）。<br>而容器技术恰好没有这些缺点。它不需要虚拟出整个操作系统，只需要虚拟一个小规模的环境（类似“沙 箱”）。<br>它启动时间很快，几秒钟就能完成。而且，它对资源的利用率很高（一台主机可以同时运行几千个Docker容器）。此外，它占的空间很小，虚拟机一般要几GB到几十GB的空间，而容器只需要MB级甚至KB级。<br>正因为如此，容器技术受到了热烈的欢迎和追捧，发展迅速。</p>
+</blockquote>
+<h3 id="1-1-2-docker-理念"><a href="#1-1-2-docker-理念" class="headerlink" title="1.1.2. docker 理念"></a>1.1.2. docker 理念</h3><blockquote>
+<p>Docker是基于Go语言实现的云开源项目。<br>Docker的主要目标是“Build，Ship and Run Any App , Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的APP（可以是一个WEB应用或数据库应用等等）及其运行环境能够做到“一次封装，到处运行”。<br>Linux 容器技术的出现就解决了这样一个问题，而 Docker 就是在它的基础上发展过来的。将应用运行在Docker 容器上面，而 Docker 容器在任何操作系统上都是一致的，这就实现了跨平台、跨服务器。只需要一次配置好环境，换到别的机子上就可以一键部署好，大大简化了操作。</p>
+</blockquote>
+<h2 id="1-2-Docker能干嘛"><a href="#1-2-Docker能干嘛" class="headerlink" title="1.2. Docker能干嘛"></a>1.2. Docker能干嘛</h2><h3 id="1-2-1-之前的虚拟机技术"><a href="#1-2-1-之前的虚拟机技术" class="headerlink" title="1.2.1. 之前的虚拟机技术"></a>1.2.1. 之前的虚拟机技术</h3><blockquote>
+<p>虚拟机（virtual machine）就是带环境安装的一种解决方案。<br>它可以在一种操作系统里面运行另一种操作系统，比如在Windows 系统里面运行Linux 系统。应用程序对此毫无感知，因为虚拟机看上去跟真实系统一模一样，而对于底层系统来说，虚拟机就是一个普通文件，不需要了就删掉，对其他部分毫无影响。这类虚拟机完美的运行了另一套系统，能够使应用程序，操作系统和硬件三者之间的逻辑不变。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107211427394.png" alt="image-20221107211427394"></p>
+<ul>
+<li>虚拟机的缺点：<ul>
+<li>1 、资源占用多</li>
+<li>2 、冗余步骤多</li>
+<li>3 、启动慢</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-2-容器虚拟化技术"><a href="#1-2-2-容器虚拟化技术" class="headerlink" title="1.2.2. 容器虚拟化技术"></a>1.2.2. 容器虚拟化技术</h3><blockquote>
+<p>由于前面虚拟机存在这些缺点，Linux 发展出了另一种虚拟化技术：Linux 容器（Linux Containers，缩写为 LXC）。<br>Linux 容器不是模拟一个完整的操作系统，而是对进程进行隔离。有了容器，就可以将软件运行所需的所有资源打包到一个隔离的容器中。容器与虚拟机不同，不需要捆绑一整套操作系统，只需要软件工作所需的库资源和设置。系统因此而变得高效轻量并保证部署在任何环境中的软件都能始终如一地运行。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107211446282.png" alt="image-20221107211446282"></p>
+<blockquote>
+<p>比较了 Docker 和传统虚拟化方式的不同之处：</p>
+<ul>
+<li>传统虚拟机技术是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上再运行所需应用进程；</li>
+<li>而容器内的应用进程直接运行于宿主的内核，容器内没有自己的内核，而且也没有进行硬件虚拟。<br> 因此容器要比传统虚拟机更为轻便。</li>
+<li>每个容器之间互相隔离，每个容器有自己的文件系统 ，容器之间进程不会相互影响，能区分计算资源。</li>
+</ul>
+</blockquote>
+<h3 id="1-2-3-开发-x2F-运维（DevOps）"><a href="#1-2-3-开发-x2F-运维（DevOps）" class="headerlink" title="1.2.3. 开发&#x2F;运维（DevOps）"></a>1.2.3. 开发&#x2F;运维（DevOps）</h3><p><strong>更快速的应用交付和部署：</strong></p>
+<blockquote>
+<p>传统的应用开发完成后，需要提供一堆安装程序和配置说明文档，安装部署后需根据配置文档进行繁杂的配置才能正常运行。Docker化之后只需要交付少量容器镜像文件，在正式生产环境加载镜像并运行即可，应用安装配置在镜像里已经内置好，大大节省部署配置和测试验证时间。</p>
+</blockquote>
+<p><strong>更便捷的升级和扩缩容：</strong></p>
+<blockquote>
+<p>随着微服务架构和Docker的发展，大量的应用会通过微服务方式架构，应用的开发构建将变成搭乐高积木一样，每个Docker容器将变成一块“积木”，应用的升级将变得非常容易。当现有的容器不足以支撑业务处理时，可通过镜像运行新的容器进行快速扩容，使应用系统的扩容从原先的天级变成分钟级甚至秒级。</p>
+</blockquote>
+<p><strong>更简单的系统运维：</strong></p>
+<blockquote>
+<p>应用容器化运行后，生产环境运行的应用可与开发、测试环境的应用高度一致，容器会将应用程序相关的环境和状态完全封装起来，不会因为底层基础架构和操作系统的不一致性给应用带来影响，产生新的BUG。当出现程序异常时，也可以通过测试环境的相同容器进行快速定位和修复。</p>
+</blockquote>
+<p><strong>更高效的计算资源利用：</strong></p>
+<blockquote>
+<p>Docker是内核级虚拟化，其不像传统的虚拟化技术一样需要额外的Hypervisor [管理程序] 支持，所以在一台物理机上可以运行很多个容器实例，可大大提升物理服务器的CPU和内存的利用率。</p>
+</blockquote>
+<h3 id="1-2-4-学习途径"><a href="#1-2-4-学习途径" class="headerlink" title="1.2.4. 学习途径"></a>1.2.4. 学习途径</h3><p>Docker官网：<a target="_blank" rel="noopener" href="http://www.docker.com/">http://www.docker.com</a></p>
+<p>Docker中文网站：<a target="_blank" rel="noopener" href="https://www.docker-cn.com/">https://www.docker-cn.com</a></p>
+<p>Docker Hub官网：<a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com</a> （仓库）</p>
+<h1 id="2-Docker安装"><a href="#2-Docker安装" class="headerlink" title="2. Docker安装"></a>2. Docker安装</h1><h2 id="2-1-Docker的基本组成"><a href="#2-1-Docker的基本组成" class="headerlink" title="2.1. Docker的基本组成"></a>2.1. Docker的基本组成</h2><h3 id="2-1-1-Docker的架构图"><a href="#2-1-1-Docker的架构图" class="headerlink" title="2.1.1. Docker的架构图"></a>2.1.1. Docker的架构图</h3><p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107213639712.png" alt="image-20221107213639712"></p>
+<p>镜像（image）：</p>
+<pre><code>Docker 镜像（Image）就是一个只读的模板。镜像可以用来创建 Docker 容器，一个镜像可以创建很多容器。 就好似 Java 中的类和对象，类就是镜像，容器就是对象！
+</code></pre>
+<p>容器（container）：</p>
+<pre><code>Docker 利用容器（Container）独立运行的一个或一组应用。容器是用镜像创建的运行实例。 
+它可以被启动、开始、停止、删除。每个容器都是相互隔离的，保证安全的平台。 
+可以把容器看做是一个简易版的 Linux 环境（包括root用户权限、进程空间、用户空间和网络空间等） 和运行在其中的应用程序。。 
+容器的定义和镜像几乎一模一样，也是一堆层的统一视角，唯一区别在于容器的最上面那一层是可读可写的。
+</code></pre>
+<p>仓库（repository）：</p>
+<pre><code>仓库（Repository）是集中存放镜像文件的场所。 
+仓库(Repository)和仓库注册服务器（Registry）是有区别的。仓库注册服务器上往往存放着多个仓库，每个仓库中又包含了多个镜像，每个镜像有不同的标签（tag）。 
+仓库分为公开仓库（Public）和私有仓库（Private）两种形式。 
+最大的公开仓库是 Docker Hub(https://hub.docker.com/)，存放了数量庞大的镜像供用户下载。 
+国内的公开仓库包括阿里云、网易云等 
+</code></pre>
+<p>小结：</p>
+<ul>
+<li>Docker 本身是一个容器运行载体或称之为管理引擎。我们把应用程序和配置依赖打包好形成一个可交付的运行环境，这个打包好的运行环境就似乎 image镜像文件。只有通过这个镜像文件才能生成 Docker 容器。image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。</li>
+<li>image 文件生成的容器实例，本身也是一个文件，称为镜像文件。</li>
+<li>一个容器运行一种服务，当我们需要的时候，就可以通过docker客户端创建一个对应的运行实例，也就是我们的容器。</li>
+<li>至于仓库，就是放了一堆镜像的地方，我们可以把镜像发布到仓库中，需要的时候从仓库中拉下来就可以了。</li>
+</ul>
+<h2 id="2-2-环境说明"><a href="#2-2-环境说明" class="headerlink" title="2.2. 环境说明"></a>2.2. 环境说明</h2><blockquote>
+<p>我们使用的是 CentOS 7 (64-bit)<br>目前，CentOS 仅发行版本中的内核支持 Docker。<br>Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。</p>
+</blockquote>
+<h3 id="2-2-1-查看自己的内核"><a href="#2-2-1-查看自己的内核" class="headerlink" title="2.2.1. 查看自己的内核"></a>2.2.1. 查看自己的内核</h3><p>uname -r 命令用于打印当前系统相关信息（内核版本号、硬件架构、主机名称和操作系统类型）</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107220105581.png" alt="image-20221107220105581"></p>
+<h3 id="2-2-2-查看版本信息"><a href="#2-2-2-查看版本信息" class="headerlink" title="2.2.2. 查看版本信息"></a>2.2.2. 查看版本信息</h3><pre class=" language-shell"><code class="language-shell">cat /etc/os-release
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107220214625.png" alt="image-20221107220214625"></p>
+<h3 id="2-2-3-安装步骤"><a href="#2-2-3-安装步骤" class="headerlink" title="2.2.3. 安装步骤"></a>2.2.3. 安装步骤</h3><ol>
+<li>yum安装gcc相关环境（需要确保虚拟机可以上外网）</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">yum -y install gcc
+yum -y install gcc-c++
+</code></pre>
+<ol start="2">
+<li>卸载旧版本</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">yum remove docker \
+                docker-client \ 
+                docker-client-latest \ 
+                docker-common \ 
+                docker-latest \ 
+                docker-latest-logrotate \ 
+                docker-logrotate \ 
+                docker-engine
+</code></pre>
+<ol start="3">
+<li>安装需要的软件包</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">yum install -y yum-utils
+</code></pre>
+<ol start="4">
+<li>设置镜像仓库</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</code></pre>
+<ol start="5">
+<li>更新yum软件包索引</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">yum makecache fast
+</code></pre>
+<ol start="6">
+<li>安装Docker CE</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">yum install docker-ce docker-ce-cli containerd.io
+</code></pre>
+<ol start="7">
+<li>启动Docker</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">systemctl start docker
+</code></pre>
+<ol start="8">
+<li>测试命令</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">docker version 
+docker run hello-world 
+docker images
+</code></pre>
+<ol start="9">
+<li>卸载</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">systemctl stop docker 
+yum -y remove docker-ce docker-ce-cli containerd.io 
+rm -rf /var/lib/docker
+</code></pre>
+<ol start="10">
+<li>配置镜像加速</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+&#123;
+  "registry-mirrors": ["https://v10rlwmg.mirror.aliyuncs.com"]
+&#125;
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre>
+<blockquote>
+<p>docker run hello-world做了什么？</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107222548693.png" alt="image-20221107222548693"></p>
+</blockquote>
+<h2 id="2-3-底层原理"><a href="#2-3-底层原理" class="headerlink" title="2.3. 底层原理"></a>2.3. 底层原理</h2><h3 id="2-3-1-Docker是怎么工作的"><a href="#2-3-1-Docker是怎么工作的" class="headerlink" title="2.3.1. Docker是怎么工作的"></a>2.3.1. Docker是怎么工作的</h3><blockquote>
+<p>Docker是一个Client-Server结构的系统，Docker守护进程运行在主机上， 然后通过Socket连接从客户端访问，守护进程从客户端接受命令并管理运行在主机上的容器。 容器，是一个运行时环境，就是我们前面说到的集装箱。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107222713568.png" alt="image-20221107222713568"></p>
+<h3 id="2-3-2-为什么Docker比VM快"><a href="#2-3-2-为什么Docker比VM快" class="headerlink" title="2.3.2. 为什么Docker比VM快"></a>2.3.2. 为什么Docker比VM快</h3><p>1、docker有着比虚拟机更少的抽象层。由于docker不需要Hypervisor实现硬件资源虚拟化,运行在docker容器上的程序直接使用的都是实际物理机的硬件资源。因此在CPU、内存利用率上docker将会在效率上有明显优势。</p>
+<p>2、docker利用的是宿主机的内核,而不需要Guest OS。因此,当新建一个容器时,docker不需要和虚拟机一样重新加载一个操作系统内核。仍而避免引寻、加载操作系统内核返回比较费时费资源的过程,当新建一个虚拟机时,虚拟机软件需要加载Guest OS,返回新建过程是分钟级别的。而docker由于直接利用宿主机的操作系统,则省略了返回过程,因此新建一个docker容器只需要几秒钟。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107223118297.png" alt="image-20221107223118297"></p>
+<h1 id="3-Docker常用命令"><a href="#3-Docker常用命令" class="headerlink" title="3. Docker常用命令"></a>3. Docker常用命令</h1><h2 id="3-1-帮助命令"><a href="#3-1-帮助命令" class="headerlink" title="3.1. 帮助命令"></a>3.1. 帮助命令</h2><pre class=" language-docker"><code class="language-docker">docker version <span class="token comment" spellcheck="true"># 显示 Docker 版本信息。</span>
+docker info  <span class="token comment" spellcheck="true"># 显示 Docker 系统信息，包括镜像和容器数。。</span>
+docker <span class="token punctuation">-</span><span class="token punctuation">-</span>help <span class="token comment" spellcheck="true"># 帮助</span>
+</code></pre>
+<h2 id="3-2-镜像命令"><a href="#3-2-镜像命令" class="headerlink" title="3.2. 镜像命令"></a>3.2. 镜像命令</h2><p><strong>docker images——列出本地主机上的镜像</strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107223347036.png" alt="image-20221107223347036"></p>
+<ul>
+<li><p>解释 </p>
+<ul>
+<li>REPOSITORY—— 镜像的仓库源 </li>
+<li>TAG ——镜像的标签 </li>
+<li>IMAGE ID—— 镜像的ID </li>
+<li>CREATED—— 镜像创建时间 </li>
+<li>SIZE—— 镜像大小</li>
+</ul>
+</li>
+<li><p>可选项 </p>
+<ul>
+<li><code>-a</code>： 列出本地所有镜像 </li>
+<li><code>-q</code>： 只显示镜像id </li>
+<li><code>--digests</code>： 显示镜像的摘要信息</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>同一个仓库源可以有多个 TAG，代表这个仓库源的不同版本，我们使用REPOSITORY：TAG 定义不同的镜像，如果你不定义镜像的标签版本，docker将默认使用 lastest 镜像！ </p>
+</blockquote>
+<p><strong>docker search——搜索镜像</strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107223840715.png" alt="image-20221107223840715"></p>
+<ul>
+<li><code>docker search 某个镜像的名称</code>，对应DockerHub仓库中的镜像。</li>
+<li>可选项<ul>
+<li><code>--filter=starts=50</code>：列出收藏数不小于指定值的镜像。</li>
+</ul>
+</li>
+</ul>
+<p><strong>docker pull——下载镜像</strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221107224452298.png" alt="image-20221107224452298"></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 不写tag，默认是latest</span>
+docker pull mysql
+<span class="token comment" spellcheck="true"># 指定版本下载</span>
+docker pull mysql<span class="token punctuation">:</span>5.7
+</code></pre>
+<p><strong>docker rmi</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker rmi <span class="token punctuation">-</span>f 镜像id <span class="token comment" spellcheck="true"># 删除单个</span>
+docker rmi <span class="token punctuation">-</span>f 镜像名<span class="token punctuation">:</span>tag 镜像名<span class="token punctuation">:</span>tag <span class="token comment" spellcheck="true"># 删除多个</span>
+docker rmi <span class="token punctuation">-</span>f $(docker images <span class="token punctuation">-</span>qa) <span class="token comment" spellcheck="true"># 删除全部</span>
+</code></pre>
+<h2 id="3-3-容器命令"><a href="#3-3-容器命令" class="headerlink" title="3.3. 容器命令"></a>3.3. 容器命令</h2><blockquote>
+<p>说明：有镜像才能创建容器，我们这里使用centos的镜像来测试，就是虚拟一个centos。</p>
+</blockquote>
+<pre class=" language-docker"><code class="language-docker">docker pull centos
+</code></pre>
+<p><strong>新建容器并启动</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker run <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> IMAGE <span class="token punctuation">[</span>COMMAND<span class="token punctuation">]</span><span class="token punctuation">[</span>ARG<span class="token punctuation">...</span><span class="token punctuation">]</span>
+</code></pre>
+<ul>
+<li>常用参数说明：<ul>
+<li><code>--name=&quot;Name&quot;</code> ：给容器指定一个名字。</li>
+<li><code>-d</code>：后台方式运行容器，并返回容器的id。</li>
+<li><code>-i</code>：以交互模式运行容器，通过<code>-t</code>一起使用。</li>
+<li><code>-t</code>：给容器重新分配一个终端，通常和<code>-i</code>一起使用。</li>
+<li><code>-P</code>：随机端口映射。</li>
+<li><code>-p</code>：指定端口映射，一般可以有四种写法。<ul>
+<li><code>ip:hostPort:containerPort</code></li>
+<li><code>ip::containerPort</code></li>
+<li><code>hostPort:containerPort</code>（常用）</li>
+<li><code>containerPort</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 使用centos进行用交互式模式启动容器，在容器内执行/bin/bash命令</span>
+docker run <span class="token punctuation">-</span>it centos /bin/bash
+</code></pre>
+<p><strong>列出所有运行的容器</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker ps <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+</code></pre>
+<p>常用参数说明：</p>
+<ul>
+<li><code>-a</code>：列出当前所有正在运行的容器+历史运行过的容器。</li>
+<li><code>-l</code>：显示最近创建的容器。</li>
+<li><code>-n=?</code>：显示最近n个创建的容器。</li>
+<li><code>-q</code>：静默模式，只显示容器编号。</li>
+</ul>
+<p><strong>退出容器</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 容器退出停止</span>
+exit
+<span class="token comment" spellcheck="true"># 容器不停止退出</span>
+ctrl+P+Q
+</code></pre>
+<p><strong>启动停止容器</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 启动容器</span>
+docker start (容器id or 容器名)
+<span class="token comment" spellcheck="true"># 重启容器</span>
+docker restart (容器id or 容器名)
+<span class="token comment" spellcheck="true"># 停止容器</span>
+docker stop (容器id or 容器名)
+<span class="token comment" spellcheck="true"># 强制停止容器</span>
+docker kill (容器id or 容器名)
+</code></pre>
+<p><strong>删除容器</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 删除指定容器</span>
+docker rm 容器id
+<span class="token comment" spellcheck="true"># 删除所有容器</span>
+docker rm <span class="token punctuation">-</span>f $(docker ps <span class="token punctuation">-</span>a <span class="token punctuation">-</span>q)
+<span class="token comment" spellcheck="true"># 删除所有容器</span>
+docker ps <span class="token punctuation">-</span>a <span class="token punctuation">-</span>q <span class="token punctuation">|</span> xargs docker rm
+</code></pre>
+<h2 id="3-4-常用其他命令"><a href="#3-4-常用其他命令" class="headerlink" title="3.4. 常用其他命令"></a>3.4. 常用其他命令</h2><p><strong>后台启动容器</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker run <span class="token punctuation">-</span>d 容器名
+
+<span class="token comment" spellcheck="true"># 例子 启动centos，使用后台方式启动</span>
+docker run <span class="token punctuation">-</span>d centos
+
+<span class="token comment" spellcheck="true"># 问题： 使用docker ps 查看，发现容器已经退出了！ </span>
+<span class="token comment" spellcheck="true"># 解释：Docker容器后台运行，就必须有一个前台进程，容器运行的命令如果不是那些一直挂起的命 令，就会自动退出。 </span>
+<span class="token comment" spellcheck="true"># 比如，你运行了nginx服务，但是docker前台没有运行应用，这种情况下，容器启动后，会立即自 杀，因为他觉得没有程序了，所以最好的情况是，将你的应用使用前台进程的方式运行启动。</span>
+</code></pre>
+<p><strong>查看日志</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker logs <span class="token punctuation">-</span>f <span class="token punctuation">-</span>t <span class="token punctuation">-</span><span class="token punctuation">-</span>tail 容器id
+
+<span class="token comment" spellcheck="true"># -t 显示时间戳</span>
+<span class="token comment" spellcheck="true"># -f 打印最新的日志</span>
+<span class="token comment" spellcheck="true"># --tail 数字 显示多少条</span>
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108124151499.png" alt="image-20221108124151499"></p>
+<p><strong>查看容器中运行的进程信息，支持ps命令参数</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker top 容器id
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108124436397.png" alt="image-20221108124436397"></p>
+<p><strong>查看容器&#x2F;镜像的元数据</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker inspect 容器id
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108124633059.png" alt="image-20221108124633059"></p>
+<p><strong>进入正在运行的容器</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 命令1</span>
+docker exec <span class="token punctuation">-</span>it 容器id 命令
+<span class="token comment" spellcheck="true"># 命令2</span>
+docker attach 容器id
+
+<span class="token comment" spellcheck="true"># 区别</span>
+<span class="token comment" spellcheck="true"># exec是在容器中打开新的终端，并且可以启动新的进程</span>
+<span class="token comment" spellcheck="true"># attach直接进入容器启动命令的终端，不会启动新的进程</span>
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108125138169.png" alt="image-20221108125138169"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108125220577.png" alt="image-20221108125220577"></p>
+<p><strong>从容器内拷贝文件到主机上</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker cp 容器id<span class="token punctuation">:</span>容器内路径 目的主机路径
+</code></pre>
+<p><strong>查看容器的cpu内存和网络状态</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker stats 容器id
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108130345474.png" alt="image-20221108130345474"></p>
+<h2 id="3-5-小结"><a href="#3-5-小结" class="headerlink" title="3.5. 小结"></a>3.5. 小结</h2><p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108125827341.png" alt="image-20221108125827341"></p>
+<h1 id="4-可视化"><a href="#4-可视化" class="headerlink" title="4. 可视化"></a>4. 可视化</h1><h2 id="4-1-Rancher（CI-x2F-CD再用这个）"><a href="#4-1-Rancher（CI-x2F-CD再用这个）" class="headerlink" title="4.1. Rancher（CI&#x2F;CD再用这个）"></a>4.1. Rancher（CI&#x2F;CD再用这个）</h2><pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true">#安装rancher-server </span>
+docker run <span class="token punctuation">-</span><span class="token punctuation">-</span>name rancher<span class="token punctuation">-</span>server <span class="token punctuation">-</span>p 8000<span class="token punctuation">:</span>8080 <span class="token punctuation">-</span>v /etc/localtime<span class="token punctuation">:</span>/etc/localtime<span class="token punctuation">:</span>ro <span class="token punctuation">-</span>d rancher/server 
+<span class="token comment" spellcheck="true">#安装agent </span>
+docker run <span class="token punctuation">-</span><span class="token punctuation">-</span>rm <span class="token punctuation">-</span><span class="token punctuation">-</span>privileged <span class="token punctuation">-</span>v /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock <span class="token punctuation">-</span>v /var/lib/rancher<span class="token punctuation">:</span>/var/lib/rancher rancher/agent<span class="token punctuation">:</span>v1.2.11 
+</code></pre>
+<h2 id="4-2-Portainer（先用这个）"><a href="#4-2-Portainer（先用这个）" class="headerlink" title="4.2. Portainer（先用这个）"></a>4.2. Portainer（先用这个）</h2><pre class=" language-docker"><code class="language-docker">docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span>p 8088<span class="token punctuation">:</span>9000 <span class="token punctuation">-</span><span class="token punctuation">-</span>restart=always <span class="token punctuation">-</span>v /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock <span class="token punctuation">-</span><span class="token punctuation">-</span>privileged=true portainer/portainer
+</code></pre>
+<h2 id="4-3-Portainer介绍和使用"><a href="#4-3-Portainer介绍和使用" class="headerlink" title="4.3. Portainer介绍和使用"></a>4.3. Portainer介绍和使用</h2><p><strong>介绍：</strong></p>
+<blockquote>
+<p>Portainer是Docker的图形化管理工具，提供状态显示面板、应用模板快速部署、容器镜像网络数据卷的基本操作（包括上传下载镜像，创建容器等操作）、事件日志显示、容器控制台操作、Swarm集群和服务等集中管理和操作、登录用户管理和控制等功能。功能十分全面，基本能满足中小型单位对容器管理的全部需求。<br>如果仅有一个docker宿主机，则可使用单机版运行，Portainer单机版运行十分简单，只需要一条语句即可启动容器，来管理该机器上的docker镜像、容器等数据。</p>
+</blockquote>
+<p>访问方式:<code>http://IP:8088</code>，记得关闭防火墙哦！云服务器记得开启端口哦！</p>
+<p>首次登录需要注册用户，给admin用户设置密码：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108140111496.png" alt="image-20221108140111496"></p>
+<p>单机版这里选择local即可，选择完毕，点击Connect即可连接到本地docker：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108140149330.png" alt="image-20221108140149330"></p>
+<p>登录成功！</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108140218690.png" alt="image-20221108140218690"></p>
+<h1 id="5-Docker镜像讲解"><a href="#5-Docker镜像讲解" class="headerlink" title="5. Docker镜像讲解"></a>5. Docker镜像讲解</h1><h2 id="5-1-镜像是什么"><a href="#5-1-镜像是什么" class="headerlink" title="5.1. 镜像是什么"></a>5.1. 镜像是什么</h2><p>镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时、库、环境变量和配置文件。</p>
+<h2 id="5-2-Docker镜像加载原理"><a href="#5-2-Docker镜像加载原理" class="headerlink" title="5.2. Docker镜像加载原理"></a>5.2. Docker镜像加载原理</h2><h3 id="5-2-1-UnionFS（联合文件系统）"><a href="#5-2-1-UnionFS（联合文件系统）" class="headerlink" title="5.2.1. UnionFS（联合文件系统）"></a>5.2.1. UnionFS（联合文件系统）</h3><blockquote>
+<p>UnionFS（联合文件系统）：Union文件系统（UnionFS）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)。Union 文件系统是 Docker 镜像的基础。镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。<br>特性：一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录。</p>
+</blockquote>
+<h3 id="5-2-2-Docker镜像加载原理"><a href="#5-2-2-Docker镜像加载原理" class="headerlink" title="5.2.2. Docker镜像加载原理"></a>5.2.2. Docker镜像加载原理</h3><blockquote>
+<p>docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统UnionFS。bootfs(boot file system)主要包含bootloader和kernel, bootloader主要是引导加载kernel, Linux刚启动时会加载bootfs文件系统，在Docker镜像的最底层是bootfs。这一层与我们典型的Linux&#x2F;Unix系统是一样的，包含boot加载器和内核。当boot加载完成之后整个内核就都在内存中了，此时内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs。 rootfs (root file system) ，在bootfs之上。包含的就是典型 Linux 系统中的 &#x2F;dev, &#x2F;proc, &#x2F;bin, &#x2F;etc 等标准目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu，Centos等等。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/QQ%E6%88%AA%E5%9B%BE20210719174045.png" alt="QQ截图20210719174045"></p>
+<p>平时我们安装进虚拟机的CentOS都是好几个G，为什么Docker这里才200M？</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108141154858.png" alt="image-20221108141154858"></p>
+<p>对于一个精简的OS，rootfs 可以很小，只需要包含最基本的命令，工具和程序库就可以了，因为底层直接用Host的kernel，自己只需要提供rootfs就可以了。由此可见对于不同的linux发行版, bootfs基本是一致的, rootfs会有差别, 因此不同的发行版可以公用bootfs。</p>
+<h2 id="5-3-分层理解"><a href="#5-3-分层理解" class="headerlink" title="5.3. 分层理解"></a>5.3. 分层理解</h2><h3 id="5-3-1-分层的镜像"><a href="#5-3-1-分层的镜像" class="headerlink" title="5.3.1. 分层的镜像"></a>5.3.1. 分层的镜像</h3><p>我们可以去下载一个镜像，注意观察下载的日志输出，可以看到是一层一层的在下载！</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108141535126.png" alt="image-20221108141535126"></p>
+<blockquote>
+<p>思考：为什么Docker镜像要采用这种分层的结构呢？最大的好处，我觉得莫过于是资源共享了！比如有多个镜像都从相同的Base镜像构建而来，那么宿主机只需在磁盘上保留一份base镜像，同时内存中也只需要加载一份base镜像，这样就可以为所有的容器服务了，而且镜像的每一层都可以被共享。查看镜像分层的方式可以通过 docker image inspect 命令！</p>
+</blockquote>
+<h3 id="5-3-2-理解"><a href="#5-3-2-理解" class="headerlink" title="5.3.2. 理解"></a>5.3.2. 理解</h3><blockquote>
+<p>所有的 Docker 镜像都起始于一个基础镜像层，当进行修改或增加新的内容时，就会在当前镜像层之上，创建新的镜像层。举一个简单的例子，假如基于 Ubuntu Linux 16.04 创建一个新的镜像，这就是新镜像的第一层；如果在该镜像中添加 Python包，就会在基础镜像层之上创建第二个镜像层；如果继续添加一个安全补丁，就会创建第三个镜像层。该镜像当前已经包含 3 个镜像层，如下图所示（这只是一个用于演示的很简单的例子）。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108142122699.png" alt="image-20221108142122699"></p>
+<blockquote>
+<p>在添加额外的镜像层的同时，镜像始终保持是当前所有镜像的组合，理解这一点非常重要。下图中举了一个简单的例子，每个镜像层包含 3 个文件，而镜像包含了来自两个镜像层的 6 个文件。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108142253262.png" alt="image-20221108142253262"></p>
+<blockquote>
+<p>上图中的镜像层跟之前图中的略有区别，主要目的是便于展示文件。下图中展示了一个稍微复杂的三层镜像，在外部看来整个镜像只有 6 个文件，这是因为最上层中的文件7 是文件 5 的一个更新版本。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108142354021.png" alt="image-20221108142354021"></p>
+<blockquote>
+<p>这种情况下，上层镜像层中的文件覆盖了底层镜像层中的文件。这样就使得文件的更新版本作为一个新镜像层添加到镜像当中。Docker 通过存储引擎（新版本采用快照机制）的方式来实现镜像层堆栈，并保证多镜像层对外展示为统一的文件系统。</p>
+<p>Linux 上可用的存储引擎有 AUFS、Overlay2、Device Mapper、Btrfs 以及 ZFS。顾名思义，每种存储引擎都基于 Linux 中对应的文件系统或者块设备技术，并且每种存储引擎都有其独有的性能特点。</p>
+<p>Docker 在 Windows 上仅支持 windowsfilter 一种存储引擎，该引擎基于 NTFS 文件系统之上实现了分层和 CoW[1]。</p>
+<p>下图展示了与系统显示相同的三层镜像。所有镜像层堆叠并合并，对外提供统一的视图。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108142522159.png" alt="image-20221108142522159"></p>
+<h3 id="5-3-3-特点"><a href="#5-3-3-特点" class="headerlink" title="5.3.3. 特点"></a>5.3.3. 特点</h3><blockquote>
+<p>Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部！</p>
+<p>这一层就是我们通常说的容器层，容器之下的都叫镜像层！</p>
+</blockquote>
+<h2 id="5-4-镜像Commit"><a href="#5-4-镜像Commit" class="headerlink" title="5.4. 镜像Commit"></a>5.4. 镜像Commit</h2><p><strong>docker commit从容器创建一个新的镜像。</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker commit 提交容器副本使之成为一个新的镜像！ 
+<span class="token comment" spellcheck="true"># 语法 </span>
+docker commit <span class="token punctuation">-</span>m=<span class="token string">"提交的描述信息"</span> <span class="token punctuation">-</span>a=<span class="token string">"作者"</span> 容器id 要创建的目标镜像名<span class="token punctuation">:</span><span class="token punctuation">[</span>标签名<span class="token punctuation">]</span>
+</code></pre>
+<p><strong>测试</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 1、从Docker Hub 下载tomcat镜像到本地并运行 -it 交互终端 -p 端口映射</span>
+docker run <span class="token punctuation">-</span>it <span class="token punctuation">-</span>p 8080<span class="token punctuation">:</span>8080 tomcat
+
+<span class="token comment" spellcheck="true"># 注意：坑爹：docker启动官方tomcat镜像的容器，发现 404 是因为使用了加速器，而加速器里的tomcat的webapps下没有root等文件！</span>
+<span class="token comment" spellcheck="true"># 下载tomcat官方镜像，就是这个镜像（阿里云里的tomcat的webapps下没有任何文件）</span>
+<span class="token comment" spellcheck="true"># 进入tomcat查看cd到webapps下发现全部空的，反而有个webapps.dist里有对应文件，cp -r到webapps下！</span>
+root@aba865b53114<span class="token punctuation">:</span>/usr/local/tomcat<span class="token comment" spellcheck="true"># cp -r webapps.dist/* webapps</span>
+
+<span class="token comment" spellcheck="true"># 2、删除上一步镜像产生的tomcat容器的文档</span>
+docker ps <span class="token comment" spellcheck="true"># 查看容器id</span>
+docker exec <span class="token punctuation">-</span>it 容器id /bin/bash
+/usr/local/tomcat <span class="token comment" spellcheck="true"># cd webapps/</span>
+/usr/local/tomcat/webapps <span class="token comment" spellcheck="true"># ls -l # 查看是否存在 docs文件夹</span>
+/usr/local/tomcat/webapps <span class="token comment" spellcheck="true"># curl localhost:8080/docs/ # 可以看到 docs 返回的内容</span>
+/usr/local/tomcat/webapps <span class="token comment" spellcheck="true"># rm -rf docs # 删除它</span>
+/usr/local/tomcat/webapps <span class="token comment" spellcheck="true"># curl localhost:8080/docs/ # 再次访问返回 404</span>
+
+<span class="token comment" spellcheck="true"># 3、当前运行的tomcat实例就是一个没有docs的容器，我们使用它为模板commit一个没有docs的tomcat新镜像， tomcat02</span>
+
+docker ps <span class="token punctuation">-</span>l <span class="token comment" spellcheck="true"># 查看容器的id</span>
+
+<span class="token comment" spellcheck="true"># 注意：commit的时候，容器的名字不能有大写，否则报错：invalid reference format</span>
+docker commit <span class="token punctuation">-</span>a=<span class="token string">"cfl"</span> <span class="token punctuation">-</span>m=<span class="token string">"no tomcat docs"</span> 1e98a2f815b0 tomcat02<span class="token punctuation">:</span>1.1
+sha256<span class="token punctuation">:</span>cdccd4674f93ad34bf73d9db577a20f027a6d03fd1944dc0e628ee4bf17ec748
+<span class="token punctuation">[</span>root@cfl /<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># docker images # 查看，我们自己提交的镜像已经OK了！</span>
+REPOSITORY TAG IMAGE ID CREATED
+SIZE
+tomcat02 1 .1 cdccd4674f93 About a minute
+ago 649MB
+redis latest f9b990972689 9 days ago
+104MB
+tomcat latest 927899a31456 2 weeks ago
+647MB
+centos latest 470671670cac 3 months ago
+237MB
+
+<span class="token comment" spellcheck="true"># 4、这个时候，我们的镜像都是可以使用的，大家可以启动原来的tomcat，和我们新的tomcat02来 测试看看！</span>
+<span class="token punctuation">[</span>root@cfl ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># docker run -it -p 8080:8080 tomcat02:1.1</span>
+
+<span class="token comment" spellcheck="true"># 如果你想要保存你当前的状态，可以通过commit，来提交镜像，方便使用，类似于 VM 中的快照！</span>
+</code></pre>
+<h1 id="6-容器数据卷"><a href="#6-容器数据卷" class="headerlink" title="6. 容器数据卷"></a>6. 容器数据卷</h1><h2 id="6-1-什么是容器数据卷"><a href="#6-1-什么是容器数据卷" class="headerlink" title="6.1. 什么是容器数据卷"></a>6.1. 什么是容器数据卷</h2><h3 id="6-1-1-docker的理念回顾"><a href="#6-1-1-docker的理念回顾" class="headerlink" title="6.1.1. docker的理念回顾"></a>6.1.1. docker的理念回顾</h3><blockquote>
+<p>将应用和运行的环境打包形成容器运行，运行可以伴随着容器，但是我们对于数据的要求，是希望能够持久化的！就好比，你安装一个MySQL，结果你把容器删了，就相当于删库跑路了，这TM也太扯了吧！所以我们希望容器之间有可能可以共享数据，Docker容器产生的数据，如果不通过docker commit 生成新的镜像，使得数据作为镜像的一部分保存下来，那么当容器删除后，数据自然也就没有了！这样是行不通的！为了能保存数据在Docker中我们就可以使用卷！让数据挂载到我们本地！这样数据就不会因为容器删除而丢失了！</p>
+<p><strong>作用：</strong></p>
+<p>卷就是目录或者文件，存在一个或者多个容器中，由docker挂载到容器，但不属于联合文件系统，因此能够绕过 Union File System ， 提供一些用于持续存储或共享数据的特性：卷的设计目的就是数据的持久化，完全独立于容器的生存周期，因此Docker不会在容器删除时删除其挂载的数据卷。</p>
+</blockquote>
+<h3 id="6-1-2-特点"><a href="#6-1-2-特点" class="headerlink" title="6.1.2. 特点"></a>6.1.2. 特点</h3><ol>
+<li>数据卷可在容器之间共享或重用数据。</li>
+<li>卷中的更改可以直接生效。</li>
+<li>数据卷中的更改不会包含在镜像的更新中。</li>
+<li>数据卷的生命周期一直持续到没有容器使用它为止。</li>
+</ol>
+<p>总结为一句话：就是容器的持久化，以及容器间的继承和数据共享！</p>
+<h2 id="6-2-使用数据卷"><a href="#6-2-使用数据卷" class="headerlink" title="6.2. 使用数据卷"></a>6.2. 使用数据卷</h2><h3 id="6-2-1-容器中直接使用命令来添加"><a href="#6-2-1-容器中直接使用命令来添加" class="headerlink" title="6.2.1. 容器中直接使用命令来添加"></a>6.2.1. 容器中直接使用命令来添加</h3><p><strong>挂载</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 命令 </span>
+docker run <span class="token punctuation">-</span>it <span class="token punctuation">-</span>v 宿主机绝对路径目录<span class="token punctuation">:</span>容器内目录 镜像名 
+
+<span class="token comment" spellcheck="true"># 测试 </span>
+<span class="token punctuation">[</span>root@cfl ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># docker run -it -v /home/ceshi:/home centos /bin/bash</span>
+</code></pre>
+<p><strong>查看数据卷是否挂载成功——<code>docker inspect 容器id</code></strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108150216659.png" alt="image-20221108150216659"></p>
+<p><strong>测试容器和宿主机之间数据共享：可以发现，在容器中，创建的会在宿主机中看到。</strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108150330519.png" alt="image-20221108150330519"></p>
+<p><strong>测试容器停止退出后，主机修改数据是否会同步。</strong></p>
+<ol>
+<li>停止容器。</li>
+<li>在宿主机上修改文件，增加些内容。</li>
+<li>启动刚才停止的容器。</li>
+<li>然后查看对应的文件，发现数据依旧同步。</li>
+</ol>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108150538646.png" alt="image-20221108150538646"></p>
+<h3 id="6-2-2-使用docker安装mysql"><a href="#6-2-2-使用docker安装mysql" class="headerlink" title="6.2.2. 使用docker安装mysql"></a>6.2.2. 使用docker安装mysql</h3><pre class=" language-docker"><code class="language-docker">docker search mysql
+
+docker pull mysql<span class="token punctuation">:</span>5.7
+
+docker run <span class="token punctuation">-</span>p 3306<span class="token punctuation">:</span>3306 <span class="token punctuation">-</span><span class="token punctuation">-</span>name mysql \
+<span class="token punctuation">-</span>v /mydata/mysql/log<span class="token punctuation">:</span>/var/log/mysql \
+<span class="token punctuation">-</span>v /mydata/mysql/data<span class="token punctuation">:</span>/var/lib/mysql \
+<span class="token punctuation">-</span>v /mydata/mysql/conf<span class="token punctuation">:</span>/etc/mysql \
+<span class="token punctuation">-</span>e MYSQL_ROOT_PASSWORD=123456 \
+<span class="token punctuation">-</span>d mysql<span class="token punctuation">:</span>5.7
+</code></pre>
+<h3 id="6-2-3-通过Docker-File来添加"><a href="#6-2-3-通过Docker-File来添加" class="headerlink" title="6.2.3. 通过Docker File来添加"></a>6.2.3. 通过Docker File来添加</h3><blockquote>
+<p>DockerFile 是用来构建Docker镜像的构建文件，是由一些列命令和参数构成的脚本。<br>我们在这里，先体验下，后面我们会详细讲解 DockerFile ！</p>
+</blockquote>
+<p><strong>测试</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 1、我们在宿主机 /home 目录下新建一个 docker-test-volume文件夹</span>
+mkdir docker<span class="token punctuation">-</span>test<span class="token punctuation">-</span>volume
+
+<span class="token comment" spellcheck="true"># 说明：在编写DockerFile文件中使用 VOLUME 指令来给镜像添加一个或多个数据卷</span>
+<span class="token comment" spellcheck="true">#VOLUME[</span><span class="token string">"/dataVolumeContainer1"</span><span class="token punctuation">,</span><span class="token string">"/dataVolumeContainer2"</span><span class="token punctuation">,</span><span class="token string">"/dataVolumeContainer3"</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 出于可移植和分享的考虑，我们之前使用的 -v 主机目录:容器目录 这种方式不能够直接在DockerFile中实现。</span>
+<span class="token comment" spellcheck="true"># 由于宿主机目录是依赖于特定宿主机的，并不能够保证在所有宿主机上都存在这样的特定目录.</span>
+
+<span class="token comment" spellcheck="true"># 2、编写DockerFile文件 </span>
+<span class="token comment" spellcheck="true"># FROM centos</span>
+<span class="token comment" spellcheck="true"># VOLUME [</span><span class="token string">"/dataVolumeContainer1"</span><span class="token punctuation">,</span><span class="token string">"/dataVolumeContainer2"</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># CMD echo </span><span class="token string">"-------end------"</span>
+<span class="token comment" spellcheck="true"># CMD /bin/bash</span>
+vim dockerfile1
+
+<span class="token comment" spellcheck="true"># 3、build后生成镜像，获得一个新镜像 cfl/centos</span>
+<span class="token comment" spellcheck="true">#注意最后有个.</span>
+docker build <span class="token punctuation">-</span>f /home/docker<span class="token punctuation">-</span>test<span class="token punctuation">-</span>volume/dockerfile1 <span class="token punctuation">-</span>t cfl/centos . 
+
+<span class="token comment" spellcheck="true"># 4、启动容器</span>
+docker run <span class="token punctuation">-</span>it  07d891651326  /bin/bash
+
+<span class="token comment" spellcheck="true"># 问题:通过上述步骤，容器内的卷目录地址就已经知道了，但是对应的主机目录地址在哪里呢？</span>
+<span class="token comment" spellcheck="true"># 5、我们在数据卷中新建一个文件</span>
+touch container.txt
+
+<span class="token comment" spellcheck="true"># 6、查看下这个容器的信息</span>
+docker inspect  07d891651326 
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108161211156.png" alt="image-20221108161211156"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108161227545.png" alt="image-20221108161227545"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108161336945.png" alt="image-20221108161336945"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108161437173.png" alt="image-20221108161437173"></p>
+<p><strong>扩展</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 匿名挂载 -v 容器内路径 </span>
+docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span>P <span class="token punctuation">-</span><span class="token punctuation">-</span>name nginx01 <span class="token punctuation">-</span>v /etc/nginx nginx 
+
+<span class="token comment" spellcheck="true"># 匿名挂载的缺点，就是不好维护，通常使用命令 docker volume维护 </span>
+docker volume ls 
+
+<span class="token comment" spellcheck="true"># 具名挂载 -v 卷名:/容器内路径 </span>
+docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span>P <span class="token punctuation">-</span><span class="token punctuation">-</span>name nginx02 <span class="token punctuation">-</span>v nginxconfig<span class="token punctuation">:</span>/etc/nginx nginx 
+
+<span class="token comment" spellcheck="true"># 查看挂载的路径 </span>
+docker volume inspect nginxconfig 
+
+<span class="token comment" spellcheck="true"># 怎么判断挂载的是卷名而不是本机目录名？ 不是/开始就是卷名，是/开始就是目录名 </span>
+<span class="token comment" spellcheck="true"># 改变文件的读写权限 </span>
+<span class="token comment" spellcheck="true"># ro: readonly </span>
+<span class="token comment" spellcheck="true"># rw: readwrite </span>
+<span class="token comment" spellcheck="true"># 指定容器对我们挂载出来的内容的读写权限 </span>
+docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span>P <span class="token punctuation">-</span><span class="token punctuation">-</span>name nginx02 <span class="token punctuation">-</span>v nginxconfig<span class="token punctuation">:</span>/etc/nginx<span class="token punctuation">:</span>ro nginx 
+docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span>P <span class="token punctuation">-</span><span class="token punctuation">-</span>name nginx02 <span class="token punctuation">-</span>v nginxconfig<span class="token punctuation">:</span>/etc/nginx<span class="token punctuation">:</span>rw nginx
+</code></pre>
+<h2 id="6-3-数据卷容器"><a href="#6-3-数据卷容器" class="headerlink" title="6.3. 数据卷容器"></a>6.3. 数据卷容器</h2><blockquote>
+<p>命名的容器挂载数据卷，其他容器通过挂载这个（父容器）实现数据共享，挂载数据卷的容器，称之为数据卷容器。我们使用上一步的镜像：kuangshen&#x2F;centos 为模板，运行容器 docker01，docker02，docker03，他们都会具有容器卷。</p>
+</blockquote>
+<pre class=" language-text"><code class="language-text">"/dataVolumeContainer1" 
+"/dataVolumeContainer2"
+</code></pre>
+<p><strong>我们来测试下，容器间传递共享</strong></p>
+<ol>
+<li>先启动一个父容器docker01,然后在dataVolumeContainer2新增文件。</li>
+</ol>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108163135283.png" alt="image-20221108163135283"></p>
+<p>退出不停止：<code>ctrl+P+Q</code></p>
+<ol start="2">
+<li>创建docker02，docker03，让他们继承docker01，然后各自新建文件。</li>
+</ol>
+<pre class=" language-docker"><code class="language-docker">docker run <span class="token punctuation">-</span>it <span class="token punctuation">-</span><span class="token punctuation">-</span>name docker02 <span class="token punctuation">-</span><span class="token punctuation">-</span>volumes<span class="token punctuation">-</span>from docker01 cfl/centos
+docker run <span class="token punctuation">-</span>it <span class="token punctuation">-</span><span class="token punctuation">-</span>name docker03 <span class="token punctuation">-</span><span class="token punctuation">-</span>volumes<span class="token punctuation">-</span>from docker01 cfl/centos
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108163553596.png" alt="image-20221108163553596"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108163640611.png" alt="image-20221108163640611"></p>
+<ol start="3">
+<li>回到docker01发现可以看到02和03添加的共享文件。</li>
+</ol>
+<pre class=" language-docker"><code class="language-docker">docker attach docker01
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108163855727.png" alt="image-20221108163855727"></p>
+<ol start="4">
+<li>删除docker01，docker02修改后docker03还可以继续访问。</li>
+<li>删除docker02，docker03可以继续访问。</li>
+<li>新建docker04继承docker03，然后再删除docker03，docker04可以继续访问。</li>
+</ol>
+<p><strong>得出结论：</strong></p>
+<blockquote>
+<p>容器之间配置信息的传递，数据卷的生命周期一直持续到没有容器使用它为止。</p>
+<p>存储在本机的文件则会一直保留！</p>
+</blockquote>
+<h1 id="7-DockerFile"><a href="#7-DockerFile" class="headerlink" title="7. DockerFile"></a>7. DockerFile</h1><blockquote>
+<p>大家想想，Nginx，tomcat，mysql 这些镜像都是哪里来的？官方能写，我们不能写吗？我们要研究自己如何做一个镜像，而且我们写的微服务项目以及springboot打包上云部署，Docker就是最方便的。微服务打包成镜像，任何装了Docker的地方，都可以下载使用，极其的方便。流程：开发应用&#x3D;&gt;DockerFile&#x3D;&gt;打包为镜像&#x3D;&gt;上传到仓库（私有仓库，公有仓库）&#x3D;&gt; 下载镜像 &#x3D;&gt; 启动运行。还可以方便移植！</p>
+</blockquote>
+<h2 id="7-1-什么是DockerFile"><a href="#7-1-什么是DockerFile" class="headerlink" title="7.1. 什么是DockerFile"></a>7.1. 什么是DockerFile</h2><p>dockerfile是用来构建Docker镜像的构建文件，是由一系列命令和参数构成的脚本。</p>
+<p>构建步骤：</p>
+<ol>
+<li>编写DockerFile文件。</li>
+<li>docker build 构建镜像。</li>
+<li>docker run。</li>
+</ol>
+<h2 id="7-2-DockerFile构建过程"><a href="#7-2-DockerFile构建过程" class="headerlink" title="7.2. DockerFile构建过程"></a>7.2. DockerFile构建过程</h2><p><strong>基础知识：</strong></p>
+<ol>
+<li>每条保留字指令都必须为大写字母且后面要跟随至少一个参数。</li>
+<li>指令按照从上到下，顺序执行。</li>
+<li><code>#</code>表示注释。</li>
+<li>每条指令都会创建一个新的镜像层，并对镜像进行提交。</li>
+</ol>
+<p><strong>流程：</strong></p>
+<ol>
+<li>docker从基础镜像运行一个容器。</li>
+<li>执行一条指令并对容器做出修改。</li>
+<li>执行类似<code>docker commit</code>的操作提交一个新的镜像层。</li>
+<li>Docker再基于刚提交的镜像运行一个新容器。</li>
+<li>执行dockerfile中的下一条指令直到所有指令都执行完成。</li>
+</ol>
+<p><strong>说明：</strong></p>
+<blockquote>
+<p>从应用软件的角度来看，DockerFile，docker镜像与docker容器分别代表软件的三个不同阶段。</p>
+</blockquote>
+<ul>
+<li>DockerFile是软件的原材料（代码）。</li>
+<li>Docker镜像则是软件的交付品（.apk）。</li>
+<li>Docker容器则是软件的运行状态（客户下载安装执行）。</li>
+</ul>
+<p>DockerFile 面向开发，Docker镜像成为交付标准，Docker容器则涉及部署与运维，三者缺一不可！</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108170855042.png" alt="image-20221108170855042"></p>
+<blockquote>
+<p>DockerFile：需要定义一个DockerFile，DockerFile定义了进程需要的一切东西。DockerFile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、动态链接库、操作系统的发行版、服务进程和内核进程（当引用进行需要和系统服务和内核进程打交道，这时需要考虑如何设计 namespace的权限控制）等等。</p>
+<p>Docker镜像：在DockerFile 定义了一个文件之后，Docker build 时会产生一个Docker镜像，当运行Docker 镜像时，会真正开始提供服务；</p>
+<p>Docker容器：容器是直接提供服务的。</p>
+</blockquote>
+<h2 id="7-3-DockerFile指令"><a href="#7-3-DockerFile指令" class="headerlink" title="7.3. DockerFile指令"></a>7.3. DockerFile指令</h2><h3 id="7-3-1-关键字"><a href="#7-3-1-关键字" class="headerlink" title="7.3.1. 关键字"></a>7.3.1. 关键字</h3><pre class=" language-docker"><code class="language-docker"><span class="token keyword">FROM</span> <span class="token comment" spellcheck="true"># 基础镜像，当前新镜像是基于哪个镜像的</span>
+<span class="token keyword">MAINTAINER</span> <span class="token comment" spellcheck="true"># 镜像维护者的姓名混合邮箱地址</span>
+<span class="token keyword">RUN</span>  <span class="token comment" spellcheck="true"># 容器构建时需要运行的命令</span>
+<span class="token keyword">EXPOSE</span> <span class="token comment" spellcheck="true"># 当前容器对外保留出的端口</span>
+<span class="token keyword">WORKDIR</span>  <span class="token comment" spellcheck="true"># 指定在创建容器后，终端默认登录的进来工作目录，一个落脚点</span>
+<span class="token keyword">ENV</span>  <span class="token comment" spellcheck="true"># 用来在构建镜像过程中设置环境变量</span>
+<span class="token keyword">ADD</span>  <span class="token comment" spellcheck="true"># 将宿主机目录下的文件拷贝进镜像且ADD命令会自动处理URL和解压tar压缩包</span>
+<span class="token keyword">COPY</span> <span class="token comment" spellcheck="true"># 类似ADD，拷贝文件和目录到镜像中！</span>
+<span class="token keyword">VOLUME</span> <span class="token comment" spellcheck="true"># 容器数据卷，用于数据保存和持久化工作</span>
+<span class="token keyword">CMD</span>  <span class="token comment" spellcheck="true"># 指定一个容器启动时要运行的命令，dockerFile中可以有多个CMD指令，但只有最后一个生效！</span>
+<span class="token keyword">ENTRYPOINT</span> <span class="token comment" spellcheck="true"># 指定一个容器启动时要运行的命令！和CMD一样</span>
+<span class="token keyword">ONBUILD</span>  <span class="token comment" spellcheck="true"># 当构建一个被继承的DockerFile时运行命令，父镜像在被子镜像继承后，父镜像的ONBUILD被触发</span>
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108174621271.png" alt="image-20221108174621271"></p>
+<h2 id="7-4-实战测试"><a href="#7-4-实战测试" class="headerlink" title="7.4. 实战测试"></a>7.4. 实战测试</h2><p>Docker Hub 中99% 的镜像都是通过在base镜像（Scratch）中安装和配置需要的软件构建出来的。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108174759377.png" alt="image-20221108174759377"></p>
+<h3 id="7-4-1-自定义一个centos"><a href="#7-4-1-自定义一个centos" class="headerlink" title="7.4.1. 自定义一个centos"></a>7.4.1. 自定义一个centos</h3><h4 id="7-4-1-1-编写DockerFile"><a href="#7-4-1-1-编写DockerFile" class="headerlink" title="7.4.1.1. 编写DockerFile"></a>7.4.1.1. 编写DockerFile</h4><p><strong>查看下官方默认的CentOS的情况：</strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108175234705.png" alt="image-20221108175234705"></p>
+<p><strong>我们自己的镜像具备如下：登录后的默认路径，vim编辑器，查看网络配置ifconfig支持。</strong></p>
+<p><strong>编写DockerFile文件</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token keyword">FROM</span> centos<span class="token punctuation">:</span>7
+<span class="token keyword">MAINTAINER</span> cfl&lt;cfl@qq.com<span class="token punctuation">></span>
+
+<span class="token keyword">ENV</span> MYPATH /usr/local
+<span class="token keyword">WORKDIR</span> $MYPATH
+
+<span class="token keyword">RUN</span> yum <span class="token punctuation">-</span>y install vim
+<span class="token keyword">RUN</span> yum <span class="token punctuation">-</span>y install net<span class="token punctuation">-</span>tools
+
+<span class="token keyword">EXPOSE</span> 80 
+
+<span class="token keyword">CMD</span> echo $MYPATH 
+<span class="token keyword">CMD</span> echo <span class="token string">"----------end--------"</span> 
+<span class="token keyword">CMD</span> /bin/bash
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221108175956447.png" alt="image-20221108175956447"></p>
+<h4 id="7-4-1-2-构建"><a href="#7-4-1-2-构建" class="headerlink" title="7.4.1.2. 构建"></a>7.4.1.2. 构建</h4><pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># docker build -f dockerfile地址 - t 新镜像名字:TAG .</span>
+docker build <span class="token punctuation">-</span>f mydockerfile<span class="token punctuation">-</span>centos <span class="token punctuation">-</span>t mycentos<span class="token punctuation">:</span>0.1 .
+</code></pre>
+<ul>
+<li><code>docker build</code>最后有一个<code>.</code>，表示当前目录。</li>
+</ul>
+<h4 id="7-4-1-3-运行"><a href="#7-4-1-3-运行" class="headerlink" title="7.4.1.3. 运行"></a>7.4.1.3. 运行</h4><pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># docker run -it 新镜像名字:TAG</span>
+docker run <span class="token punctuation">-</span>it mycentos<span class="token punctuation">:</span>0.1
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109123653450.png" alt="image-20221109123653450"></p>
+<p>可以看到，我们自己的新镜像已经支持vim&#x2F;ifconfig的命令，扩展成功了！</p>
+<h4 id="7-4-1-4-列出镜像地的变更历史"><a href="#7-4-1-4-列出镜像地的变更历史" class="headerlink" title="7.4.1.4. 列出镜像地的变更历史"></a>7.4.1.4. 列出镜像地的变更历史</h4><pre class=" language-docker"><code class="language-docker">docker history 镜像名
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109124259942.png" alt="image-20221109124259942"></p>
+<h4 id="7-4-1-5-CMD和ENTRYPOINT的区别"><a href="#7-4-1-5-CMD和ENTRYPOINT的区别" class="headerlink" title="7.4.1.5. CMD和ENTRYPOINT的区别"></a>7.4.1.5. CMD和ENTRYPOINT的区别</h4><p>我们之前说过，两个命令都是指定一个容器启动时要运行的命令。</p>
+<ul>
+<li>CMD：Dockerfile 中可以有多个CMD 指令，但只有最后一个生效，CMD 会被 docker run 之后的参数替换！</li>
+<li>ENTRYPOINT： docker run 之后的参数会被当做参数传递给 ENTRYPOINT，之后形成新的命令组合！</li>
+</ul>
+<p><strong>CMD命令</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 1、构建dockerfile，添加以下参数</span>
+<span class="token comment" spellcheck="true"># FROM centos:7</span>
+<span class="token comment" spellcheck="true"># CMD [ </span><span class="token string">"ls"</span><span class="token punctuation">,</span> <span class="token string">"-a"</span> <span class="token punctuation">]</span>
+vim dockerfile<span class="token punctuation">-</span>cmd<span class="token punctuation">-</span>test
+
+<span class="token comment" spellcheck="true"># 2、build 镜像</span>
+docker build <span class="token punctuation">-</span>f dockerfile<span class="token punctuation">-</span>cmd<span class="token punctuation">-</span>test <span class="token punctuation">-</span>t cmdtest .
+
+<span class="token comment" spellcheck="true"># 3、执行</span>
+docker run 03c
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109125238714.png" alt="image-20221109125238714"></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 4、如果我们希望用 -l 列表展示信息，我们就需要加上 -l参数</span>
+docker run cmdtest <span class="token punctuation">-</span>l
+
+<span class="token comment" spellcheck="true"># 问题：我们可以看到可执行文件找不到的报错，executable file not found。</span>
+<span class="token comment" spellcheck="true"># 之前我们说过，跟在镜像名后面的是 command，运行时会替换 CMD 的默认值。</span>
+<span class="token comment" spellcheck="true"># 因此这里的 -l 替换了原来的 CMD，而不是添加在原来的 ls -a 后面。而 -l 根本不是命令，所</span>
+<span class="token comment" spellcheck="true"># 以自然找不到。</span>
+<span class="token comment" spellcheck="true"># 那么如果我们希望加入 -l 这参数，我们就必须重新完整的输入这个命令：</span>
+
+docker run cmdtest ls <span class="token punctuation">-</span>al
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109125453558.png" alt="image-20221109125453558"></p>
+<p><strong>ENTRYPOINT命令</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 1、构建dockerfile, 添加如下内容</span>
+<span class="token comment" spellcheck="true"># FROM centos:7</span>
+<span class="token comment" spellcheck="true"># ENTRYPOINT [ </span><span class="token string">"ls"</span><span class="token punctuation">,</span> <span class="token string">"-a"</span> <span class="token punctuation">]</span>
+vim dockerfile<span class="token punctuation">-</span>entrypoint<span class="token punctuation">-</span>test
+
+<span class="token comment" spellcheck="true"># 2、build 镜像</span>
+docker build <span class="token punctuation">-</span>f dockerfile<span class="token punctuation">-</span>entrypoint<span class="token punctuation">-</span>test <span class="token punctuation">-</span>t entrypointtest .
+
+<span class="token comment" spellcheck="true"># 3、执行</span>
+docker run 8d7bd
+
+<span class="token comment" spellcheck="true"># 4、测试-l参数，发现可以直接使用，这里就是一种追加，我们可以明显的知道 CMD 和ENTRYPOINT 的区别了</span>
+docker run entrypointtest <span class="token punctuation">-</span>l
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109131049140.png" alt="image-20221109131049140"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109131052310.png" alt="image-20221109131052310"></p>
+<h2 id="7-5-总结"><a href="#7-5-总结" class="headerlink" title="7.5. 总结"></a>7.5. 总结</h2><p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109131935566.png" alt="image-20221109131935566"></p>
+<h1 id="8-Docker-网络讲解"><a href="#8-Docker-网络讲解" class="headerlink" title="8. Docker-网络讲解"></a>8. Docker-网络讲解</h1><h2 id="8-1-理解Docker0"><a href="#8-1-理解Docker0" class="headerlink" title="8.1. 理解Docker0"></a>8.1. 理解Docker0</h2><p><strong>准备工作：清空所有的容器，清空所有的镜像。</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 删除所有容器</span>
+docker rm <span class="token punctuation">-</span>f $(docker ps <span class="token punctuation">-</span>a <span class="token punctuation">-</span>q) 
+
+<span class="token comment" spellcheck="true"># 删除全部镜像</span>
+docker rmi <span class="token punctuation">-</span>f $(docker images <span class="token punctuation">-</span>qa) 
+</code></pre>
+<p><strong>查看本地IP——<code>ip addr</code></strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109132350343.png" alt="image-20221109132350343"></p>
+<pre class=" language-txt"><code class="language-txt">lo 127.0.0.1 # 本机回环地址
+docker0 172.17.0.1  # docker网桥
+
+# 问题：Docker 是如何处理容器网络访问的？
+</code></pre>
+<blockquote>
+<p>我们之前安装ES的时候，留过一个问题，就是安装Kibana的问题，Kibana得指定ES的地址！或者我们实际场景中，我们开发了很多微服务项目，那些微服务项目都要连接数据库，需要指定数据库的url地址，通过ip。但是我们用Docker管理的话，假设数据库出问题了，我们重新启动运行一个，这个时候数据库的地址就会发生变化，docker会给每个容器都分配一个ip，且容器和容器之间是可以互相访问的。<br>我们可以测试下容器之间能不能ping通过：</p>
+</blockquote>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 启动tomcat01</span>
+docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span>P <span class="token punctuation">-</span><span class="token punctuation">-</span>name tomcat01 tomcat
+
+<span class="token comment" spellcheck="true"># 查看tomcat01的ip地址，docker会给每个容器都分配一个ip！</span>
+docker exec <span class="token punctuation">-</span>it tomcat01 ip addr
+
+<span class="token comment" spellcheck="true"># 思考，我们的linux服务器是否可以ping通容器内的tomcat ？</span>
+<span class="token comment" spellcheck="true"># 答案是可以ping通的</span>
+ping 172.17.0.2
+</code></pre>
+<blockquote>
+<p>安装完的tomcat容器没有<code>ip addr</code>命令，解决方法如下：</p>
+<pre class=" language-shell"><code class="language-shell"># 1. 查看容器系统发行版本
+cat /etc/issue
+
+# 2. 备份`/etc/apt/sources.list`文件
+mv /etc/apt/sources.list /etc/apt/sources.list.bak
+
+# 3. 新建`/etc/apt/sources.list`文件，并写入国内源地址
+cat >> /etc/apt/sources.list << EOF
+deb http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster main non-free contrib
+deb http://mirrors.aliyun.com/debian-security buster/updates main
+deb-src http://mirrors.aliyun.com/debian-security buster/updates main
+deb http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-updates main non-free contrib
+deb http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+deb-src http://mirrors.aliyun.com/debian/ buster-backports main non-free contrib
+EOF
+
+# 4. 同步
+apt-get update
+
+# 5. 安装
+apt install iproute2
+apt-get install inetutils-ping
+</code></pre>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109151930044.png" alt="image-20221109151930044"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109152132872.png" alt="image-20221109152132872"></p>
+<h2 id="8-2-原理"><a href="#8-2-原理" class="headerlink" title="8.2. 原理"></a>8.2. 原理</h2><p><strong>1.每一个安装了Docker的linux主机都有一个docker0的虚拟网卡。这是个桥接网卡，使用了veth-pair技术！</strong></p>
+<p>我们再次查看主机的IP——<code>ip addr</code>——本来我们有四个网络，我们在启动了个tomcat容器之后，多了一个44的网络。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109152248912.png" alt="image-20221109152248912"></p>
+<p><strong>2.每启动一个容器，linux主机就会多一个虚拟网卡。</strong></p>
+<pre class=" language-shell"><code class="language-shell"># 我们启动了一个tomcat01，主机的ip地址多了一个 44: veth178f2c2@if43
+# 然后我们在tomcat01容器中查看容器的ip是 43: eth0@if44
+
+# 我们再启动一个tomcat02观察
+docker run -d -P --name tomcat02 tomcat
+
+# 然后发现linux主机上又多了一个网卡 46: veth0bc370b@if45
+# 我们看下tomcat02的容器内ip地址是 45: eth0@if46
+docker exec -it tomcat02 ip addr
+
+# 观察现象：
+# tomcat --- linux主机 veth178f2c2@if43 ---- 容器内 eth0@if44
+# tomcat --- linux主机 veth0bc370b@if45 ---- 容器内 eth0@if46
+# 相信到了这里，大家应该能看出点小猫腻了吧！只要启动一个容器，就有一对网卡
+
+# veth-pair 就是一对的虚拟设备接口，它都是成对出现的。一端连着协议栈，一端彼此相连着。
+# 正因为有这个特性，它常常充当着一个桥梁，连接着各种虚拟网络设备!
+# “Bridge、OVS 之间的连接”，“Docker 容器之间的连接” 等等，以此构建出非常复杂的虚拟网络结构，比如 OpenStack Neutron。
+</code></pre>
+<p><strong>3.我们来测试下tomcat01和tomcat02容器间是否可以互相ping通。</strong></p>
+<pre class=" language-docker"><code class="language-docker">docker exec <span class="token punctuation">-</span>it tomcat02 ping 172.17.0.2
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109180624043.png" alt="image-20221109180624043"></p>
+<p> <strong>结论：容器和容器之间是可以互相访问的。</strong></p>
+<p><strong>4.我们来画一个网络模型图。</strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109180714242.png" alt="image-20221109180714242"></p>
+<blockquote>
+<p>结论：tomcat1和tomcat2共用一个路由器。是的，他们使用的一个，就是docker0。任何一个容器启动默认都是docker0网络。<br>docker默认会给容器分配一个可用ip。</p>
+</blockquote>
+<h2 id="8-3-小结"><a href="#8-3-小结" class="headerlink" title="8.3. 小结"></a>8.3. 小结</h2><blockquote>
+<p>Docker使用Linux桥接，在宿主机虚拟一个Docker容器网桥(docker0)，Docker启动一个容器时会根据Docker网桥的网段分配给容器一个IP地址，称为Container-IP，同时Docker网桥是每个容器的默认网关。因为在同一宿主机内的容器都接入同一个网桥，这样容器之间就能够通过容器的Container-IP直接通信。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109181023350.png" alt="image-20221109181023350"></p>
+<blockquote>
+<p>Docker容器网络就很好的利用了Linux虚拟网络技术，在本地主机和容器内分别创建一个虚拟接口，并让他们彼此联通（这样一对接口叫veth pair）；<br>Docker中的网络接口默认都是虚拟的接口。虚拟接口的优势就是转发效率极高（因为Linux是在内核中进行数据的复制来实现虚拟接口之间的数据转发，无需通过外部的网络设备交换），对于本地系统和容器系统来说，虚拟接口跟一个正常的以太网卡相比并没有区别，只是他的速度快很多。</p>
+</blockquote>
+<h2 id="8-4-–Link"><a href="#8-4-–Link" class="headerlink" title="8.4. –Link"></a>8.4. –Link</h2><blockquote>
+<p>思考一个场景，我们编写一个微服务，数据库连接地址原来是使用ip的，如果ip变化就不行了，那我们能不能使用服务名访问呢？<br>jdbc:mysql:&#x2F;&#x2F;mysql:3306，这样的话哪怕mysql重启，我们也不需要修改配置了！docker提供了 <code>--link</code>的操作！</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell"># 我们使用tomcat02，直接通过容器名ping tomcat01，不使用ip
+# 发现ping不通 ping: tomcat01: Name or service not known
+docker exec -it tomcat02 ping tomcat01
+
+# 我们再启动一个tomcat03，但是启动的时候连接tomcat02
+docker run -d -P --name tomcat03 --link tomcat02 tomcat
+
+# 这个时候，我们就可以使用tomcat03 ping通tomcat02了
+docker exec -it tomcat03 ping tomcat02
+
+# 再来测试，tomcat03 是否可以ping tomcat01 
+# 失败 ping: tomcat01: Name or service not known
+docker exec -it tomcat03 ping tomcat01
+
+# 再来测试，tomcat02 是否可以ping tomcat03 
+# 反向也ping不通 ping: tomcat03: Name or service not known
+docker exec -it tomcat02 ping tomcat03
+</code></pre>
+<p><strong>思考一下，这个原理是什么呢？我们进入tomcat03中查看下host配置文件。</strong></p>
+<pre class=" language-shell"><code class="language-shell">docker exec -it tomcat03 cat /etc/hosts
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109182712708.png" alt="image-20221109182712708"></p>
+<p>我们发现tomcat2直接被写在文件里面。</p>
+<p>所以这里其实就是配置了一个 hosts 地址而已！</p>
+<p>原因：<code>--link</code>的时候，直接把需要link的主机的域名和ip直接配置到了hosts文件中了。</p>
+<p><code>--link</code>早都过时了，我们不推荐使用！我们可以使用自定义网络的方式。</p>
+<h2 id="8-5-自定义网络"><a href="#8-5-自定义网络" class="headerlink" title="8.5. 自定义网络"></a>8.5. 自定义网络</h2><h3 id="8-5-1-基本命令查看"><a href="#8-5-1-基本命令查看" class="headerlink" title="8.5.1. 基本命令查看"></a>8.5.1. 基本命令查看</h3><p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109195741012.png" alt="image-20221109195741012"></p>
+<h3 id="8-5-2-查看所有网络"><a href="#8-5-2-查看所有网络" class="headerlink" title="8.5.2. 查看所有网络"></a>8.5.2. 查看所有网络</h3><pre class=" language-docker"><code class="language-docker">docker network ls
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109195828840.png" alt="image-20221109195828840"></p>
+<h3 id="8-5-3-网络模式"><a href="#8-5-3-网络模式" class="headerlink" title="8.5.3. 网络模式"></a>8.5.3. 网络模式</h3><p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109195853250.png" alt="image-20221109195853250"></p>
+<h3 id="8-5-4-查看一个具体的网络的详细信息"><a href="#8-5-4-查看一个具体的网络的详细信息" class="headerlink" title="8.5.4. 查看一个具体的网络的详细信息"></a>8.5.4. 查看一个具体的网络的详细信息</h3><pre class=" language-docker"><code class="language-docker">docker network inspect NETWORKID
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109200429735.png" alt="image-20221109200429735"></p>
+<h2 id="8-6-自定义网卡"><a href="#8-6-自定义网卡" class="headerlink" title="8.6. 自定义网卡"></a>8.6. 自定义网卡</h2><p><strong>1. 删除原来的所有容器</strong>。</p>
+<pre class=" language-docker"><code class="language-docker">docker rm <span class="token punctuation">-</span>f $(docker ps <span class="token punctuation">-</span>aq)
+</code></pre>
+<p><strong>2.接下来我们来创建容器，但是我们知道默认创建的容器都是docker0网卡的。</strong></p>
+<pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 默认我们不配置网络，也就相当于默认值 --net bridge 使用的docker0</span>
+docker run <span class="token punctuation">-</span>d <span class="token punctuation">-</span>P <span class="token punctuation">-</span><span class="token punctuation">-</span>name tomcat01 <span class="token punctuation">-</span><span class="token punctuation">-</span>net bridge tomcat
+
+<span class="token comment" spellcheck="true"># docker0网络的特点</span>
+    1. 它是默认的
+    2. 域名访问不通
+    3. `<span class="token punctuation">-</span><span class="token punctuation">-</span>link` 域名通了，但是删了又不行
+</code></pre>
+<p><strong>3.我们可以让容器创建的时候使用自定义网络。</strong></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109201008825.png" alt="image-20221109201008825"></p>
+<pre class=" language-shell"><code class="language-shell"># 自定义创建的默认default "bridge"
+# 自定义创建一个网络网络
+docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 mynet
+
+# 确认下
+docker network ls
+docker network inspect mynet
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109203714100.png" alt="image-20221109203714100"></p>
+<pre class=" language-shell"><code class="language-shell"># 我们来启动两个容器测试，使用自己的 mynet！
+docker run -d -P --name tomcat-net-01 --net mynet tomcat
+docker run -d -P --name tomcat-net-02 --net mynet tomcat
+
+# 再来查看下
+docker network inspect mynet
+
+# 我们来测试ping容器名和ip试试，都可以ping通
+docker exec -it tomcat-net-01 ping 192.168.0.3
+docker exec -it tomcat-net-01 ping tomcat-net-02
+
+# 发现，我们自定义的网络docker都已经帮我们维护好了对应的关系
+# 所以我们平时都可以这样使用网络，不使用--link效果一样，所有东西实时维护好，直接域名 ping通。
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109204051293.png" alt="image-20221109204051293"></p>
+<h2 id="8-7-网络连通"><a href="#8-7-网络连通" class="headerlink" title="8.7. 网络连通"></a>8.7. 网络连通</h2><p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109204547371.png" alt="image-20221109204547371"></p>
+<blockquote>
+<p>docker0和自定义网络肯定不通，我们使用自定义网络的好处就是网络隔离：<br>大家公司项目部署的业务都非常多，假设我们有一个商城，我们会有订单业务（操作不同数据），会有订单业务购物车业务（操作不同缓存）。如果在一个网络下，有的程序猿的恶意代码就不能防止了，所以我们就在部署的时候网络隔离，创建两个桥接网卡，比如订单业务（里面的数据库，redis，mq，全部业务 都在order-net网络下）其他业务在其他网络。那关键的问题来了，如何让 tomcat-net-01 访问 tomcat1？</p>
+</blockquote>
+<pre class=" language-shell"><code class="language-shell"># 启动默认的容器，在docker0网络下
+docker run -d -P --name tomcat01 tomcat
+docker run -d -P --name tomcat02 tomcat
+
+# 查看当前的容器
+docker ps
+
+# 我们来查看下network帮助，发现一个命令 connect
+docker network --help
+
+# 我们来测试一下！打通mynet-docker0
+# 命令 docker network connect [OPTIONS] NETWORK CONTAINER
+docker network connect mynet tomcat01
+docker network inspect mynet
+
+# tomcat01 可以ping通了
+docker exec -it tomcat01 ping tomcat-net-01
+
+# tomcat02 依旧ping不通，大家应该就理解了,ping: tomcat-net-01: Name or service not known
+docker exec -it tomcat02 ping tomcat-net-01
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/docker/dockerStudy.assets/image-20221109205128604.png" alt="image-20221109205128604"></p>
+<p><strong>结论：如果要跨网络操作别人，就需要使用 <code>docker network connect [OPTIONS] NETWORK CONTAINER</code> 连接。</strong></p>
+<h1 id="9-IDEA整合Docker"><a href="#9-IDEA整合Docker" class="headerlink" title="9. IDEA整合Docker"></a>9. IDEA整合Docker</h1><p><strong>1 、在项目下编写 Dockerfile 文件，将打包好的jar包拷贝到Dockerfile同级目录。</strong></p>
+<pre class=" language-shell"><code class="language-shell">FROM java:8
+
+# 服务器只有dockerfile和jar在同级目录
+COPY *.jar /app.jar
+
+CMD ["--server.port=8080"]
+
+# 指定容器内要暴露的端口
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/app.jar"]
+</code></pre>
+<p><strong>2 、将Dockerfile 和 项目的 jar 包上传到linux服务器上，构建运行。</strong></p>
+<pre class=" language-shell"><code class="language-shell"># 构建镜像
+docker build -t idea-ks .
+
+# 查看镜像
+docker images
+
+# 运行
+docker run -d -P --name idea-ks idea-ks
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2022/08/06/rabbitmq/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="rabbitmq">
+                        
+                        <span class="card-title">rabbitmq</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/rabbitmq/">
+                        <span class="chip bg-color">rabbitmq</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/25/redis-operation/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="redis-operation">
+                        
+                        <span class="card-title">redis-operation</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h1,h2, h3, h4,h5,h6'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 15px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                                <span id="year">
+                                    2022
+                                </span>
+                                
+                                    <a href="/about" target="_blank">
+                                        cflxl
+                                    </a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/cflxl/cflxl.github.io"
+                                        target="_blank">cflxl</a>
+                                    <br>
+                                    
+                                        &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words
+                                            :&nbsp;<span class="white-color">
+                                                174.7k
+                                            </span>
+                                            
+                                                
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    <span id="busuanzi_container_site_pv">
+                                                                        &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                                                                            <span id="busuanzi_value_site_pv"
+                                                                                class="white-color"></span>
+                                                                    </span>
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_uv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                                                                                    <span id="busuanzi_value_site_uv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                <br>
+
+                                                                                <!-- 运行天数提醒. -->
+                                                                                
+                                                                                    <span id="sitetime"> Loading
+                                                                                        ...</span>
+                                                                                    <script>
+                                                                                        var calcSiteTime = function () {
+                                                                                            var seconds = 1000;
+                                                                                            var minutes = seconds * 60;
+                                                                                            var hours = minutes * 60;
+                                                                                            var days = hours * 24;
+                                                                                            var years = days * 365;
+                                                                                            var today = new Date();
+                                                                                            var startYear = "2022";
+                                                                                            var startMonth = "11";
+                                                                                            var startDate = "15";
+                                                                                            var startHour = "0";
+                                                                                            var startMinute = "0";
+                                                                                            var startSecond = "0";
+                                                                                            var todayYear = today.getFullYear();
+                                                                                            var todayMonth = today.getMonth() + 1;
+                                                                                            var todayDate = today.getDate();
+                                                                                            var todayHour = today.getHours();
+                                                                                            var todayMinute = today.getMinutes();
+                                                                                            var todaySecond = today.getSeconds();
+                                                                                            var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                            var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                            var diff = t2 - t1;
+                                                                                            var diffYears = Math.floor(diff / years);
+                                                                                            var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                                                                                            // 区分是否有年份.
+                                                                                            var language = 'en';
+                                                                                            if (startYear === String(todayYear)) {
+                                                                                                document.getElementById("year").innerHTML = todayYear;
+                                                                                                var daysTip = 'This site has been running for ' + diffDays + ' days';
+                                                                                                if (language === 'zh-CN') {
+                                                                                                    daysTip = '本站已运行 ' + diffDays + ' 天';
+                                                                                                } else if (language === 'zh-HK') {
+                                                                                                    daysTip = '本站已運行 ' + diffDays + ' 天';
+                                                                                                }
+                                                                                                document.getElementById("sitetime").innerHTML = daysTip;
+                                                                                            } else {
+                                                                                                document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                                var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                                                                                    + diffDays + ' days';
+                                                                                                if (language === 'zh-CN') {
+                                                                                                    yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                } else if (language === 'zh-HK') {
+                                                                                                    yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                }
+                                                                                                document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                                                                                            }
+                                                                                        }
+
+                                                                                        calcSiteTime();
+                                                                                    </script>
+                                                                                    
+                                                                                        <br>
+                                                                                        
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+                        
+    <a href="https://github.com/cflxl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2261497676@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2261497676" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2261497676" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

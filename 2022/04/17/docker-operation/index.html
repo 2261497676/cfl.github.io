@@ -1,0 +1,1166 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker-operation, cflxl">
+    <meta name="description" content="1.安装docker1.0. ubuntu安装：使用官方安装脚本自动安装curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+
+下面是debina版本：
+1.1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>docker-operation | cflxl</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="cflxl" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">cflxl</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">cflxl</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">docker-operation</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-04-17
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-11-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    5.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    20 Min
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1-安装docker"><a href="#1-安装docker" class="headerlink" title="1.安装docker"></a>1.安装docker</h1><h2 id="1-0-ubuntu安装：使用官方安装脚本自动安装"><a href="#1-0-ubuntu安装：使用官方安装脚本自动安装" class="headerlink" title="1.0. ubuntu安装：使用官方安装脚本自动安装"></a>1.0. ubuntu安装：使用官方安装脚本自动安装</h2><pre class=" language-linux"><code class="language-linux">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+</code></pre>
+<p>下面是debina版本：</p>
+<h2 id="1-1卸载旧版本"><a href="#1-1卸载旧版本" class="headerlink" title="1.1卸载旧版本"></a>1.1卸载旧版本</h2><pre class=" language-linux"><code class="language-linux">sudo apt remove docker docker-engine docker.io containerd runc
+</code></pre>
+<h2 id="1-2安装先决条件"><a href="#1-2安装先决条件" class="headerlink" title="1.2安装先决条件"></a>1.2安装先决条件</h2><pre class=" language-linux"><code class="language-linux">sudo apt install ca-certificates curl gnupg lsb-release
+</code></pre>
+<h2 id="1-3添加密钥并加入官方仓库"><a href="#1-3添加密钥并加入官方仓库" class="headerlink" title="1.3添加密钥并加入官方仓库"></a>1.3添加密钥并加入官方仓库</h2><p>Docker软件包由官方提供，因此还需要加入官方专用的Docker软件包源，这里推荐使用国内的中科大Docker软件包镜像源，执行如下命令添加：</p>
+<pre class=" language-linux"><code class="language-linux">sudo mkdir -p /etc/apt/keyrings
+sudo curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.ustc.edu.cn/docker-ce/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+</code></pre>
+<p>如果你的服务器位于中国大陆之外地区，还是建议使用官方下载源，那就按照下面命令添加：</p>
+<pre class=" language-linux"><code class="language-linux">sudo mkdir -p /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+</code></pre>
+<h2 id="1-4执行安装"><a href="#1-4执行安装" class="headerlink" title="1.4执行安装"></a>1.4执行安装</h2><pre class=" language-linux"><code class="language-linux">sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+</code></pre>
+<p>安装完成，执行下列命令，若能输出帮助信息说明安装成功：</p>
+<pre class=" language-linux"><code class="language-linux">docker -v
+</code></pre>
+<h1 id="2-配置镜像仓库镜像源"><a href="#2-配置镜像仓库镜像源" class="headerlink" title="2.配置镜像仓库镜像源"></a>2.配置镜像仓库镜像源</h1><p>前面介绍过了我们的镜像都是从官方的仓库拉取的，但是官方的仓库在国外，因此国内服务器最好是配置一下镜像地址为国内的镜像仓库地址。</p>
+<p>我们这里使用阿里云的镜像加速器，然后修改Docker的配置文件&#x2F;etc&#x2F;docker&#x2F;daemon.json，在配置文件中加入如下内容：</p>
+<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"https://v10rlwmg.mirror.aliyuncs.com"</span><span class="token punctuation">]</span>
+&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>然后执行下列命令重启Docker服务：</p>
+<pre class=" language-linux"><code class="language-linux">sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre>
+<p>至此就配置完成了！</p>
+<h1 id="3-Docker引擎服务常用命令"><a href="#3-Docker引擎服务常用命令" class="headerlink" title="3.Docker引擎服务常用命令"></a>3.Docker引擎服务常用命令</h1><p>安装完成Docker之后，默认Docker的守护进程已经运行起来了。日常若想操作这个守护进程可以通过下面的一些命令来完成。</p>
+<h2 id="3-1启动，停止和重启"><a href="#3-1启动，停止和重启" class="headerlink" title="3.1启动，停止和重启"></a>3.1启动，停止和重启</h2><pre class=" language-linux"><code class="language-linux"># 启动Docker守护进程
+sudo systemctl start docker
+# 停止Docker守护进程
+sudo systemctl stop docker
+# 重启Docker守护进程
+sudo systemctl restart docker
+</code></pre>
+<h2 id="3-2开机自启动相关"><a href="#3-2开机自启动相关" class="headerlink" title="3.2开机自启动相关"></a>3.2开机自启动相关</h2><pre class=" language-linux"><code class="language-linux"># 设定Docker守护进程开机自启
+sudo systemctl enable docker
+# 禁用Docker守护进程开机自启
+sudo systemctl disable docker
+</code></pre>
+<h1 id="4-镜像的基本操作"><a href="#4-镜像的基本操作" class="headerlink" title="4.镜像的基本操作"></a>4.镜像的基本操作</h1><pre class=" language-linux"><code class="language-linux"># 查看镜像
+docker images
+# 搜索镜像
+docker search 名字
+# 拉取镜像
+docker pull 镜像名
+docker pull 镜像名:指定版本
+# 删除镜像
+docker rmi 镜像ID
+# 删除全部镜像
+docker rmi $&#123;docker images -q&#125;
+</code></pre>
+<h1 id="5-容器基本操作"><a href="#5-容器基本操作" class="headerlink" title="5.容器基本操作"></a>5.容器基本操作</h1><h2 id="5-1容器创建和运行"><a href="#5-1容器创建和运行" class="headerlink" title="5.1容器创建和运行"></a>5.1容器创建和运行</h2><p>我们已经拉取好了一个debian的镜像，我们就来创建一个Debian的容器：</p>
+<pre class=" language-linux"><code class="language-linux">docker run -it --name=myfirstdebian debian /bin/bash
+</code></pre>
+<p>参数说明：</p>
+<ul>
+<li>i 表示交互式操作</li>
+<li>t 使用终端，在前台运行</li>
+<li>–name 给这个容器指定一个名字，这个非必须</li>
+<li>debian 要使用的镜像名，这里使用debian镜像</li>
+<li>&#x2F;bin&#x2F;bash 要在这个容器中执行的命令，通常接在镜像名后面，这里表示打开容器中Debian系统的bash终端</li>
+</ul>
+<p>上面我们的容器是交互式的，在我们终端上运行，终端关闭容器也会停止，若想要容器后台运行，可以使用这个命令：</p>
+<pre class=" language-linux"><code class="language-linux">docker run -id --name=myseconddebian debian /bin/bash
+</code></pre>
+<p>把上述的t改成d，就表示在后台运行这个容器。这次没有直接进入容器，而是输出了容器的id。</p>
+<p>所以说这俩个参数意义如下:</p>
+<ul>
+<li>it 以交互式方式访问容器，容器在前台运行，终端退出容器也停止。</li>
+<li>id  以守护式方式启动运行容器，容器在后台运行，终端退出容器仍然在运行。</li>
+</ul>
+<h2 id="5-2进入容器"><a href="#5-2进入容器" class="headerlink" title="5.2进入容器"></a>5.2进入容器</h2><p>对于正在后台运行的容器，可以通过docker exec进入。</p>
+<pre class=" language-linux"><code class="language-linux">docker exec -it myseconddebian /bin/bash
+或 docker exec -it 2f7ee60376ba /bin/bash
+</code></pre>
+<p>这个时候就进入到了容器内部的终端了！不过这个时候使用exit退出，容器仍然在运行。</p>
+<p>除此之外，我们还可以用attach来代替上述exec进入容器，但是使用attach的话，退出时容器也停止了。</p>
+<h2 id="5-3已存在的容器的启动和停止"><a href="#5-3已存在的容器的启动和停止" class="headerlink" title="5.3已存在的容器的启动和停止"></a>5.3已存在的容器的启动和停止</h2><p>上述docker run事实上是创建并启动容器。</p>
+<pre class=" language-linux"><code class="language-linux"># 启动容器
+docker start 容器id
+# 启动所有容器
+docker start $(docker ps -aq)
+# 停止和重启容器命令
+docker stop ID/容器名
+# 停止全部容器
+docker stop $(docker ps -aq)
+# 重启一个容器
+docker restart ID/容器名
+# 重启全部容器
+docker restart $(docker ps -aq)
+</code></pre>
+<h2 id="5-4删除已有容器"><a href="#5-4删除已有容器" class="headerlink" title="5.4删除已有容器"></a>5.4删除已有容器</h2><blockquote>
+<p>只能删除已经停止的容器</p>
+</blockquote>
+<pre class=" language-linux"><code class="language-linux">#删除容器
+docker rm ID/容器名
+#删除全部容器
+docker rm $(docker ps -aq)
+</code></pre>
+<h2 id="5-5查看容器信息"><a href="#5-5查看容器信息" class="headerlink" title="5.5查看容器信息"></a>5.5查看容器信息</h2><pre class=" language-linux"><code class="language-linux">docker inspect ID/容器名
+</code></pre>
+<h2 id="5-6容器的导入导出"><a href="#5-6容器的导入导出" class="headerlink" title="5.6容器的导入导出"></a>5.6容器的导入导出</h2><p>如果说这个容器我想将其当前的状态作为一个快照备份一下，我们就可以把一个容器导出为一个tar文件，下次若这个容器出现了问题丢失了数据，我们还可以从这个tar文件恢复。</p>
+<p>例如我要把ID为5a7cfd3e0dda的容器导出为文件debian-1.tar存放在&#x2F;root目录下，通过一下命令：</p>
+<pre class=" language-linux"><code class="language-linux">docker export 5a7cfd3e0dda > /root/debian-1.tar
+</code></pre>
+<p>完成后，你就发现这个容器的当前状态被导出为一个tar文件，通过ls命令看到文件已保存，然后如果想把这个保存的状态导入，则执行：</p>
+<pre class=" language-linux"><code class="language-linux">docker import /root/debian-1.tar debian-recover
+</code></pre>
+<p>导入会把这个容器的状态作为一个镜像导入，执行上述命令后，你会发现多了名为debian-recover的镜像，然后再用docker run就可以启动这个镜像了！</p>
+<h1 id="6-数据卷"><a href="#6-数据卷" class="headerlink" title="6.数据卷"></a>6.数据卷</h1><h2 id="6-1配置数据卷"><a href="#6-1配置数据卷" class="headerlink" title="6.1配置数据卷"></a>6.1配置数据卷</h2><p>命令格式如下：</p>
+<pre class=" language-linux"><code class="language-linux">docker run ... -v 宿主机目录（文件）:容器内目录（文件）...
+</code></pre>
+<p>前面参数-it等等是一样的，主要是添加了-v参数，表示指定要配置的数据卷，一次可以挂载多个数据卷。</p>
+<p>例如现在，创建一个名为d1的Debian容器，把本机目录&#x2F;root&#x2F;datavolume挂载到容器中&#x2F;root&#x2F;vol中：</p>
+<pre class=" language-linux"><code class="language-linux">docker run -id --name=d1 -v /root/datavolume:/root/vol debian /bin/bash
+</code></pre>
+<p>需要注意的是，路径必须都是绝对路径形式，并且不存在的目录都会自动创建。</p>
+<p>数据卷就是把宿主机中一个目录挂载至容器中的一个目录中，俩边的目录任何一边发生变化都会同步。若挂载时原本目录有文件，挂载后容器中的对应目录也会有文件。</p>
+<p>如果说要挂载多个目录则如下：</p>
+<pre class=" language-linux"><code class="language-linux">docker run ... -v 宿主机目录1:容器目录1 -v 宿主机目录2:容器目录2 ...
+</code></pre>
+<p>多写几个-v即可。</p>
+<p>同样的，如果使俩个容器挂载同一个数据卷，这样可以实现容器间数据交换。</p>
+<p>注意：数据卷只能在创建容器的时候设定！后续一个容器的数据卷不能增加或移除！</p>
+<h2 id="6-2数据卷容器"><a href="#6-2数据卷容器" class="headerlink" title="6.2数据卷容器"></a>6.2数据卷容器</h2><p>数据卷容器其实质上就是一个容器，只不过数据卷容器是专门用于数据交换来用的。也就是说，数据卷容器会挂载一个目录，然后另外多个容器可以挂载到这个数据卷容器上，然后宿主机的数据卷目录变化，数据卷的容器中对应目录也会变化，挂载数据卷容器的容器内容也会对应变化。这样也就相当于所有挂载数据卷容器的容器，间接地挂载了数据卷容器挂载的宿主机目录。并且即使数据卷容器出现问题停止了，也不会影响数据。</p>
+<p>首先我们创建一个名为data的容器作为数据卷容器：</p>
+<pre class=" language-linux"><code class="language-linux">docker run -id --name=data -v /datavolume debian /bin/bash
+</code></pre>
+<p>可见这里创建数据卷容器时，-v后面的参数和前面的有所不同，前面是宿主机目录:容器中目录，现在只指定容器中目录，这样Docker会在宿主机上自动分配一个目录挂载至容器中的对应目录上。</p>
+<p>然后再创建俩个容器名为c1和c2挂载到这个数据卷容器data上：</p>
+<pre class=" language-linux"><code class="language-linux">docker run -id --name=c1 --volumes-from data debian /bin/bash
+docker run -id --name=c2 --volumes-from data debian /bin/bash
+</code></pre>
+<p>上述<code>--volumes-from</code>就代表指定要挂载的数据卷容器。</p>
+<p>现在进入容器data，在其中的&#x2F;datavolume中新建一个文件，然后退出并分别进入c1和c2容器下的&#x2F;datavolume目录，你会发现刚刚数据卷中新建的文件也同步过来了！</p>
+<p>我们通过docker inspect命令来查看上述的数据卷容器data中的&#x2F;datavolume目录挂载载宿主机上的哪个目录。</p>
+<pre class=" language-linux"><code class="language-linux">docker inspect data
+</code></pre>
+<p>输出很多信息，找到Mounts字段,其中Source表示这个容器数据卷对应的宿主机目录，而Destination对应的容器内目录。</p>
+<h2 id="6-3docker-cp命令"><a href="#6-3docker-cp命令" class="headerlink" title="6.3docker cp命令"></a>6.3docker cp命令</h2><p>除了使用数据卷实现容器和宿主机的文件传输，还可以使用docker cp命令把容器内文件拷贝出来到宿主机，当然也可以反过来把宿主机内文件拷贝进容器。</p>
+<pre class=" language-linux"><code class="language-linux"># 把容器内文件拷贝到宿主机
+docker cp 容器ID/容器名:容器内文件绝对路径 拷贝到宿主机的路径
+# 把宿主机的文件拷进容器
+docker cp 宿主机文件的路径 容器ID/容器名:拷贝到容器内的路径
+</code></pre>
+<p>例如：</p>
+<pre class=" language-linux"><code class="language-linux"># 把本机当前目录下的test文件拷贝到名为c1容器中的/root目录下
+docker cp ./test c1:/root/
+# 把本机当前目录下的test文件拷贝到ID为155ddba25935容器中的/root目录下并重命名为test-file
+docker cp ./test 155ddba25935:/root/test-file
+# 把名为c1容器中文件/root/test拷贝到本机当前路径下并重命名为tt
+docker cp c1:/root/test ./tt
+# 把本机当前目录下的datavolume目录拷贝到名为c1容器中/root目录下
+docker cp ./datavolume/ c1:/root/
+</code></pre>
+<p>可见无论是文件还是目录都可以拷贝，通常目录后以<code>/</code>结尾。</p>
+<h1 id="7-Docker网络"><a href="#7-Docker网络" class="headerlink" title="7.Docker网络"></a>7.Docker网络</h1><h2 id="7-1Docker内网"><a href="#7-1Docker内网" class="headerlink" title="7.1Docker内网"></a>7.1Docker内网</h2><p>事实上，Docker所有的容器会在宿主机上构成一个内网，这个是存在于宿主机上的专属于所有Docker容器的内网。其中：</p>
+<ul>
+<li>所有的容器可以通过内网互相访问</li>
+<li>宿主机可以通过内网访问每一个容器对应的端口</li>
+<li>但是外网是不能直接访问某个宿主机中某个容器的端口</li>
+</ul>
+<h2 id="7-2端口映射"><a href="#7-2端口映射" class="headerlink" title="7.2端口映射"></a>7.2端口映射</h2><p>比如说你把MySQL容器的3306端口映射到宿主机的3307端口上，容器启动后，外网访问宿主机的3307端口，就可以访问到MySQL容器的3306端口上。</p>
+<p>现在我们以MySQL镜像为例，在服务器上运行一个MySQL容器，并把其3306端口映射至宿主机3307端口。</p>
+<pre class=" language-linux"><code class="language-linux">docker run -id --name=mysql1 -v /root/mysql/conf:/etc/mysql/conf.d -v /root/mysql/logs:/logs -v /root/mysql/data:/var/lib/mysql -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
+</code></pre>
+<p>参数说明：</p>
+<ul>
+<li>进行了三个目录的挂载：<ul>
+<li>把容器的<code>/etc/mysql/conf.d</code>目录挂载至本机的<code>/root/mysql/conf</code>目录，这是MySQL的配置文件目录，便于我们修改配置文件</li>
+<li>把容器的<code>/logs</code>目录挂载至本机的<code>/root/mysql/logs</code>目录，便于我们查看日志</li>
+<li>把容器的<code>/var/lib/mysql</code>目录挂载至本机的<code>/root/mysql/data</code>目录，<code>/var/lib/mysql</code>目录是MySQL的数据文件目录，挂载至本机可以便于容器出现异常后还可以从本机恢复数据</li>
+</ul>
+</li>
+<li><code>-p 3307:3306</code>把容器的3306端口映射到本机3307端口</li>
+<li><code>-e MYSQL_ROOT_PASSWORD=123456</code>MySQL容器的一个参数，表示初始化MySQL的root用户密码为123456，-e表示设定容器中系统的环境变量。</li>
+</ul>
+<p>可见，-p参数值的格式是<code>本机端口:容器端口</code>，这样容器的对应端口就被映射到本机端口了！</p>
+<h2 id="7-3Docker内网的虚拟路由"><a href="#7-3Docker内网的虚拟路由" class="headerlink" title="7.3Docker内网的虚拟路由"></a>7.3Docker内网的虚拟路由</h2><p>Docker内网中有一个虚拟的路由器，这个虚拟的路由器也就是用于给每个容器分配内网ip地址。当然容器分配的内网ip地址只能是容器和容器之间访问或者是宿主机访问容器，外网不能直接访问，除非是通过上述端口映射。</p>
+<p>我们默认所有的容器，都会分配给一个名为bridge的虚拟路由器来分配ip地址。</p>
+<h3 id="7-3-1查看一个路由内的所有容器及其IP"><a href="#7-3-1查看一个路由内的所有容器及其IP" class="headerlink" title="7.3.1查看一个路由内的所有容器及其IP"></a>7.3.1查看一个路由内的所有容器及其IP</h3><pre class=" language-linux"><code class="language-linux"># 查看名为bridge的虚拟路由器下的所有容器
+docker network inspect bridge
+</code></pre>
+<p>找到<code>Containers</code>字段即可看到这个虚拟路由下所有的容器。</p>
+<h3 id="7-3-2创建新的路由器"><a href="#7-3-2创建新的路由器" class="headerlink" title="7.3.2创建新的路由器"></a>7.3.2创建新的路由器</h3><p>虽然大多数情况我们使用默认的虚拟路由bridge即可，不过我们仍然可以创建多个虚拟路由，并把容器连接到不同的路由下。</p>
+<p>通过以下命令查看现在所有的虚拟路由列表：</p>
+<pre class=" language-linux"><code class="language-linux">docker network ls
+</code></pre>
+<p>现在如果要创建一个名为cfl的虚拟路由，命令如下：</p>
+<pre class=" language-linux"><code class="language-linux">docker network create cfl
+</code></pre>
+<p>我们可以把一个已有的容器连接到指定的虚拟路由，例如现在我要把<code>mysql1</code>容器连接到路由<code>cfl</code>下，命令如下：</p>
+<pre class=" language-linux"><code class="language-linux"># 命令格式：docker network connect 路由名 容器名/ID
+docker network connect cfl mysql1
+</code></pre>
+<p>与此同时，在创建容器的时候，我们可以加上<code>--network</code>参数指定创建这个容器时将其连接到哪个虚拟路由器：</p>
+<pre class=" language-linux"><code class="language-linux"># 创建一个名为nginx3的Nginx容器，并连接到虚拟路由器cfl下
+docker run -id --name=nginx3 --network=cfl nginx
+</code></pre>
+<p>注意，位于不同的虚拟路由下的容器是不能互相访问的，也就是说虚拟路由通常是为了隔离一些容器的网络环境。</p>
+<h3 id="7-3-3Docker网络常用命令"><a href="#7-3-3Docker网络常用命令" class="headerlink" title="7.3.3Docker网络常用命令"></a>7.3.3Docker网络常用命令</h3><pre class=" language-linux"><code class="language-linux"># 查看帮助
+docker network --help
+# 把名为nginx3的容器从虚拟路由cfl下断开连接，此时这个容器处于离线状态无法通过内网访问
+docker network disconnect cfl nginx3
+# 删除名为cfl的虚拟路由器，需要将路由器下的全部容器断开连接才能删除
+docker network rm cfl
+</code></pre>
+<h1 id="8-Docker镜像制作"><a href="#8-Docker镜像制作" class="headerlink" title="8.Docker镜像制作"></a>8.Docker镜像制作</h1><h2 id="8-1进一步认识Docker镜像"><a href="#8-1进一步认识Docker镜像" class="headerlink" title="8.1进一步认识Docker镜像"></a>8.1进一步认识Docker镜像</h2><h3 id="8-1-1Linux系统文件组成"><a href="#8-1-1Linux系统文件组成" class="headerlink" title="8.1.1Linux系统文件组成"></a>8.1.1Linux系统文件组成</h3><p>首先，我们需要了解一下Linux的文件系统，其文件系统由俩部分组成：</p>
+<ol>
+<li><code>bootfs</code>包含了俩部分：引导加载程序<code>bootloader</code>和系统内核<code>kernel</code></li>
+<li><code>rootfs root</code>文件系统，包含系统基本目录结构如：<code>/dev</code>,<code>/bin</code>,<code>/etc</code>等等</li>
+</ol>
+<p>对于不同的Linux发行版，其<code>bootfs</code>基本上是一样的，而<code>rootfs</code>不一样。</p>
+<h3 id="8-1-2Docker镜像可叠加性"><a href="#8-1-2Docker镜像可叠加性" class="headerlink" title="8.1.2Docker镜像可叠加性"></a>8.1.2Docker镜像可叠加性</h3><p>Docker的镜像事实上是由特殊的文件系统叠加而成，也就是说，一个镜像可能由多个镜像叠加。</p>
+<p>镜像的最低端是<code>bootfs</code>,但是使用的是宿主机的<code>bootfs</code>,这一层不包含在镜像中。这说明不同的Docker镜像都复用了宿主机的内核。</p>
+<p>第二层则是<code>rootfs</code>,即为基础镜像，然后再往上就可以叠加其他的镜像文件。</p>
+<p>细心的同学也发现了，在拉取镜像的时候，是一层一层地拉取的，这正是因为镜像都是叠加而来的。</p>
+<p>所以说，一个Debian的镜像事实上只是包含了Debian操作系统的<code>rootfs</code>部分，并没有内核，启动引导和驱动等等，这些都是使用的宿主机上的，所以说一个Debian镜像很小。</p>
+<p>而应用程序的镜像都是基于系统<code>rootfs</code>基础镜像进一步叠加上应用的环境和应用程序文件制作的，因此一个Nginx镜像中不仅仅包含了Nginx，还包含了一个<code>rootfs</code>基础镜像，这样体积就会大一些。</p>
+<p>一个镜像也可以放在另一个镜像的上面，下面的镜像就成为父镜像，最底部的镜像称为基础镜像。</p>
+<blockquote>
+<p>所以说，Windows系统上是不能安装Linux镜像的，因为俩者内核不一样，无法复用。</p>
+</blockquote>
+<p>镜像都是只读的，若要修改需要用镜像创建容器再来修改其中的文件，然后容器可以再转成镜像。</p>
+<p>用镜像创建容器时，事实上是在这个只读镜像上进一步放了一层称之为可写容器，即为我们之前操作的容器。然后这一起又可以做成一个新的镜像给别人用，做成新的镜像之后，你之前的可写容器的操作，就是在原有镜像上又加了一层镜像。</p>
+<p>所以说，Docker的镜像的本质是一个分层的文件系统，分层就是便于复用。</p>
+<p>通过<code>docker inspect</code>命令还可以看一个镜像的信息，比如其镜像层：</p>
+<pre class=" language-linux"><code class="language-linux"># 查看mysql镜像的信息
+docker inspect mysql
+</code></pre>
+<p>找到<code>RootFS</code>中<code>Layers</code>即可看到这个镜像包含多少层。后面我们将学习如何制作镜像，制作镜像通常有俩种方式：把已有的容器转换成镜像或者是通过编写Dockerfile。</p>
+<h2 id="8-2容器转镜像"><a href="#8-2容器转镜像" class="headerlink" title="8.2容器转镜像"></a>8.2容器转镜像</h2><p>比如说我们要部署一个网页应用，我们可以用Nginx的镜像创建一个容器，然后在容器中将Nginx配置好，并配置好静态网页之后，再把这个容器转换成镜像。</p>
+<p>通过<code>docker commit</code>实现容器转镜像：</p>
+<pre class=" language-linux"><code class="language-linux">docker commit 容器名/ID 自定义镜像名:版本号
+</code></pre>
+<p>这个时候，你的容器就转换成镜像了！除此之外，我们还可以把镜像转换成压缩文件，共享给别人，别人就可以用你的镜像直接部署应用。</p>
+<p>镜像的导入导出命令：</p>
+<pre class=" language-linux"><code class="language-linux"># 把镜像导出成压缩文件
+docker save -o 压缩文件名 镜像名/ID:版本号
+# 把压缩文件导入成镜像
+docker load -i 压缩文件名
+</code></pre>
+<p>上述版本号部分可以省略，省略后就默认代表为最新版本latest。</p>
+<p>需要注意的是，容器挂载的数据卷，在commit的时候不会被包含到镜像中去。</p>
+<h2 id="8-3Dockerfile"><a href="#8-3Dockerfile" class="headerlink" title="8.3Dockerfile"></a>8.3Dockerfile</h2><p>Dockerfile事实上只是一个文本形式的文件，但是Docker可以根据这个文件去构建一个镜像。</p>
+<h3 id="8-3-1Dockerfile指令"><a href="#8-3-1Dockerfile指令" class="headerlink" title="8.3.1Dockerfile指令"></a>8.3.1Dockerfile指令</h3><ul>
+<li><code>FROM</code>指令表示基于哪个镜像开始构建，<code>scratch</code>是空镜像。</li>
+<li><code>ADD</code>指令表示构建镜像的时候把指定文件添加到镜像中某个位置，若被指定文件为可识别的压缩文件（<code>tar</code>,<code>gz</code>,<code>bzip2</code>或者<code>xz</code>），则会被解压到镜像中目的位置，这个命令后面可以指定本地文件也可以是远程URL文件。</li>
+<li><code>COPY</code>表示构建镜像的时候把指定文件复制到镜像中，和<code>ADD</code>不同，它不会自动解压文件，也不能从远程URL下载。</li>
+<li><code>CMD</code>指令表示启动容器时，若没有指定命令，则默认执行这个<code>CMD</code>后面的命令，一个Dockerfile仅仅最后一个CMD起作用，命令格式通常是JSON数组形式，第一个是命令，后面都是参数，例如默认命令是<code>7z a -t7z a.7z ./*</code>则写成<code>CMD [&quot;7z&quot;,&quot;a&quot;,&quot;-t7z&quot;,&quot;a.7z&quot;,&quot;./*&quot;]</code>，也可以直接写成普通命令形式<code>7z a -t7z a.7z ./*</code>,当然推荐使用JSON数组形式。</li>
+</ul>
+<blockquote>
+<p>之前通过<code>docker run</code>启动Debian镜像在后面我们指定执行了<code>/bin/bash</code>命令以进入容器中的命令行，不过事实上你不加这个指令也可以，因为Dockerfile中指定了<code>CMD</code>即默认命令，启动容器时不指定命令就会执行这个默认命令。</p>
+</blockquote>
+<h3 id="8-3-2通过Dockerfile构建镜像"><a href="#8-3-2通过Dockerfile构建镜像" class="headerlink" title="8.3.2通过Dockerfile构建镜像"></a>8.3.2通过Dockerfile构建镜像</h3><p>我想把自己的springboot项目部署到Docker并制作成容器。</p>
+<pre class=" language-dockerfile"><code class="language-dockerfile">FROM java:8-alpine
+ADD user-center-0.0.1-SNAPSHOT.jar user-center.jar
+CMD ["java","-jar","user-center.jar"]
+</code></pre>
+<p>编写完成，把Dockerfile和你的jar文件一起上传至服务器，由于上述Dockerfile中使用的是相对路径，因此jar文件和Dockerfile文件的相对路径应当保持一致，即都在同一目录下。上传后也得保持相对路径一致。</p>
+<p>上传后进入对应目录，执行构建命令：</p>
+<pre class=" language-linux"><code class="language-linux">docker build -f dockerfile文件路径 -t 镜像名:版本 构建时路径
+</code></pre>
+<p>例如我进行构建：</p>
+<pre class=" language-linux"><code class="language-linux">docker build -f test.dockerfile -t test:1.0 .
+我写的简略版本 docker build -t test:1.0 .
+</code></pre>
+<p>版本号不写则为最新latest。</p>
+<p>上述命令：</p>
+<ul>
+<li><code>-f</code>指定Dockerfile文件</li>
+<li><code>-t</code>指定构建后镜像名和版本号</li>
+<li><code>构建时路径</code>在Dockerfile中<code>ADD</code>或者<code>COPY</code>指令添加文件时采用的相对路径就是相对于这个构建时路径的，例如上述<code>ADD user-center-0.0.1-SNAPSHOT.jar user-center.jar</code>,然后指定构建路径为<code>/root</code>的话，构建镜像添加文件时就会找<code>/root/user-center-0.0.1-SNAPSHOT.jar</code>并加入到镜像，不过这个通常写成<code>.</code>表示当前路径即可。</li>
+</ul>
+<p>最后显示successful字样则成功。</p>
+<p>最后我们把它跑起来：</p>
+<pre class=" language-linux"><code class="language-linux">docker run --name test -p8080:8080 -d test:1.0
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2022/05/25/redis-operation/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="redis-operation">
+                        
+                        <span class="card-title">redis-operation</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/02/14/nginx-base/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="nginx-base">
+                        
+                        <span class="card-title">nginx-base</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/nginx/">
+                        <span class="chip bg-color">nginx</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h1,h2, h3, h4,h5,h6'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 15px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                                <span id="year">
+                                    2022
+                                </span>
+                                
+                                    <a href="/about" target="_blank">
+                                        cflxl
+                                    </a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/cflxl/cflxl.github.io"
+                                        target="_blank">cflxl</a>
+                                    <br>
+                                    
+                                        &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words
+                                            :&nbsp;<span class="white-color">
+                                                174.7k
+                                            </span>
+                                            
+                                                
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    <span id="busuanzi_container_site_pv">
+                                                                        &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                                                                            <span id="busuanzi_value_site_pv"
+                                                                                class="white-color"></span>
+                                                                    </span>
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_uv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                                                                                    <span id="busuanzi_value_site_uv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                <br>
+
+                                                                                <!-- 运行天数提醒. -->
+                                                                                
+                                                                                    <span id="sitetime"> Loading
+                                                                                        ...</span>
+                                                                                    <script>
+                                                                                        var calcSiteTime = function () {
+                                                                                            var seconds = 1000;
+                                                                                            var minutes = seconds * 60;
+                                                                                            var hours = minutes * 60;
+                                                                                            var days = hours * 24;
+                                                                                            var years = days * 365;
+                                                                                            var today = new Date();
+                                                                                            var startYear = "2022";
+                                                                                            var startMonth = "11";
+                                                                                            var startDate = "15";
+                                                                                            var startHour = "0";
+                                                                                            var startMinute = "0";
+                                                                                            var startSecond = "0";
+                                                                                            var todayYear = today.getFullYear();
+                                                                                            var todayMonth = today.getMonth() + 1;
+                                                                                            var todayDate = today.getDate();
+                                                                                            var todayHour = today.getHours();
+                                                                                            var todayMinute = today.getMinutes();
+                                                                                            var todaySecond = today.getSeconds();
+                                                                                            var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                            var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                            var diff = t2 - t1;
+                                                                                            var diffYears = Math.floor(diff / years);
+                                                                                            var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                                                                                            // 区分是否有年份.
+                                                                                            var language = 'en';
+                                                                                            if (startYear === String(todayYear)) {
+                                                                                                document.getElementById("year").innerHTML = todayYear;
+                                                                                                var daysTip = 'This site has been running for ' + diffDays + ' days';
+                                                                                                if (language === 'zh-CN') {
+                                                                                                    daysTip = '本站已运行 ' + diffDays + ' 天';
+                                                                                                } else if (language === 'zh-HK') {
+                                                                                                    daysTip = '本站已運行 ' + diffDays + ' 天';
+                                                                                                }
+                                                                                                document.getElementById("sitetime").innerHTML = daysTip;
+                                                                                            } else {
+                                                                                                document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                                var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                                                                                    + diffDays + ' days';
+                                                                                                if (language === 'zh-CN') {
+                                                                                                    yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                } else if (language === 'zh-HK') {
+                                                                                                    yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                }
+                                                                                                document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                                                                                            }
+                                                                                        }
+
+                                                                                        calcSiteTime();
+                                                                                    </script>
+                                                                                    
+                                                                                        <br>
+                                                                                        
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+                        
+    <a href="https://github.com/cflxl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2261497676@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2261497676" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2261497676" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

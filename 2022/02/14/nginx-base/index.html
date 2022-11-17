@@ -1,0 +1,1418 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="nginx-base, cflxl">
+    <meta name="description" content="NginxStudy一. 认识NginxNginx（engine x）是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP&amp;#x2F;POP3&amp;#x2F;SMTP服务。
+Nginx是一个很强大的存在，是由俄罗斯开发者开发的开源">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>nginx-base | cflxl</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="cflxl" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">cflxl</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">cflxl</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">nginx-base</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/nginx/">
+                                <span class="chip bg-color">nginx</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-02-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-11-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    10k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    37 Min
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="NginxStudy"><a href="#NginxStudy" class="headerlink" title="NginxStudy"></a>NginxStudy</h1><h2 id="一-认识Nginx"><a href="#一-认识Nginx" class="headerlink" title="一. 认识Nginx"></a>一. 认识Nginx</h2><p>Nginx（engine x）是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP&#x2F;POP3&#x2F;SMTP服务。</p>
+<p>Nginx是一个很强大的存在，是由俄罗斯开发者开发的开源软件。</p>
+<p>目前，很多网站都使用Nginx作为首选的Web服务器，在分布式微服务架构中，Nginx也能够充当一个非常好的负载均衡作用。</p>
+<h3 id="1-1-Web服务器"><a href="#1-1-Web服务器" class="headerlink" title="1.1 Web服务器"></a>1.1 Web服务器</h3><p>相信这个做后端开发的同学都很熟悉，我们在Spring Boot中就可以很轻松地搭建一个Web服务器，其主要功能就是<strong>提供用户上网浏览页面的服务</strong>。</p>
+<p>之前使用Spring Boot开发并提供网页给大家浏览，使用的Web服务器是Spring Boot中内嵌的Tomcat。那大家就有疑问了：既然Spring Boot中的Tomcat已经有了Web服务器的功能，为什么还要Nginx？这是因为在性能上，Tomcat远不如Nginx好，在高并发的环境下Tomcat很容易出现故障，因此大多数网站事实上都还是使用Nginx作为Web服务器。</p>
+<h3 id="1-2反向代理"><a href="#1-2反向代理" class="headerlink" title="1.2反向代理"></a>1.2反向代理</h3><p>相信大家对代理这个词并不陌生。我们日常所说的代理是正向代理。正向代理通常是一对一（代理服务器对目标服务器）的代理。</p>
+<p>在正向代理中，有一个专门用于代理的服务器称之为代理服务器，就像是一个传话的人一样。</p>
+<p>比如平时我们要访问一个网站，会直接访问网站的服务器，假设有一天我无法访问该网站的服务器了，但是有一台服务器A却可以访问，你便可以通过服务器A间接地访问网站，即你对服务器A发请求告诉它你要访问网站，服务器A会代理你访问对应网站，A得到响应后把响应传回来给你，这就是正向代理的过程，服务器A就是代理服务器。</p>
+<blockquote>
+<p>事实上，平时所说的“翻墙”也是正向代理实现的。</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002124217003.png" alt="image-20221002124217003"></p>
+<p>而反向代理则是通常是一个一对多的代理。反向代理中一个代理服务器可以代理到多个目标服务器上面，并且目标服务器通常还可以是内网服务器，外网无法直接访问到。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002124427391.png" alt="image-20221002124427391"></p>
+<p>所以俩者有什么区别呢？最主要的区别如下：</p>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>正向代理</th>
+<th>反向代理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代理对象</td>
+<td>用户</td>
+<td>服务器</td>
+</tr>
+<tr>
+<td>代理服务器和目标服务器关系</td>
+<td>一对一</td>
+<td>一对多</td>
+</tr>
+<tr>
+<td>用户是否知道实际目标服务器</td>
+<td>是</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<p>所以说俩种代理最本质的区别其实是：<strong>正向代理代理的对象是客户端，反向代理代理的对象是服务端。</strong></p>
+<p>可见反向代理可以对外隐藏实际的目标服务器，用户虽然访问的是反向代理服务器，但实际上能让他们感觉自己访问的是实际服务器。</p>
+<p>反向代理<strong>隐藏了真实的服务端</strong>，例如我们请求必应的网址时，背后可能有成千上万台服务器为我们服务，但具体是哪一台，你不知道，也不需要知道，你只需要知道反向代理服务器是谁就好了，必应的网址就是我们的反向代理服务器，反向代理服务器会帮我们把请求转发到真实的服务器那里去。</p>
+<h3 id="1-3为什么使用Nginx"><a href="#1-3为什么使用Nginx" class="headerlink" title="1.3为什么使用Nginx"></a>1.3为什么使用Nginx</h3><p>事实上，除了Nginx，还有Spring Boot中内嵌的Tomcat，市面上有非常非常多的Web服务器，我们可以先了解一下：</p>
+<ul>
+<li>IIS：为微软公司开发的运行在Windows上的互联网基本服务，但是由于Windows作为服务器，其稳定性与性能远不及Linux系统，因此随着互联网高并发的情况下，IIS被使用的并不是很多。</li>
+<li>Tomcat：是一个Java编写的高性能，稳定性好的Web服务器，正是因为其稳定成熟，被大家广泛采用，Spring Boot中也是默认内嵌Tomcat，但是Tomcat并不轻量级，在常常要访问静态文件或者高并发的情况下表现得也不算好。</li>
+<li>Apache：是一个开源，稳定，跨平台的Web服务器，但是在高并发的环境下对服务器的性能要求非常大，无法满足现在的要求。</li>
+</ul>
+<p>Nginx之所以被广泛使用，主要是因为其性能非常强大，功能丰富。</p>
+<p>其特点有如下:</p>
+<ul>
+<li>速度更快，并发更高：比起其他服务器并发性更高，响应更快</li>
+<li>配置简单，扩展性强：Nginx本身由很多模块组成，通过模块可以很好地扩展</li>
+<li>高可靠性：Nginx采用多进程的运行方式，分为master主进程和多个worker进程</li>
+<li>热部署：不需要重启就可以重载配置，升级模块等等</li>
+<li>开源免费：成本低</li>
+</ul>
+<p>因此学习Nginx还是很有必要的，现在很多网站，都使用Nginx和Spring Boot相配合以提供服务。用户可以访问Nginx提供的静态网页，而用户通过网页中发起的请求也会被Nginx转发到Spring Boot服务器上，除此之外，可以部署多个Spring Boot服务器并通过Nginx来实现负载均衡。</p>
+<h2 id="二-Nginx的安装"><a href="#二-Nginx的安装" class="headerlink" title="二. Nginx的安装"></a>二. Nginx的安装</h2><h3 id="2-1-在Linux上安装"><a href="#2-1-在Linux上安装" class="headerlink" title="2.1 在Linux上安装"></a>2.1 在Linux上安装</h3><h4 id="2-1-1-下载Nginx源代码并解压"><a href="#2-1-1-下载Nginx源代码并解压" class="headerlink" title="2.1.1 下载Nginx源代码并解压"></a>2.1.1 下载Nginx源代码并解压</h4><pre class=" language-linux"><code class="language-linux">sudo apt install nginx
+</code></pre>
+<p>当然，这样安装的版本不会很新，但是对于我们学习和日常使用已经够了。</p>
+<p>下面我使用编译安装的方式来安装Nginx，编译安装的Nginx和通过apt安装的Nginx的配置文件位置是不一样的，下面的配置都是以编译安装的Nginx为准。</p>
+<p>在官网（<a target="_blank" rel="noopener" href="https://nginx.org/en/download.html%EF%BC%89%E4%B8%8B%E8%BD%BD%E6%BA%90%E4%BB%A3%E7%A0%81%EF%BC%8C%E6%8E%A8%E8%8D%90%E4%B8%8B%E8%BD%BDMainline">https://nginx.org/en/download.html）下载源代码，推荐下载Mainline</a> version的。下载后是一个压缩包，上传到服务器并解压。</p>
+<pre class=" language-linux"><code class="language-linux">tar -xzvf 下载的源码压缩包路径
+tar -xzvf ./nginx-1.23.1.tar.gz
+</code></pre>
+<h4 id="2-1-2安装编译必要的库并开始配置"><a href="#2-1-2安装编译必要的库并开始配置" class="headerlink" title="2.1.2安装编译必要的库并开始配置"></a>2.1.2安装编译必要的库并开始配置</h4><p>nginx中有很多模块以实现不同的功能，不过默认情况下只有最基本的模块例如转发模块等等。可以根据实际情况选择是最精简编译还是编译全部模块的功能。我也将分这俩种情况来说明，大家根据实际情况选择。</p>
+<h5 id="（1）精简编译配置"><a href="#（1）精简编译配置" class="headerlink" title="（1）精简编译配置"></a>（1）精简编译配置</h5><p>除了基本功能和https的支持模块，其他模块都不进行编译安装。</p>
+<p>先安装依赖库：</p>
+<pre class=" language-linux"><code class="language-linux">sudo apt install gcc make libpcre3-dev zlib1g-dev libssl-dev
+</code></pre>
+<p>然后通过cd命令进入你解压的nginx源码文件夹里，执行构建配置：</p>
+<pre class=" language-linux"><code class="language-linux">./configure --with-http_ssl_module
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002141536675.png" alt="image-20221002141536675"></p>
+<p>nginx关键文件被安装至以下位置：</p>
+<ul>
+<li>nginx程序主体：<code>/usr/local/nginx/sbin/nginx</code></li>
+<li>nginx配置文件目录：<code>/usr/local/nginx/conf</code></li>
+<li>错误日志：<code>/usr/local/nginx/logs/error.log</code></li>
+</ul>
+<p>这些文件位置也可以在上述执行<code>./configure</code>命令时加上参数修改，详情可以参照官方文档（<a href="https://link.juejin.cn/?target=https://nginx.org/en/docs/configure.html%EF%BC%89">https://link.juejin.cn/?target=https%3A%2F%2Fnginx.org%2Fen%2Fdocs%2Fconfigure.html）</a></p>
+<h5 id="（2）完整编译配置"><a href="#（2）完整编译配置" class="headerlink" title="（2）完整编译配置"></a>（2）完整编译配置</h5><p>完整编译将会编译全部的模块，需要安装更多依赖，执行以下命令安装:</p>
+<pre class=" language-linux"><code class="language-linux">sudo apt install gcc make libpcre3-dev libssl-dev zlib1g-dev libxml2-dev libxslt1-dev libgd-dev libgeoip-dev libperl-dev
+</code></pre>
+<p>然后开始配置：</p>
+<pre class=" language-linux"><code class="language-linux">./configure --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_addition_module --with-http_xslt_module --with-http_image_filter_module --with-http_geoip_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_auth_request_module --with-http_random_index_module --with-http_secure_link_module --with-http_degradation_module --with-http_slice_module --with-http_stub_status_module --with-http_perl_module --with-mail_ssl_module --with-stream --with-stream_ssl_module --with-stream_realip_module --with-stream_geoip_module --with-stream_ssl_preread_module
+</code></pre>
+<p>等待配置成功没有报错即可。</p>
+<h4 id="2-1-3-构建和安装"><a href="#2-1-3-构建和安装" class="headerlink" title="2.1.3 构建和安装"></a>2.1.3 构建和安装</h4><p>上述配置完成，就可以执行编译命令了：</p>
+<pre class=" language-linux"><code class="language-linux">make
+</code></pre>
+<p>或者多线程编译：</p>
+<pre class=" language-linux"><code class="language-linux"># 4线程
+make -j4
+</code></pre>
+<p>编译完成，执行安装命令：</p>
+<pre class=" language-linux"><code class="language-linux">make install
+</code></pre>
+<p>默认会被安装至<code>/usr/local/nginx</code>,也可以通过<code>DESTDIR</code>路径指定<code>make install</code>时释放程序位置：</p>
+<pre class=" language-linux"><code class="language-linux">make DESTDIR=要释放到的位置 install
+</code></pre>
+<p>不过释放到其他位置nginx可能无法正常运行，除非你要自己制作安装包，否则不推荐这么做。</p>
+<p>安装完成，我们可以把nginx可执行主程序文件链接到<code>/usr/bin</code>下使得我们可以使用nginx命令：</p>
+<pre class=" language-linux"><code class="language-linux">ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
+</code></pre>
+<h4 id="2-1-4-无法运行问题"><a href="#2-1-4-无法运行问题" class="headerlink" title="2.1.4 无法运行问题"></a>2.1.4 无法运行问题</h4><p>一般来说由于上述安装了依赖库，对应的运行环境也会自动安装。若编译后nginx无法运行通过是缺少依赖，安装依赖即可。</p>
+<p>对于精简编译安装：</p>
+<pre class=" language-linux"><code class="language-linux">sudo apt install libc6 zlib1g libpcre3 libssl1.1
+</code></pre>
+<p>对于完整全模块编译安装：</p>
+<pre class=" language-linux"><code class="language-linux">sudo apt install libc6 libpcre3 libssl1.1 zlib1g libxml2 libxslt1.1 libgd3 libgeoip1 libperl5.32
+</code></pre>
+<h3 id="2-2-启动和测试"><a href="#2-2-启动和测试" class="headerlink" title="2.2 启动和测试"></a>2.2 启动和测试</h3><p>安装完成后，在控制台输入命令：</p>
+<pre class=" language-linux"><code class="language-linux">nginx
+</code></pre>
+<blockquote>
+<p>记得开放你服务器的80端口哦！</p>
+</blockquote>
+<p>若没有任何输出报错则说明启动成功，这时用浏览器访问你的服务器地址，会出现以下页面：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002143827924.png" alt="image-20221002143827924"></p>
+<p>这是Nginx的默认页面，说明你已经安装成功！</p>
+<p>Nginx的常用命令如下：</p>
+<pre class=" language-linux"><code class="language-linux"># 启动
+nginx
+# 停止
+nginx -s quit
+# 强行停止
+nginx -s stop
+# 重载配置但是不重启
+nginx -s reload
+</code></pre>
+<h3 id="2-3-Nginx的目录结构"><a href="#2-3-Nginx的目录结构" class="headerlink" title="2.3 Nginx的目录结构"></a>2.3 Nginx的目录结构</h3><p>默认情况下，我们的Nginx会安装到<code>/usr/local/nginx</code>目录下，其目录结构如下图：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002144307659.png" alt="image-20221002144307659"></p>
+<p>可见<code>conf</code>中有很多配置文件，对应着不同功能等等的配置，不过前面我们先知道主配置文件<code>nginx.conf</code>即可，并且每个配置文件还对应一个同名的以<code>.default</code>结尾的文件，这个文件是默认配置模板，如果你把配置改坏了就可以用这个配置模板覆盖原配置重新修改。</p>
+<p>在nginx运行的时候，在<code>logs</code>目录下还会出现<code>nginx.pid</code>这个文件，这个文件中记录了nginx进程的PID。</p>
+<h3 id="2-4-Nginx的多线程模型"><a href="#2-4-Nginx的多线程模型" class="headerlink" title="2.4 Nginx的多线程模型"></a>2.4 Nginx的多线程模型</h3><p>在学习Nginx之前，我们需要了解一下Nginx的工作方式，即为<strong>多进程模型。</strong></p>
+<p>运行Nginx后，先执行命令看一看Nginx的进程：</p>
+<pre class=" language-linux"><code class="language-linux">ps -ef | grep nginx
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002145108574.png" alt="image-20221002145108574"></p>
+<p>可见Nginx中进程分为master主进程和worker子进程。通常master进程只会有一个，用于管理worker进程，而worker进程会有很多个，worker进程就是专门用于处理用户请求的。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002145303718.png" alt="image-20221002145303718"></p>
+<h2 id="三-部署一个简单的网页"><a href="#三-部署一个简单的网页" class="headerlink" title="三. 部署一个简单的网页"></a>三. 部署一个简单的网页</h2><h3 id="3-1认识Nginx的配置文件结构"><a href="#3-1认识Nginx的配置文件结构" class="headerlink" title="3.1认识Nginx的配置文件结构"></a>3.1认识Nginx的配置文件结构</h3><p>主配置文件默认位于<code>/usr/local/nginx/conf/nginx.conf</code>，也是后面我们需要经常修改的配置文件，大家打开可以看见内容如下：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002145920189.png" alt="image-20221002145920189"></p>
+<p>可见一个配置文件中有如下组成部分：</p>
+<ul>
+<li>简单指令：由名称和参数构成，通常是用于设定一些配置参数，例如上述的<code>worker_processes 1</code>表示设定Nginx的worker进程数为1个，简单指令通常占一行且以分号<code>;</code>结尾</li>
+<li>块指令：由指令名和大括号包含的一组指令，块指令中通常包含有简单指令和块指令，例如上述的events，http就是块指令</li>
+<li>注释：以井号#开头的内容，注释不会被Nginx读取</li>
+</ul>
+<p>也可以看到，在Nginx配置文件中，默认有三大块：</p>
+<ul>
+<li>全局块：任何块指令之外的部分就是全局块，对整个Nginx进程生效，例如上述<code>worker_processes 1;</code>指令就位于全局块中</li>
+<li>http块：配置静态资源和外部访问</li>
+<li>events块：性能相关配置</li>
+</ul>
+<h3 id="3-2搭建一个简单的静态网页服务器"><a href="#3-2搭建一个简单的静态网页服务器" class="headerlink" title="3.2搭建一个简单的静态网页服务器"></a>3.2搭建一个简单的静态网页服务器</h3><p>现在我们准备一个网页html文件，应当如何将它配置到Nginx中并使得我们可以访问呢？</p>
+<p>先写一个简单的网页文件：</p>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>第一个Nginx配置<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>第一个Nginx HelloWorld配置！<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>将这个网页文件保存并上传至服务器，我这里把这个网页命名为index.html,并放到服务器上<code>/root/test</code>目录下。</p>
+<pre class=" language-linux"><code class="language-linux">scp index.html root@112.74.33.85:~/test
+</code></pre>
+<blockquote>
+<p>踩坑经历：6666端口被谷歌和火狐等浏览器禁用了，会显示<code>ERR_UNSAFE_PORT</code>的错误，所以小伙伴最好换个端口测试。</p>
+</blockquote>
+<p>然后编辑Nginx的主配置文件<code>nginx.conf</code>，在<code>http</code>块中再添加一个<code>server</code>块，如下：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002151938580.png" alt="image-20221002151938580"></p>
+<pre class=" language-linux"><code class="language-linux"># 设定端口号
+listen 6666;
+# 自定义一个服务名
+server_name cfl_helloworld;
+</code></pre>
+<blockquote>
+<p>记得开放端口哦！</p>
+</blockquote>
+<p>在这个<code>server</code>块中先配置端口号和服务名，加入简单的指令，把这个服务端口设定为6666，并自定义了服务名。紧接着，我们在这个<code>server</code>块中，增加一个<code>location</code>块，用于指定外部访问的路径和对应的静态资源（网页文件）位置：</p>
+<pre class=" language-linux"><code class="language-linux"># 设定外部访问路径，这里表示外部访问网站根目录/时
+location / &#123;
+    # root用于设定静态资源所在的文件夹
+    root /root/test;
+    # index用于设定外部访问这个网站路径时对应的网页文件（位于root指定的目录）
+    index index.html;
+&#125;
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002171142905.png" alt="image-20221002171142905"></p>
+<p>好了，这样就配置完成了！可以先执行以下命令检查配置文件是否有误：</p>
+<pre class=" language-linux"><code class="language-linux">nginx -t
+</code></pre>
+<p>显示successful则为成功：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002152737895.png" alt="image-20221002152737895"></p>
+<blockquote>
+<p>一些同学的配置可能总是报错，基本上是因为简单指令没有以分号<code>;</code>结尾导致的。</p>
+</blockquote>
+<p>这时候启动Nginx即可，如果你的Nginx已经在运行，需要执行下列命令重新加载配置文件：</p>
+<pre class=" language-linux"><code class="language-linux">nginx -s reload
+</code></pre>
+<p>现在打开浏览器，访问<code>http://你的服务器地址:你配置的端口号/</code>,应当会得到以下页面：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002170834791.png" alt="image-20221002170834791"></p>
+<p>可见我们配置成功了！</p>
+<p>若访问出现<code>403</code>错误页面，是因为Nginx的运行用户没有权限访问我们的网页文件，在配置文件中加上一行简单指令：</p>
+<pre class=" language-linux"><code class="language-linux">user root;
+</code></pre>
+<p>指定以<code>root</code>用户运行Nginx，重新加载配置即可。</p>
+<h2 id="四-Nginx的静态资源寻找"><a href="#四-Nginx的静态资源寻找" class="headerlink" title="四. Nginx的静态资源寻找"></a>四. Nginx的静态资源寻找</h2><h3 id="4-1再看server块"><a href="#4-1再看server块" class="headerlink" title="4.1再看server块"></a>4.1再看server块</h3><p>事实上，细心的同学已经发现了，在http块中已经有一个默认的server块：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002164308377.png" alt="image-20221002164308377"></p>
+<p>这是Nginx中的默认的一个配置，正是因为有了这个配置，我们刚刚安装Nginx时访问服务器就会出现<code>Welcome to nginx! </code>的页面。</p>
+<p>我们刚刚新增的<code>server</code>块其意义和这个是一样的。</p>
+<p>我们来看其中的指令意义：</p>
+<ul>
+<li><code>listen</code>设定要监听的端口，访问这个端口时，就会访问这个块中配置的对应的资源</li>
+<li><code>server_name</code>给这个服务命个名，平时最好是使用服务器的域名命名</li>
+<li><code>location</code>指令块，配置外部访问路径和对应实际资源的对应关系，其中：<ul>
+<li><code>location</code>后的<code>/</code>表示配置外部访问网站路径<code>/</code>时的配置，表示要处理什么路径的请求</li>
+<li><code>root</code>表示对应的静态资源所在的目录（文件夹）</li>
+<li><code>index</code>表示访问这个路径时对应的默认静态资源文件或者网页文件，这个文件当然是在<code>root</code>对应的目录下</li>
+</ul>
+</li>
+</ul>
+<p>可见<code>index</code>后面还可以对应多个网页或者资源。</p>
+<p>这里大家也发现：默认的配置中使用的是相对路径（绝对路径以<code>/</code>开头），相对的是Nginx的安装目录，默认也就是<code>/usr/local/nginx</code>，这个事实上在编译安装时的<code>./configure</code>的<code>--prefix</code>参数可以修改安装位置。</p>
+<p>这也可见：一个http块中可以有多个server块，每个server块以不同的端口号或者名字区分，也就是说我们可以配置多个端口的服务，而一个server块中可以有多个location表示可以配置多个不同路径对应不同的网页文件或者资源。</p>
+<h3 id="4-2-静态资源寻找规则"><a href="#4-2-静态资源寻找规则" class="headerlink" title="4.2 静态资源寻找规则"></a>4.2 静态资源寻找规则</h3><p>再来看看之前helloworld的server块配置：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002210641255.png" alt="image-20221002210641255"></p>
+<p>假设我现在把<code>location</code>后面的<code>/</code>改为<code>/web</code>，然后访问页面，结果是404报错。</p>
+<p>这里有的同学就很迷惑了：明明<code>root</code>目录是对的，<code>index</code>配置也没问题，怎么改了个路径就不行了？</p>
+<p>对于这个问题，我们必须先弄清楚Nginx的资源寻找的规则。</p>
+<p>上述配置中，我们<code>location</code>后面值为<code>/web</code>，而<code>root</code>的值是<code>/root/test</code>，<code>index</code>后是<code>index.html</code>，因此访问网站的<code>/web</code>路径时，Nginx事实上会到<code>/root/test/web</code>下去寻找<code>index.html</code>文件，这当然是不存在的！</p>
+<p>也就是说，Nginx寻找<code>index</code>指定的文件的路径是由<code>root</code>和<code>location</code>拼接起来的。</p>
+<p>前面我们也知道了：用<code>index</code>指定文件，可以使得我们访问对应网页路径时自动帮我们把文件找来。</p>
+<p>那如果<code>root</code>指定的目录下还有别的文件，但是这个文件的文件名没有被写在<code>index</code>后面，那是不是就不能访问了呢？当然不是。</p>
+<p>我们还是把上述<code>location</code>后面值改为<code>/</code>,然后在<code>/root/test</code>目录下放一个名为<code>cfl.png</code>的图片。</p>
+<pre class=" language-linux"><code class="language-linux">scp cfl.png root@112.74.33.85:~/test
+</code></pre>
+<p>很简单，这时访问<code>http://你的服务器地址:你的端口/cfl.png</code>即可访问到图片：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002212633630.png" alt="image-20221002212633630"></p>
+<p>可见对于没有在<code>index</code>后面指定的资源，我们仍然可以通过直接访问该路径下文件名的方式访问到对应资源。</p>
+<h3 id="4-3-root和alias"><a href="#4-3-root和alias" class="headerlink" title="4.3 root和alias"></a>4.3 root和alias</h3><p>上面我们知道了Nginx寻找资源文件时，是到<code>root+location</code>拼接路径下去寻找。</p>
+<p>如果我们不想要<code>location</code>路径拼接怎么办呢？把<code>root</code>换成<code>alias</code>即可。</p>
+<p>修改上述<code>location</code>块如下：</p>
+<pre class=" language-linux"><code class="language-linux">location /web &#123;
+    alias /root/test;
+    index index.html;
+&#125;
+</code></pre>
+<p>修改完配置记得重载。这时访问页面，可以正常访问到页面。</p>
+<p>我们把俩个配置放一起看看：</p>
+<pre class=" language-linux"><code class="language-linux"># 使用root的话，这里访问/web路径则会去/root/test/web目录下寻找index.html
+location /web &#123;
+    root /root/test;
+    index index.html;
+&#125;
+
+# 使用alias的话，这里访问/web路径则会去/root/test目录下寻找index.html
+location /web &#123;
+    alias /root/test;
+    index index.html;
+&#125;
+</code></pre>
+<p>可见使用root和alias指定资源目录，其资源寻找规则是不一样的。</p>
+<h3 id="4-4-异常处理"><a href="#4-4-异常处理" class="headerlink" title="4.4 异常处理"></a>4.4 异常处理</h3><p>通常我们访问一个没有配置的或者不存在的路径的时候，就会提示找不到页面，也就是404页面，默认的404页面是这个样子的：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002213903379.png" alt="image-20221002213903379"></p>
+<p>可见这个页面非常的朴素，并不适合用在生产环境中。因此，我们也可以自定义这些错误的页面，就以404页面为例。</p>
+<p>先准备好一个做好的自定义404的html页面文件，命名为<code>404.html</code>放在<code>/root/test</code>目录下，然后在我们上述的<code>server</code>块中，加入如下配置：</p>
+<pre><code># 配置404的页面文件
+error_page 404 /404.html;
+# 配置对应404页面的所在位置
+location = /404.html &#123;
+    root /root/test;
+&#125;
+</code></pre>
+<p>上述：</p>
+<ul>
+<li><code>error_page</code>配置后面表示要配置的错误类型，这里只写了一个<code>404</code>，可以写多个，然后最后一个就是对应的<code>404</code>网页的文件名，记得要以<code>/</code>开头。</li>
+<li><code>location = /404.html</code>块下面则需要配置<code>root</code>选项指明这个对应的<code>404.html</code>文件所在的目录</li>
+</ul>
+<p>现在随便访问8001端口下不存在的路径，可见自定义的404页面生效了，其他的错误例如502，503等等也可以这么配置。</p>
+<p>事实上，我们再看Nginx中的已有的默认配置，已经配置了500，502，503，504页面的对应的错误页面：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002220844404.png" alt="image-20221002220844404"></p>
+<blockquote>
+<p>这里方便演示，所有的网页资源都放在<code>/root/test</code>下，实际情况下推荐是把网页放在Nginx安装目录下的html目录下并配置相对路径。</p>
+</blockquote>
+<h2 id="五-开启Https支持"><a href="#五-开启Https支持" class="headerlink" title="五. 开启Https支持"></a>五. 开启Https支持</h2><h3 id="5-1-简单了解http和https"><a href="#5-1-简单了解http和https" class="headerlink" title="5.1 简单了解http和https"></a>5.1 简单了解http和https</h3><p>在最开始我们上网，都是通过http协议实现的。简单来说就是一种发布和接受HTML页面的方法，被用在于Web浏览器和网站服务器之间传递信息。HTTP默认工作在TCP协议80端口，用户访问网站<code>http://</code>打头的都是标准HTTP服务。</p>
+<p>在聊http之前，我们可以先简单了解一下TCP传输协议，http和https都是基于TCP的传输协议。</p>
+<p>在建立TCP连接时，客户端和服务器会有一个三次握手的过程：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002222144928.png" alt="image-20221002222144928"></p>
+<ul>
+<li>第一次握手：客户端尝试连接服务器，向服务器发送<code>syn</code>包（同步序列编号Synchronize Sequence Numbers），<code>syn=j</code>，客户端进入<code>SYN_SEND</code>状态等待服务器确认</li>
+<li>第二次握手：服务器接受客户端syn包并确认（<code>ack=j+1</code>），同时向客户端发送一个<code>SYN</code>包（<code>syn=k</code>），即<code>SYN+ACK</code>包，此时服务器进入<code>SYN_RECV</code>状态</li>
+<li>第三次握手：客户端收到服务器的<code>SYN+ACK</code>包，向服务器发送确认包<code>ACK</code>(<code>ack=k+1</code>)，此包发送完毕，客户端和服务器进入<code>ESTABLISHED</code>状态，完成三次握手</li>
+</ul>
+<p>简单来说，客户端和服务端建立TCP连接的过程如下：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221002223614286.png" alt="image-20221002223614286"></p>
+<p>HTTP协议就是这样一个基于TCP的传输协议，但是HTTP是明文传输数据的，对于用户密码，甚至是在线支付等等很容易被数据拦截。</p>
+<p>因此，https应运而生，https可以视作http的加强版，https对传输的内容进行了加密，使用SSL证书完成加密。</p>
+<p>所以说，使用HTTPS协议需要到CA（Certificate Authority,数字证书认证机构）申请证书，一般免费证书缺少，因而需要一定费用。不过个人开发使用，都可以申请免费证书，阿里云与Let&#96;s encrypt等等机构都可以申请免费证书，下面我们来学习。</p>
+<p>HTTPS使用的是443端口。</p>
+<blockquote>
+<p>所以说，我们平时访问http协议的网站就会访问该网站服务器的80端口，访问https协议的网站则默认访问该网站服务器的443端口，因此访问http和https的标准端口网址后面不需要加上80和443的端口号。部分网站在非80和443端口上开放Web服务端，访问时就要加上端口号。</p>
+</blockquote>
+<p>这里借用菜鸟教程的一个图来描述一下https的加密过程：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221003084614960.png" alt="image-20221003084614960"></p>
+<ol>
+<li><strong>客户端发起HTTPS请求：</strong>就是用户在浏览器里输入一个https网址，然后连接到服务器的443端口</li>
+<li><strong>服务端的证书：</strong>采用HTTPS协议的服务器必须要有一套数字证书（SSL证书），可以自己制作，也可以向组织申请，区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面。这套证书其实就是一对公钥和私钥，如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西（可以自行查阅非对称加密的原理）</li>
+<li><strong>传送证书：</strong>这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等</li>
+<li><strong>客户端解析证书：</strong>这部分工作是由客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题，如果证书没有问题，那么就生成一个随机值，然后用证书对该随机值进行加密，就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容</li>
+<li><strong>传送加密信息：</strong>这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了</li>
+<li><strong>服务端解密信息：</strong>服务端用私钥解密后，得到了客户端传过来的随机值（私钥），然后把内容通过该值进行对称加密，所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全</li>
+<li><strong>传输加密后的信息</strong>：这部分信息是服务端用私钥加密后的信息，可以在客户端被还原</li>
+<li><strong>客户端解密信息：</strong>客户端用之前生成的私钥解密服务端传过来的信息，于是获取了解密后的内容，整个过程第三方即使监听到了数据，也束手无策</li>
+</ol>
+<h3 id="5-2Nginx配置https"><a href="#5-2Nginx配置https" class="headerlink" title="5.2Nginx配置https"></a>5.2Nginx配置https</h3><p>配置https，当然需要一个SSL证书，通常我们要用到证书文件和证书密钥这俩个文件，也就是上面说的公私钥。</p>
+<blockquote>
+<p>注意，配置https需要大家有一台服务器和域名，并把域名解析到你的服务器。</p>
+</blockquote>
+<p>申请证书参考：</p>
+<ul>
+<li>阿里云申请免费证书：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6989106629111185438">https://juejin.cn/post/6989106629111185438</a></li>
+<li>使用Let&#96;s encrypt申请免费证书：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6989104824721604639">https://juejin.cn/post/6989104824721604639</a></li>
+</ul>
+<p>得到了证书后，就可以开始配置了！今天就以Nginx自带的页面配置的<code>server</code>块为例，其原始配置如下：</p>
+<pre class=" language-linux"><code class="language-linux">server &#123;
+    listen 80;
+
+    location / &#123;
+        root html;
+        index index.html index.htm;
+    &#125;
+    # 省略错误页配置
+&#125;
+</code></pre>
+<p>我这里已经申请好了免费的证书，其证书文件和证书文件密钥文件所在位置如下：</p>
+<ul>
+<li>证书：<code>/etc/letsencrypt/live/he.swsk33-mcs.top/cert.pem</code></li>
+<li>密钥：<code>/etc/letsencrypt/live/he.swsk33-mcs.top/privkey.pem</code></li>
+</ul>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221003091154935.png" alt="image-20221003091154935"></p>
+<p>然后把上述<code>server</code>块改成如下：</p>
+<pre class=" language-linux"><code class="language-linux">server &#123;
+    # 更改端口为443并在后面加上ssl表示开启https
+    listen 443 ssl;
+    server_name localhost;
+    # 配置证书文件路径
+    ssl_certificate /etc/letsencrypt/live/he.swsk33-mcs.top/cert.pem;
+    # 配置证书密钥路径
+    ssl_certificate_key /etc/letsencrypt/live/he.swsk33-mcs.top/privkey.pem;
+
+    location / &#123;
+        root html;
+        index index.html index.htm;
+    &#125;
+    # 省略错误页配置
+&#125;
+</code></pre>
+<p>可见开启https很简单，先是把<code>listen</code>的端口改成<code>443</code>并在后面加上<code>ssl</code>表示开启https，然后使用<code>ssl_certificate</code>和<code>ssl_certificate_key</code>分别指定证书文件和证书密钥文件即可，其余资源配置一样。</p>
+<p>这时，执行<code>nginx -s reload</code>重载配置并访问<code>https://你的服务器地址</code>,可以看见https生效了！</p>
+<blockquote>
+<p>事实上，你在别的端口开启https也是可以的，但是不推荐这么做。</p>
+</blockquote>
+<h3 id="5-3-http跳转https配置"><a href="#5-3-http跳转https配置" class="headerlink" title="5.3 http跳转https配置"></a>5.3 http跳转https配置</h3><p>刚刚配置好了https，但是日常大多数用户上网时只会输入域名，并不会自己在前面加上<code>https</code>，这时浏览器默认请求<code>http</code>，但是刚刚把<code>listen</code>改成<code>443</code>，访问<code>http</code>的<code>80</code>端口又会导致无法访问。</p>
+<p>解决这个问题很简单，配置一下Nginx使得用户访问<code>http</code>的<code>80</code>端口时直接跳转到<code>443</code>端口即可，在<code>http</code>块中再加入如下的<code>server</code>块，专门用于监听<code>80</code>端口并跳转到<code>443</code>端口：</p>
+<pre class=" language-linux"><code class="language-linux"># 80跳转443
+server &#123;
+    listen 80;
+    rewrite ^(.*)$ https://$host$1 permanent;
+&#125;
+</code></pre>
+<p><code>$host$</code>表示你的服务器域名。加入后重载配置，发现即使是访问<code>http://你的域名</code>，也会自动跳转至<code>https</code>。</p>
+<h2 id="六-Nginx反向代理与负载均衡"><a href="#六-Nginx反向代理与负载均衡" class="headerlink" title="六. Nginx反向代理与负载均衡"></a>六. Nginx反向代理与负载均衡</h2><h3 id="6-1-Nginx和Spring-Boot相整合"><a href="#6-1-Nginx和Spring-Boot相整合" class="headerlink" title="6.1 Nginx和Spring Boot相整合"></a>6.1 Nginx和Spring Boot相整合</h3><p>之前我们开发Spring Boot程序之后，就直接上传到服务器上面运行然后就可以直接访问了，因为Spring Boot中内嵌Tomcat服务器。</p>
+<p>但是一般来说，Tomcat的性能和并发量远远没有Nginx好，并且访问静态网页加载速度上，Nginx也比Tomcat快的多。因此实际情况下，我们使用Nginx做为静态网页和最外部接受请求的服务器，而Spring Boot只暴露API，Nginx把访问API的请求转发到Spring Boot上。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221003094303072.png" alt="image-20221003094303072"></p>
+<p>可见所有的请求直接访问到Nginx上再转发给我们的Spring Boot服务器，而不是像以前一样直接让外部访问Spring Boot。这就是反向代理。</p>
+<p>之前我们把静态页面也会打包到Spring Boot里面，不过现在有了Nginx，我们会把静态网页配置到Nginx下，这样用户如果是访问静态网页，会由Nginx直接返回，而客户端发起的请求，会由Nginx转发给Spring Boot再返回。</p>
+<h3 id="6-2-配置Nginx反向代理"><a href="#6-2-配置Nginx反向代理" class="headerlink" title="6.2 配置Nginx反向代理"></a>6.2 配置Nginx反向代理</h3><p>这里我们来编写一个简单的Spring Boot服务，然后上传到你的Nginx所在的服务器（或者虚拟机中），并运行以模拟一个Spring Boot服务器，然后配置Nginx以反向代理。</p>
+<h4 id="6-2-1-基本的反向代理配置"><a href="#6-2-1-基本的反向代理配置" class="headerlink" title="6.2.1 基本的反向代理配置"></a>6.2.1 基本的反向代理配置</h4><p>这个Spring Boot有两个接口：<code>/api/port</code>和<code>/api/name</code>，那么我们就配置一下<strong>访问Nginx下的<code>/api</code>开头的路径时，都代理到这个Spring Boot上</strong>。</p>
+<p>现在在Nginx配置文件中，找到<code>80</code>端口的<code>server</code>块，在里面添加一个<code>location</code>块<strong>用于代理<code>80</code>端口上路径为<code>/api</code>开头的请求将其转发到我们的Spring Boot上</strong>：</p>
+<pre class=" language-linux"><code class="language-linux"># 处理/api路径开头的请求
+location /api &#123;
+    # 转发到http://127.0.0.1:8800/api下，就是我们的Spring Boot服务器上
+    proxy_pass http://127.0.0.1:8800;
+&#125;
+</code></pre>
+<p>可见这个效果和直接访问Spring Boot效果一样，只不过这次，<strong>我们访问的是Nginx而非Spring Boot本身</strong>，Nginx帮我们把请求都转发了。</p>
+<p>通过<code>proxy_pass</code>指令，就实现了反向代理。可见上述：</p>
+<ul>
+<li><code>location</code>后面是<code>/api</code>，表示要处理以<code>/api</code>开头的路径的请求，这个前面就讲过了，不再多说</li>
+<li><code>proxy_pass</code>后面是<code>http://127.0.0.1:8800</code>，表示要转发到的目的服务器地址</li>
+<li>那么访问Nginx服务器任何的<code>/api/xxx</code>路径（以<code>/api</code>开头的），就会被Nginx转发到<code>http://127.0.0.1:8800/api/xxx</code>去</li>
+</ul>
+<blockquote>
+<p>所以说，之前在Spring Boot中开发API时，所有的API路径都是以<code>/api</code>开头，这样方便区别网页和<code>/api</code>的路径，以及便于配置反向代理。</p>
+</blockquote>
+<p>这里是把Nginx和Spring Boot放在一起，你也可以把Spring Boot部署到另一台服务器上，然后Nginx配置反向代理，转发到该服务器的地址即可。</p>
+<h4 id="6-2-2-绝对路径和相对路径代理"><a href="#6-2-2-绝对路径和相对路径代理" class="headerlink" title="6.2.2 绝对路径和相对路径代理"></a>6.2.2 绝对路径和相对路径代理</h4><p>事实上，刚刚的代理可以说是相对路径代理。我们的代理目标即<code>proxy_pass</code>后面写的是<code>http://127.0.0.1:8800</code>，如果在这个目标地址后面加个<code>/</code>或者其他路径会怎么样呢？页面就会报404错误。</p>
+<p>这是因为这次的反向代理地址我们不仅指定了地址还指定了路径<code>/</code>，当<code>proxy_pass</code>后面的地址指定了路径之后，就变成了绝对路径代理。</p>
+<p>我们上述<code>location</code>后面<code>/api</code>，<code>proxy_pass</code>为<code>http://127.0.0.1:8800/</code>，则表示访问服务器地址的<code>/api/xxx</code>路径下时，转发请求到<code>http://127.0.0.1/xxx</code>路径下。</p>
+<p>我这里放几个例子来加深理解：</p>
+<pre class=" language-linux"><code class="language-linux"># 接收来自路径/api开头的请求
+location /api &#123;
+    # 相对路径代理，将所有的/api/xxx的请求转发到127.0.0.1:8800/api/xxx
+    # 例如：
+    # 访问：http://服务器地址/api，则转发到：http://127.0.0.1:8800/api
+    # 访问：http://服务器地址/api/get，则转发到：http://127.0.0.1:8800/api/get
+    # 访问：http://服务器地址/api/get/1，则转发到：http://127.0.0.1:8800/api/get/1
+    proxy_pass http://127.0.0.1:8800;
+&#125;
+
+# 接收来自路径/api开头的请求
+location /api &#123;
+    # 绝对路径代理，将所有的/api/xxx的请求转发到http://127.0.0.1:8801/xxx
+    # 例如：
+    # 访问：http://服务器地址/api，则转发到：http://127.0.0.1:8801/
+    # 访问：http://服务器地址/api/get，则转发到：http://127.0.0.1:8801/get
+    # 访问：http://服务器地址/api/get/1，则转发到：http://127.0.0.1:8801/get/1
+    proxy_pass http://127.0.0.1:8801/;
+&#125;
+
+# 接收来自路径/resource开头的请求
+location /resource &#123;
+    # 绝对路径代理，将所有的/resource/xxx的请求转发到http://127.0.0.1:8802/static/xxx
+    # 例如：
+    # 访问：http://服务器地址/resource，则转发到：http://127.0.0.1:8802/static
+    # 访问：http://服务器地址/resource/get，则转发到：http://127.0.0.1:8802/static/get
+    # 访问：http://服务器地址/resource/get/1，则转发到：http://127.0.0.1:8802/static/get/1
+    proxy_pass http://127.0.0.1:8802/static;
+&#125;
+</code></pre>
+<p>总的来说：</p>
+<ul>
+<li>当<code>proxy_pass</code>后面仅仅指定反代地址的时候，就是相对路径代理，<code>location</code>后的路径也会被追加到最终的代理地址后</li>
+<li>当<code>proxy_pass</code>后面指定反代地址及其路径的时候，就是绝对路径代理，<code>location</code>后的路径不会被追加到最终的代理地址后</li>
+</ul>
+<h3 id="6-3-Nginx负载均衡"><a href="#6-3-Nginx负载均衡" class="headerlink" title="6.3 Nginx负载均衡"></a>6.3 Nginx负载均衡</h3><p>虽然Nginx一次可以处理很多请求，但是Spring Boot的Tomcat可没这个能耐。上面只有一个Spring Boot服务器，若请求非常多，Nginx虽然都可以转发给它，但是Spring Boot也处理不过来。</p>
+<p>那么在前面Spring Cloud章节，我们学习了集群。同样的，我们可以把这个Spring Boot程序部署到多个服务器上面，然后Nginx可以把所有的请求都平摊并转发给每个SpringBoot服务器，这就是负载均衡。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221003101602126.png" alt="image-20221003101602126"></p>
+<p>也就是说之前有一个Nginx服务器和一个SpringBoot服务器，在同一时间有30个用户访问，那么这个Nginx会把这30个请求全部转发给这一个SpringBoot。</p>
+<p>现在有了三台SpringBoot服务器了，在Nginx配置负载均衡后，还是同一个时间有30个用户访问，那么Nginx就会把这30个请求平均分摊，给每一台SpringBoot服务器只转发10个请求，这样就减少了每个SpringBoot的压力。</p>
+<p>我们通过在一个机器上运行多个jar进程的方式，来模拟Spring Boot服务器集群。</p>
+<p>大家可以再开一个终端窗口或者是用<code>screen -s</code>命令新建3个窗口，每个窗口分别执行命令：</p>
+<pre class=" language-linux"><code class="language-linux"># 窗口1
+java -jar nginx-proxy-server.jar --spring.profiles.active=1
+
+# 窗口2
+java -jar nginx-proxy-server.jar --spring.profiles.active=2
+
+# 窗口3
+java -jar nginx-proxy-server.jar --spring.profiles.active=3
+</code></pre>
+<p>这个jar我预先配置了多个配置文件，我们通过每个进程使用不同的配置（通过<code>spring.profiles.active</code>参数），使它们在一个机器上运行在不同端口。</p>
+<p>加上前面的Spring Boot进程，这里一共运行了4个进程，就模拟有4台Spring Boot服务器构成了集群，它们端口分别是<code>8800</code>,<code>8801</code>,<code>8802</code>,<code>8803</code>。</p>
+<p>现在，我们要配置访问Nginx服务器下<code>/api</code>开头的路径时，将全部请求平分转发到这四台Spring Boot服务器上。</p>
+<p>首先在<code>http</code>块中，我们要定义一个<code>upstream</code>块用于存放转发到目的服务器集群地址列表：</p>
+<pre class=" language-linux"><code class="language-linux"># 目的服务器集群列表，命名为myspringboot
+upstream myspringboot &#123;
+    # 用server指令声明每个服务器的地址
+    server 127.0.0.1:8800;
+    server 127.0.0.1:8801;
+    server 127.0.0.1:8802;
+    server 127.0.0.1:8803;
+&#125;
+</code></pre>
+<p>然后修改上述的用于转发的<code>location</code>块如下：</p>
+<pre class=" language-linux"><code class="language-linux"># 处理/api路径开头的请求
+location /api &#123;
+    # 转发到myspringboot服务器列表的/api路径下
+    proxy_pass http://myspringboot;
+&#125;
+</code></pre>
+<p>重载配置，多次访问，你会得到不一样的结果。可见我们每次虽然都是访问的是Nginx服务器，但是每一次都给我们转发到了不同的SpringBoot服务器上，这就是负载均衡的效果。</p>
+<blockquote>
+<p>在负载均衡中的<code>proxy_pass</code>配置中也有相对路径代理和绝对路径代理这俩种路径形式，路径加在服务器集群名后即可，机制和上述完全一摸一样，大家可以自行修改尝试。</p>
+</blockquote>
+<p>可见配置负载均衡非常简单，只需先用<code>upstream</code>定义集群列表，列表名我们自定义，然后把<code>proxy_pass</code>后面改成<code>http://集群列表名</code>即可实现负载均衡。</p>
+<p>在Nginx中，一共有三种负载均衡算法：</p>
+<ul>
+<li><code>round-robin</code>线性轮询，也就是默认的Nginx负载均衡算法，将第一个请求转发给第一个服务器，第二个转发给第二个服务器…如此循环。</li>
+<li><code>least-connected</code>最小连接，每次转发给当前接受请求数最小的服务器</li>
+<li><code>ip-hash</code>根据用户的IP地址，利用散列算出一个结果来确定把这个请求转发给哪个服务器</li>
+</ul>
+<p>在默认的线性轮询算法中，我们还可以给每个服务器设定权值，例如把上述<code>upstream</code>块中内容改成如下：</p>
+<pre class=" language-linux"><code class="language-linux"># 目的服务器集群列表，命名为myspringboot
+upstream myspringboot &#123;
+    # 用server指令声明每个服务器的地址
+    server 127.0.0.1:8800 weight=3; # 把这个服务器权值设为3
+    server 127.0.0.1:8801;
+    server 127.0.0.1:8802;
+    server 127.0.0.1:8803;
+&#125;
+</code></pre>
+<p>在集群列表中，把第一个服务器的权值改成了3，这样假设来了6个请求，就会有3个请求转发给第一个服务器，剩下3个请求平摊给第2，3，4台服务器。</p>
+<p>那么如何更改这个列表的负载均衡算法呢？在<code>upstream</code>块第一行加入算法名即可。例如更改上述算法为<code>ip_hash</code>算法：</p>
+<pre class=" language-linux"><code class="language-linux">upstream myspringboot &#123;
+    # 设定为ip_hash算法
+    ip_hash;
+    # 用server指令声明每个服务器的地址
+    server 127.0.0.1:8800;
+    server 127.0.0.1:8801;
+    server 127.0.0.1:8802;
+    server 127.0.0.1:8803;
+&#125;
+</code></pre>
+<p>在平时部署时，若后端涉及到用户登录的，就需要使用<code>ip_hash</code>算法，因为<code>ip_hash</code>算法会使得每一个用户能够固定的访问到一台被代理的Spring Boot服务器，无论这个用户发送多少个请求。而用户登录的session也只会存在一个服务器上，若用户登录后，下一个请求被转发到另一个服务器，就会导致下一个请求被判断为未登录。</p>
+<blockquote>
+<p>当然，使用Redis分布式session可以解决这个问题</p>
+</blockquote>
+<h2 id="七-Nginx实用配置"><a href="#七-Nginx实用配置" class="headerlink" title="七. Nginx实用配置"></a>七. Nginx实用配置</h2><h3 id="7-1-设定上传文件最大大小"><a href="#7-1-设定上传文件最大大小" class="headerlink" title="7.1 设定上传文件最大大小"></a>7.1 设定上传文件最大大小</h3><p>一些同学部署完成Nginx及其网站之后，发现上传大文件时无法上传，这是因为Nginx对上传的文件大小进行了限制，可以通过下列指令改变：</p>
+<pre class=" language-linux"><code class="language-linux"># 省略其它http块中内容...
+server &#123;
+    # 设定最大请求大小为20MB
+    client_max_body_size 20m;
+    # 省略其它server中内容...
+&#125;
+</code></pre>
+<p>可见指定一下<code>client_max_body_size</code>即可，这个指令位于<code>server</code>块中。</p>
+<h3 id="7-2-兼容VUE单页路由"><a href="#7-2-兼容VUE单页路由" class="headerlink" title="7.2 兼容VUE单页路由"></a>7.2 兼容VUE单页路由</h3><p>现在前后端分离的框架盛行，大多数网页也是使用Vue框架开发，并使用Vue Router进行路由。这样前端同学打包给后端同学部署之后就会出现了一个问题：点击链接时网页可以正常路由，但是刷新后会显示404。</p>
+<p>这是由于点击链接时，Vue Router能够拦截操作并实现页面切换，但是刷新的时候会请求后端，而后端里面没有对应的路径，就会返回404。</p>
+<p>事实上，官方也提供了这个问题的解决方案：<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/guide/essentials/history-mode.html#html5-%E6%A8%A1%E5%BC%8F">https://router.vuejs.org/zh/guide/essentials/history-mode.html#html5-%E6%A8%A1%E5%BC%8F</a></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/nginx/nginxStudy-yhh.assets/image-20221003115509959.png" alt="image-20221003115509959"></p>
+<p>我们在对应页面的<code>location</code>块中，加入下面一个指令即可：</p>
+<pre class=" language-linux"><code class="language-linux"># 省略其它配置...
+location / &#123;
+    # 兼容Vue Router
+    try_files $uri $uri/ /index.html;
+    # 省略其它配置...
+&#125;
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/nginx/">
+                                    <span class="chip bg-color">nginx</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2022/04/17/docker-operation/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="docker-operation">
+                        
+                        <span class="card-title">docker-operation</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/10/javaIO/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="javaIO">
+                        
+                        <span class="card-title">javaIO</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h1,h2, h3, h4,h5,h6'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 15px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                                <span id="year">
+                                    2022
+                                </span>
+                                
+                                    <a href="/about" target="_blank">
+                                        cflxl
+                                    </a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/cflxl/cflxl.github.io"
+                                        target="_blank">cflxl</a>
+                                    <br>
+                                    
+                                        &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words
+                                            :&nbsp;<span class="white-color">
+                                                174.7k
+                                            </span>
+                                            
+                                                
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    <span id="busuanzi_container_site_pv">
+                                                                        &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                                                                            <span id="busuanzi_value_site_pv"
+                                                                                class="white-color"></span>
+                                                                    </span>
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_uv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                                                                                    <span id="busuanzi_value_site_uv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                <br>
+
+                                                                                <!-- 运行天数提醒. -->
+                                                                                
+                                                                                    <span id="sitetime"> Loading
+                                                                                        ...</span>
+                                                                                    <script>
+                                                                                        var calcSiteTime = function () {
+                                                                                            var seconds = 1000;
+                                                                                            var minutes = seconds * 60;
+                                                                                            var hours = minutes * 60;
+                                                                                            var days = hours * 24;
+                                                                                            var years = days * 365;
+                                                                                            var today = new Date();
+                                                                                            var startYear = "2022";
+                                                                                            var startMonth = "11";
+                                                                                            var startDate = "15";
+                                                                                            var startHour = "0";
+                                                                                            var startMinute = "0";
+                                                                                            var startSecond = "0";
+                                                                                            var todayYear = today.getFullYear();
+                                                                                            var todayMonth = today.getMonth() + 1;
+                                                                                            var todayDate = today.getDate();
+                                                                                            var todayHour = today.getHours();
+                                                                                            var todayMinute = today.getMinutes();
+                                                                                            var todaySecond = today.getSeconds();
+                                                                                            var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                            var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                            var diff = t2 - t1;
+                                                                                            var diffYears = Math.floor(diff / years);
+                                                                                            var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                                                                                            // 区分是否有年份.
+                                                                                            var language = 'en';
+                                                                                            if (startYear === String(todayYear)) {
+                                                                                                document.getElementById("year").innerHTML = todayYear;
+                                                                                                var daysTip = 'This site has been running for ' + diffDays + ' days';
+                                                                                                if (language === 'zh-CN') {
+                                                                                                    daysTip = '本站已运行 ' + diffDays + ' 天';
+                                                                                                } else if (language === 'zh-HK') {
+                                                                                                    daysTip = '本站已運行 ' + diffDays + ' 天';
+                                                                                                }
+                                                                                                document.getElementById("sitetime").innerHTML = daysTip;
+                                                                                            } else {
+                                                                                                document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                                var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                                                                                    + diffDays + ' days';
+                                                                                                if (language === 'zh-CN') {
+                                                                                                    yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                } else if (language === 'zh-HK') {
+                                                                                                    yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                }
+                                                                                                document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                                                                                            }
+                                                                                        }
+
+                                                                                        calcSiteTime();
+                                                                                    </script>
+                                                                                    
+                                                                                        <br>
+                                                                                        
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+                        
+    <a href="https://github.com/cflxl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2261497676@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2261497676" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2261497676" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

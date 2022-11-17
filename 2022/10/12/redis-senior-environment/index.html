@@ -1,0 +1,1536 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="redis-senior-environment, cflxl">
+    <meta name="description" content="Redis高级篇的环境搭建1.安装Docker1.1. 卸载旧版本sudo apt-get remove docker docker-engine docker.io containerd runc
+
+1.2. 使用官方安装脚本自动安装cu">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>redis-senior-environment | cflxl</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="cflxl" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">cflxl</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">cflxl</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">redis-senior-environment</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-10-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-11-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    4.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    20 Min
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Redis高级篇的环境搭建"><a href="#Redis高级篇的环境搭建" class="headerlink" title="Redis高级篇的环境搭建"></a>Redis高级篇的环境搭建</h1><h2 id="1-安装Docker"><a href="#1-安装Docker" class="headerlink" title="1.安装Docker"></a>1.安装Docker</h2><h3 id="1-1-卸载旧版本"><a href="#1-1-卸载旧版本" class="headerlink" title="1.1. 卸载旧版本"></a>1.1. 卸载旧版本</h3><pre class=" language-linux"><code class="language-linux">sudo apt-get remove docker docker-engine docker.io containerd runc
+</code></pre>
+<h3 id="1-2-使用官方安装脚本自动安装"><a href="#1-2-使用官方安装脚本自动安装" class="headerlink" title="1.2. 使用官方安装脚本自动安装"></a>1.2. 使用官方安装脚本自动安装</h3><pre class=" language-linux"><code class="language-linux">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+</code></pre>
+<p>安装完成，执行下列命令，若能输出帮助信息说明安装成功：</p>
+<pre class=" language-linux"><code class="language-linux">docker -v
+</code></pre>
+<h3 id="1-3-配置镜像仓库镜像源"><a href="#1-3-配置镜像仓库镜像源" class="headerlink" title="1.3. 配置镜像仓库镜像源"></a>1.3. 配置镜像仓库镜像源</h3><p>我们这里使用阿里云的镜像加速器，然后修改Docker的配置文件&#x2F;etc&#x2F;docker&#x2F;daemon.json，在配置文件中加入如下内容：</p>
+<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"https://v10rlwmg.mirror.aliyuncs.com"</span><span class="token punctuation">]</span>
+&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>然后执行下列命令重启Docker服务：</p>
+<pre class=" language-linux"><code class="language-linux">sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre>
+<p>至此就配置完成了！</p>
+<h3 id="1-4-Docker引擎服务常用命令"><a href="#1-4-Docker引擎服务常用命令" class="headerlink" title="1.4. Docker引擎服务常用命令"></a>1.4. Docker引擎服务常用命令</h3><p>安装完成Docker之后，默认Docker的守护进程已经运行起来了。日常若想操作这个守护进程可以通过下面的一些命令来完成。</p>
+<h4 id="1-4-1-启动，停止和重启"><a href="#1-4-1-启动，停止和重启" class="headerlink" title="1.4.1.启动，停止和重启"></a>1.4.1.启动，停止和重启</h4><pre class=" language-linux"><code class="language-linux"># 启动Docker守护进程
+sudo systemctl start docker
+# 停止Docker守护进程
+sudo systemctl stop docker
+# 重启Docker守护进程
+sudo systemctl restart docker
+</code></pre>
+<h4 id="1-4-2-开机自启动相关"><a href="#1-4-2-开机自启动相关" class="headerlink" title="1.4.2.开机自启动相关"></a>1.4.2.开机自启动相关</h4><pre class=" language-linux"><code class="language-linux"># 设定Docker守护进程开机自启
+sudo systemctl enable docker
+# 禁用Docker守护进程开机自启
+sudo systemctl disable docker
+</code></pre>
+<h2 id="2-Docker安装MySQL"><a href="#2-Docker安装MySQL" class="headerlink" title="2. Docker安装MySQL"></a>2. Docker安装MySQL</h2><h3 id="2-1-下载MySQL-5-7-25镜像"><a href="#2-1-下载MySQL-5-7-25镜像" class="headerlink" title="2.1. 下载MySQL:5.7.25镜像"></a>2.1. 下载MySQL:5.7.25镜像</h3><pre class=" language-docker"><code class="language-docker">docker pull mysql<span class="token punctuation">:</span>5.7.25
+</code></pre>
+<h3 id="2-2-创建目录作为数据库的数据卷"><a href="#2-2-创建目录作为数据库的数据卷" class="headerlink" title="2.2. 创建目录作为数据库的数据卷"></a>2.2. 创建目录作为数据库的数据卷</h3><pre class=" language-docker"><code class="language-docker"><span class="token comment" spellcheck="true"># 创建目录</span>
+mkdir <span class="token punctuation">-</span>p /tmp/mysql/data
+mkdir <span class="token punctuation">-</span>p /tmp/mysql/conf
+</code></pre>
+<h3 id="2-3-运行docker命令"><a href="#2-3-运行docker命令" class="headerlink" title="2.3. 运行docker命令"></a>2.3. 运行docker命令</h3><pre class=" language-docker"><code class="language-docker">docker run \
+ <span class="token punctuation">-</span>p 3306<span class="token punctuation">:</span>3306 \
+ <span class="token punctuation">-</span><span class="token punctuation">-</span>name mysql \
+ <span class="token punctuation">-</span>v /tmp/mysql/conf<span class="token punctuation">:</span>/etc/mysql/conf.d \
+ <span class="token punctuation">-</span>v /tmp/mysql/logs<span class="token punctuation">:</span>/logs \
+ <span class="token punctuation">-</span>v /tmp/mysql/data<span class="token punctuation">:</span>/var/lib/mysql \
+ <span class="token punctuation">-</span>e MYSQL_ROOT_PASSWORD=123456 \
+ <span class="token punctuation">-</span><span class="token punctuation">-</span>privileged \
+ <span class="token punctuation">-</span>d \
+ mysql<span class="token punctuation">:</span>5.7.25
+</code></pre>
+<h3 id="2-4-修改配置"><a href="#2-4-修改配置" class="headerlink" title="2.4. 修改配置"></a>2.4. 修改配置</h3><p>在&#x2F;tmp&#x2F;mysql&#x2F;conf目录添加一个my.cnf文件，作为mysql的配置文件：</p>
+<pre class=" language-sh"><code class="language-sh"># 创建文件
+touch /tmp/mysql/conf/my.cnf
+</code></pre>
+<p>文件的内容如下：</p>
+<pre class=" language-ini"><code class="language-ini"><span class="token selector">[mysqld]</span>
+skip-name-resolve
+<span class="token constant">character_set_server</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span>
+<span class="token constant">datadir</span><span class="token attr-value"><span class="token punctuation">=</span>/var/lib/mysql</span>
+<span class="token constant">server-id</span><span class="token attr-value"><span class="token punctuation">=</span>1000</span>
+</code></pre>
+<h3 id="2-5-重启"><a href="#2-5-重启" class="headerlink" title="2.5. 重启"></a>2.5. 重启</h3><p>配置修改后，必须重启容器：</p>
+<pre class=" language-docker"><code class="language-docker">docker restart mysql
+</code></pre>
+<h2 id="3-导入项目"><a href="#3-导入项目" class="headerlink" title="3. 导入项目"></a>3. 导入项目</h2><h2 id="4-开启MySQL主从"><a href="#4-开启MySQL主从" class="headerlink" title="4. 开启MySQL主从"></a>4. 开启MySQL主从</h2><p>Canal是基于MySQL的主从同步机制，让Canal模拟salve</p>
+<h3 id="4-1-开启binlog"><a href="#4-1-开启binlog" class="headerlink" title="4.1. 开启binlog"></a>4.1. 开启binlog</h3><p>打开mysql容器挂载的日志文件，我的在<code>/tmp/mysql/conf</code>目录</p>
+<p>修改文件：</p>
+<pre class=" language-sh"><code class="language-sh">vi /tmp/mysql/conf/my.cnf
+</code></pre>
+<p>添加内容：</p>
+<pre class=" language-ini"><code class="language-ini"><span class="token constant">log-bin</span><span class="token attr-value"><span class="token punctuation">=</span>/var/lib/mysql/mysql-bin</span>
+<span class="token constant">binlog-do-db</span><span class="token attr-value"><span class="token punctuation">=</span>hmis</span>
+</code></pre>
+<p>配置解读：</p>
+<ul>
+<li><code>log-bin=/var/lib/mysql/mysql-bin</code>：设置binary log文件的存放地址和文件名，叫做mysql-bin</li>
+<li><code>binlog-do-db=hmis</code>：指定对哪个database记录binary log events，这里记录hmis这个库</li>
+</ul>
+<p>最终效果：</p>
+<pre class=" language-ini"><code class="language-ini"><span class="token selector">[mysqld]</span>
+skip-name-resolve
+<span class="token constant">character_set_server</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span>
+<span class="token constant">datadir</span><span class="token attr-value"><span class="token punctuation">=</span>/var/lib/mysql</span>
+<span class="token constant">server-id</span><span class="token attr-value"><span class="token punctuation">=</span>1000</span>
+<span class="token constant">log-bin</span><span class="token attr-value"><span class="token punctuation">=</span>/var/lib/mysql/mysql-bin</span>
+<span class="token constant">binlog-do-db</span><span class="token attr-value"><span class="token punctuation">=</span>hmis</span>
+</code></pre>
+<h3 id="4-2-设置用户权限"><a href="#4-2-设置用户权限" class="headerlink" title="4.2. 设置用户权限"></a>4.2. 设置用户权限</h3><p>接下来添加一个仅用于数据同步的账户，出于安全考虑，这里仅提供对hmis这个库的操作权限。</p>
+<p>先进入容器，然后连接mysql，如图，进入mysql控制台输入下列命令即可。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221021105748868.png" alt="image-20221021105748868"></p>
+<pre class=" language-mysql"><code class="language-mysql">create user canal@'%' IDENTIFIED by 'canal';
+GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT,SUPER ON *.* TO 'canal'@'%' identified by 'canal';
+FLUSH PRIVILEGES;
+</code></pre>
+<p>重启mysql容器即可</p>
+<pre><code>docker restart mysql
+</code></pre>
+<p>测试设置是否成功：在mysql控制台，或者Navicat中，输入命令：</p>
+<pre><code>show master status;
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221021105914249.png" alt="image-20221021105914249"></p>
+<h2 id="5-安装Canal"><a href="#5-安装Canal" class="headerlink" title="5. 安装Canal"></a>5. 安装Canal</h2><h3 id="5-1-创建网络"><a href="#5-1-创建网络" class="headerlink" title="5.1. 创建网络"></a>5.1. 创建网络</h3><p>我们需要创建一个网络，将MySQL、Canal、MQ放到同一个Docker网络中：</p>
+<pre class=" language-sh"><code class="language-sh">docker network create hmis
+</code></pre>
+<p>让mysql加入这个网络：</p>
+<pre class=" language-sh"><code class="language-sh">docker network connect hmis mysql
+</code></pre>
+<h3 id="5-2-安装Canal"><a href="#5-2-安装Canal" class="headerlink" title="5.2. 安装Canal"></a>5.2. 安装Canal</h3><p>把<code>canal.tar</code>上传到虚拟机，然后命令导入：</p>
+<pre class=" language-docker"><code class="language-docker">docker load <span class="token punctuation">-</span>i canal.tar
+</code></pre>
+<p>然后运行命令创建Canal容器：</p>
+<pre class=" language-sh"><code class="language-sh">docker run -p 11111:11111 --name canal \
+-e canal.destinations=hmis \
+-e canal.instance.master.address=mysql:3306  \
+-e canal.instance.dbUsername=canal  \
+-e canal.instance.dbPassword=canal  \
+-e canal.instance.connectionCharset=UTF-8 \
+-e canal.instance.tsdb.enable=true \
+-e canal.instance.gtidon=false  \
+-e canal.instance.filter.regex=hmis\\..* \
+--network hmis \
+-d canal/canal-server:v1.1.5
+</code></pre>
+<p>说明:</p>
+<ul>
+<li><code>-p 11111:11111</code>：这是canal的默认监听端口</li>
+<li><code>-e canal.instance.master.address=mysql:3306</code>：数据库地址和端口，如果不知道mysql容器地址，可以通过<code>docker inspect 容器id</code>来查看,<code>IPAddress</code>就是mysql容器地址</li>
+<li><code>-e canal.instance.dbUsername=canal</code>：数据库用户名</li>
+<li><code>-e canal.instance.dbPassword=canal</code> ：数据库密码</li>
+<li><code>-e canal.instance.filter.regex=</code>：要监听的表名称</li>
+</ul>
+<p>表名称监听支持的语法：</p>
+<pre><code>mysql 数据解析关注的表，Perl正则表达式.
+多个正则之间以逗号(,)分隔，转义符需要双斜杠(\\) 
+常见例子：
+1.  所有表：.*   or  .*\\..*
+2.  canal schema下所有表： canal\\..*
+3.  canal下的以canal打头的表：canal\\.canal.*
+4.  canal schema下的一张表：canal.test1
+5.  多个规则组合使用然后以逗号隔开：canal\\..*,mysql.test1,mysql.test2 
+</code></pre>
+<p>可以查看canan日志：</p>
+<pre class=" language-linux"><code class="language-linux">docker logs -f canal
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221025155532233.png" alt="image-20221025155532233"></p>
+<p>可以通过以下命令看看canal有没有和mysql进行连接：</p>
+<pre class=" language-linux"><code class="language-linux"># 进入canan容器内部
+docker exec -it canal bash
+tail -f canal-server/logs/canal/canal.log
+tail -f canal-server/logs/hmis/hmis.log
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221025160337696.png" alt="image-20221025160337696"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221025161328010.png" alt="image-20221025161328010"></p>
+<h2 id="6-安装OpenResty"><a href="#6-安装OpenResty" class="headerlink" title="6. 安装OpenResty"></a>6. 安装OpenResty</h2><h3 id="6-1-安装"><a href="#6-1-安装" class="headerlink" title="6.1. 安装"></a>6.1. 安装</h3><h4 id="6-1-1-执行命令"><a href="#6-1-1-执行命令" class="headerlink" title="6.1.1. 执行命令"></a>6.1.1. 执行命令</h4><pre class=" language-linux"><code class="language-linux"> apt-get install libpcre3-dev \
+    libssl-dev perl make build-essential curl
+ wget -qO - https://openresty.org/package/pubkey.gpg | sudo apt-key add -
+ sudo apt-get -y install software-properties-common
+ sudo add-apt-repository -y "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main"
+ sudo apt-get update
+ sudo apt-get install openresty
+</code></pre>
+<h4 id="6-1-2-目录结构"><a href="#6-1-2-目录结构" class="headerlink" title="6.1.2. 目录结构"></a>6.1.2. 目录结构</h4><p>默认情况下，OpenResty安装的目录是：&#x2F;usr&#x2F;local&#x2F;openresty，OpenResty就是在Nginx基础上集成了一些Lua模块。</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221021151432946.png" alt="image-20221021151432946"></p>
+<h4 id="6-1-3-配置nginx的环境变量"><a href="#6-1-3-配置nginx的环境变量" class="headerlink" title="6.1.3. 配置nginx的环境变量"></a>6.1.3. 配置nginx的环境变量</h4><p>打开配置文件：</p>
+<pre class=" language-sh"><code class="language-sh">vi /etc/profile
+</code></pre>
+<p>在最下面加入两行：</p>
+<pre class=" language-sh"><code class="language-sh">export NGINX_HOME=/usr/local/openresty/nginx
+export PATH=$&#123;NGINX_HOME&#125;/sbin:$PATH
+</code></pre>
+<p>NGINX_HOME：后面是OpenResty安装目录下的nginx的目录</p>
+<p>然后让配置生效：</p>
+<pre><code>source /etc/profile
+</code></pre>
+<h3 id="6-2-启动和运行"><a href="#6-2-启动和运行" class="headerlink" title="6.2. 启动和运行"></a>6.2. 启动和运行</h3><p>OpenResty底层是基于Nginx的，查看OpenResty目录的nginx目录，结构与windows中安装的nginx基本一致：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221021152659387.png" alt="image-20221021152659387"></p>
+<p>所有运行方式与nginx基本一致：</p>
+<pre class=" language-sh"><code class="language-sh"># 启动nginx
+nginx
+# 重新加载配置
+nginx -s reload
+# 停止
+nginx -s stop
+</code></pre>
+<p>nginx的默认配置文件注释太多，影响后续我们的编辑，这里将nginx.conf中的注释部分删除，保留有效部分。</p>
+<p>修改<code>/usr/local/openresty/nginx/conf/nginx.conf</code>文件，内容如下：</p>
+<pre class=" language-nginx"><code class="language-nginx"><span class="token comment" spellcheck="true">#user  nobody;</span>
+<span class="token keyword">worker_processes</span>  <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">error_log</span>  logs<span class="token operator">/</span>error<span class="token punctuation">.</span>log<span class="token punctuation">;</span>
+
+<span class="token keyword">events</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+    <span class="token keyword">worker_connections</span>  <span class="token number">1024</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+
+<span class="token keyword">http</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+    <span class="token keyword">include</span>       mime<span class="token punctuation">.</span><span class="token keyword">types</span><span class="token punctuation">;</span>
+    <span class="token keyword">default_type</span>  application<span class="token operator">/</span>octet<span class="token operator">-</span>stream<span class="token punctuation">;</span>
+    <span class="token keyword">sendfile</span>        on<span class="token punctuation">;</span>
+    <span class="token keyword">keepalive_timeout</span>  <span class="token number">65</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">server</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+        <span class="token keyword">listen</span>       <span class="token number">8081</span><span class="token punctuation">;</span>
+        <span class="token keyword">server_name</span>  localhost<span class="token punctuation">;</span>
+        <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+            <span class="token keyword">root</span>   html<span class="token punctuation">;</span>
+            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+        <span class="token keyword">error_page</span>   <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span>  <span class="token operator">/</span>50x<span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+        <span class="token keyword">location</span> <span class="token operator">=</span> <span class="token operator">/</span>50x<span class="token punctuation">.</span>html <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+            <span class="token keyword">root</span>   html<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+</code></pre>
+<p>在Linux的控制台输入命令以启动nginx：</p>
+<pre class=" language-sh"><code class="language-sh">nginx
+</code></pre>
+<p>然后访问页面：<a href="http://112.74.33.85:8081，注意ip地址替换为你自己的虚拟机IP。">http://112.74.33.85:8081，注意ip地址替换为你自己的虚拟机IP。</a></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221021154343978.png" alt="image-20221021154343978"></p>
+<h3 id="6-3-备注"><a href="#6-3-备注" class="headerlink" title="6.3. 备注"></a>6.3. 备注</h3><p>加载OpenResty的lua模块：</p>
+<pre class=" language-nginx"><code class="language-nginx"><span class="token comment" spellcheck="true">#lua 模块</span>
+lua_package_path <span class="token string">"/usr/local/openresty/lualib/?.lua;;"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">#c模块     </span>
+lua_package_cpath <span class="token string">"/usr/local/openresty/lualib/?.so;;"</span><span class="token punctuation">;</span>  
+</code></pre>
+<p>common.lua</p>
+<pre class=" language-lua"><code class="language-lua"><span class="token comment" spellcheck="true">-- 封装函数，发送http请求，并解析响应</span>
+<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">read_http</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> params<span class="token punctuation">)</span>
+    <span class="token keyword">local</span> resp <span class="token operator">=</span> ngx<span class="token punctuation">.</span>location<span class="token punctuation">.</span><span class="token function">capture</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span><span class="token operator">&amp;</span><span class="token operator">#</span><span class="token number">123</span><span class="token punctuation">;</span>
+        method <span class="token operator">=</span> ngx<span class="token punctuation">.</span>HTTP_GET<span class="token punctuation">,</span>
+        args <span class="token operator">=</span> params<span class="token punctuation">,</span>
+    <span class="token operator">&amp;</span><span class="token operator">#</span><span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> resp <span class="token keyword">then</span>
+        <span class="token comment" spellcheck="true">-- 记录错误信息，返回404</span>
+        ngx<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ngx<span class="token punctuation">.</span>ERR<span class="token punctuation">,</span> <span class="token string">"http not found, path: "</span><span class="token punctuation">,</span> path <span class="token punctuation">,</span> <span class="token string">", args: "</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+        ngx<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+    <span class="token keyword">return</span> resp<span class="token punctuation">.</span>body
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true">-- 将方法导出</span>
+<span class="token keyword">local</span> _M <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token operator">#</span><span class="token number">123</span><span class="token punctuation">;</span>  
+    read_http <span class="token operator">=</span> read_http
+<span class="token operator">&amp;</span><span class="token operator">#</span><span class="token number">125</span><span class="token punctuation">;</span>  
+<span class="token keyword">return</span> _M
+</code></pre>
+<p>释放Redis连接API：</p>
+<pre class=" language-lua"><code class="language-lua"><span class="token comment" spellcheck="true">-- 关闭redis连接的工具方法，其实是放入连接池</span>
+<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">close_redis</span><span class="token punctuation">(</span>red<span class="token punctuation">)</span>
+    <span class="token keyword">local</span> pool_max_idle_time <span class="token operator">=</span> <span class="token number">10000</span> <span class="token comment" spellcheck="true">-- 连接的空闲时间，单位是毫秒</span>
+    <span class="token keyword">local</span> pool_size <span class="token operator">=</span> <span class="token number">100</span> <span class="token comment" spellcheck="true">--连接池大小</span>
+    <span class="token keyword">local</span> ok<span class="token punctuation">,</span> err <span class="token operator">=</span> red<span class="token punctuation">:</span><span class="token function">set_keepalive</span><span class="token punctuation">(</span>pool_max_idle_time<span class="token punctuation">,</span> pool_size<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> ok <span class="token keyword">then</span>
+        ngx<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ngx<span class="token punctuation">.</span>ERR<span class="token punctuation">,</span> <span class="token string">"放入redis连接池失败: "</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>读取Redis数据的API：</p>
+<pre class=" language-lua"><code class="language-lua"><span class="token comment" spellcheck="true">-- 查询redis的方法 ip和port是redis地址，key是查询的key</span>
+<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">read_redis</span><span class="token punctuation">(</span>ip<span class="token punctuation">,</span> port<span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">-- 获取一个连接</span>
+    <span class="token keyword">local</span> ok<span class="token punctuation">,</span> err <span class="token operator">=</span> red<span class="token punctuation">:</span><span class="token function">connect</span><span class="token punctuation">(</span>ip<span class="token punctuation">,</span> port<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> ok <span class="token keyword">then</span>
+        ngx<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ngx<span class="token punctuation">.</span>ERR<span class="token punctuation">,</span> <span class="token string">"连接redis失败 : "</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token keyword">nil</span>
+    <span class="token keyword">end</span>
+    <span class="token comment" spellcheck="true">-- 查询redis</span>
+    <span class="token keyword">local</span> resp<span class="token punctuation">,</span> err <span class="token operator">=</span> red<span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">-- 查询失败处理</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> resp <span class="token keyword">then</span>
+        ngx<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ngx<span class="token punctuation">.</span>ERR<span class="token punctuation">,</span> <span class="token string">"查询Redis失败: "</span><span class="token punctuation">,</span> err<span class="token punctuation">,</span> <span class="token string">", key = "</span> <span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+    <span class="token comment" spellcheck="true">--得到的数据为空处理</span>
+    <span class="token keyword">if</span> resp <span class="token operator">==</span> ngx<span class="token punctuation">.</span>null <span class="token keyword">then</span>
+        resp <span class="token operator">=</span> <span class="token keyword">nil</span>
+        ngx<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ngx<span class="token punctuation">.</span>ERR<span class="token punctuation">,</span> <span class="token string">"查询Redis数据为空, key = "</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+    <span class="token function">close_redis</span><span class="token punctuation">(</span>red<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> resp
+<span class="token keyword">end</span>
+</code></pre>
+<p>开启共享词典：</p>
+<pre class=" language-nginx"><code class="language-nginx"><span class="token comment" spellcheck="true"># 共享字典，也就是本地缓存，名称叫做：item_cache，大小150m</span>
+lua_shared_dict item_cache 150m<span class="token punctuation">;</span> 
+</code></pre>
+<h2 id="7-Redis集群"><a href="#7-Redis集群" class="headerlink" title="7. Redis集群"></a>7. Redis集群</h2><h3 id="7-1-集群结构"><a href="#7-1-集群结构" class="headerlink" title="7.1. 集群结构"></a>7.1. 集群结构</h3><p>我们搭建的主从集群结构如图：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221021155348958.png" alt="image-20221021155348958"></p>
+<p>共包含三个节点，一个主节点，两个从节点。</p>
+<p>这里我们会在同一台虚拟机中开启3个redis实例，模拟主从集群，信息如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">IP</th>
+<th align="center">PORT</th>
+<th align="center">角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">112.74.33.85</td>
+<td align="center">7001</td>
+<td align="center">master</td>
+</tr>
+<tr>
+<td align="center">112.74.33.85</td>
+<td align="center">7002</td>
+<td align="center">slave</td>
+</tr>
+<tr>
+<td align="center">112.74.33.85</td>
+<td align="center">7003</td>
+<td align="center">slave</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-准备实例和配置"><a href="#7-2-准备实例和配置" class="headerlink" title="7.2. 准备实例和配置"></a>7.2. 准备实例和配置</h3><p>要在同一台虚拟机开启3个实例，必须准备三份不同的配置文件和目录，配置文件所在目录也就是工作目录。</p>
+<p>1）创建目录</p>
+<p>我们创建三个文件夹，名字分别叫7001、7002、7003：</p>
+<pre class=" language-sh"><code class="language-sh"># 进入/tmp目录
+cd /tmp
+# 创建目录
+mkdir 7001 7002 7003
+</code></pre>
+<p>如图：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221021160343928.png" alt="image-20221021160343928"></p>
+<p>2）恢复原始配置</p>
+<p>修改redis-6.2.4&#x2F;redis.conf文件，将其中的持久化模式改为默认的RDB模式，AOF保持关闭状态。</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 开启RDB</span>
+<span class="token comment" spellcheck="true"># save ""</span>
+<span class="token attr-name">save</span> <span class="token attr-value">3600 1</span>
+<span class="token attr-name">save</span> <span class="token attr-value">300 100</span>
+<span class="token attr-name">save</span> <span class="token attr-value">60 10000</span>
+
+<span class="token comment" spellcheck="true"># 关闭AOF</span>
+<span class="token attr-name">appendonly</span> <span class="token attr-value">no</span>
+</code></pre>
+<p>3）拷贝配置文件到每个实例目录</p>
+<p>然后将redis-6.2.4&#x2F;redis.conf文件拷贝到三个目录中（在&#x2F;tmp目录执行下列命令）：</p>
+<pre class=" language-sh"><code class="language-sh"># 方式一：逐个拷贝
+cp redis-6.2.4/redis.conf 7001
+cp redis-6.2.4/redis.conf 7002
+cp redis-6.2.4/redis.conf 7003
+
+# 方式二：管道组合命令，一键拷贝
+echo 7001 7002 7003 | xargs -t -n 1 cp redis-6.2.4/redis.conf
+</code></pre>
+<p>4）修改每个实例的端口、工作目录</p>
+<p>修改每个文件夹内的配置文件，将端口分别修改为7001、7002、7003，将rdb文件保存位置都修改为自己所在目录（在&#x2F;tmp目录执行下列命令）：</p>
+<pre class=" language-sh"><code class="language-sh">sed -i -e 's/6379/7001/g' -e 's/dir .\//dir \/tmp\/7001\//g' 7001/redis.conf
+sed -i -e 's/6379/7002/g' -e 's/dir .\//dir \/tmp\/7002\//g' 7002/redis.conf
+sed -i -e 's/6379/7003/g' -e 's/dir .\//dir \/tmp\/7003\//g' 7003/redis.conf
+</code></pre>
+<p>5）修改每个实例的声明IP</p>
+<p>虚拟机本身有多个IP，为了避免将来混乱，我们需要在redis.conf文件中指定每一个实例的绑定ip信息，格式如下：</p>
+<pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># redis实例的声明 IP</span>
+<span class="token attr-name">replica-announce-ip</span> <span class="token attr-value">112.74.33.85</span>
+</code></pre>
+<p>每个目录都要改，我们一键完成修改（在&#x2F;tmp目录执行下列命令）：</p>
+<pre class=" language-sh"><code class="language-sh"># 逐一执行
+sed -i '1a replica-announce-ip 112.74.33.85' 7001/redis.conf
+sed -i '1a replica-announce-ip 112.74.33.85' 7002/redis.conf
+sed -i '1a replica-announce-ip 112.74.33.85' 7003/redis.conf
+
+# 或者一键修改
+printf '%s\n' 7001 7002 7003 | xargs -I&#123;&#125; -t sed -i '1a replica-announce-ip 112.74.33.85' &#123;&#125;/redis.conf
+</code></pre>
+<h3 id="7-3-启动"><a href="#7-3-启动" class="headerlink" title="7.3. 启动"></a>7.3. 启动</h3><p>为了方便查看日志，我们打开3个ssh窗口，分别启动3个redis实例，启动命令：</p>
+<pre class=" language-sh"><code class="language-sh"># 第1个
+redis-server 7001/redis.conf
+# 第2个
+redis-server 7002/redis.conf
+# 第3个
+redis-server 7003/redis.conf
+</code></pre>
+<p>启动后：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022122707769.png" alt="image-20221022122707769"></p>
+<p>如果要一键停止，可以运行下面命令：</p>
+<pre class=" language-sh"><code class="language-sh">printf '%s\n' 7001 7002 7003 | xargs -I&#123;&#125; -t redis-cli -p &#123;&#125; shutdown
+</code></pre>
+<h3 id="7-4-开启主从关系"><a href="#7-4-开启主从关系" class="headerlink" title="7.4. 开启主从关系"></a>7.4. 开启主从关系</h3><p>现在三个实例还没有任何关系，要配置主从可以使用replicaof 或者slaveof（5.0以前）命令。</p>
+<p>有临时和永久两种模式：</p>
+<ul>
+<li><p>修改配置文件（永久生效）</p>
+<ul>
+<li>在redis.conf中添加一行配置：<code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code></li>
+</ul>
+</li>
+<li><p>使用redis-cli客户端连接到redis服务，执行slaveof命令（重启后失效）：</p>
+<pre class=" language-sh"><code class="language-sh">slaveof <masterip> <masterport>
+</code></pre>
+</li>
+</ul>
+<p><strong><font color='red'>注意</font></strong>：在5.0以后新增命令replicaof，与salveof效果一致。</p>
+<p>这里我们为了演示方便，使用方式二。</p>
+<p>通过redis-cli命令连接7002，执行下面命令：</p>
+<pre class=" language-sh"><code class="language-sh"># 连接 7002
+redis-cli -p 7002
+# 执行slaveof
+slaveof 112.74.33.85 7001
+</code></pre>
+<p>通过redis-cli命令连接7003，执行下面命令：</p>
+<pre class=" language-sh"><code class="language-sh"># 连接 7003
+redis-cli -p 7003
+# 执行slaveof
+slaveof 112.74.33.85 7001
+</code></pre>
+<p>然后连接 7001节点，查看集群状态：</p>
+<pre class=" language-sh"><code class="language-sh"># 连接 7001
+redis-cli -p 7001
+# 查看状态
+info replication
+</code></pre>
+<p>结果：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022124144346.png" alt="image-20221022124144346"></p>
+<h3 id="7-5-测试"><a href="#7-5-测试" class="headerlink" title="7.5. 测试"></a>7.5. 测试</h3><p>执行下列操作以测试：</p>
+<ul>
+<li><p>利用redis-cli连接7001，执行<code>set num 123</code></p>
+</li>
+<li><p>利用redis-cli连接7002，执行<code>get num</code>，再执行<code>set num 666</code></p>
+</li>
+<li><p>利用redis-cli连接7003，执行<code>get num</code>，再执行<code>set num 888</code></p>
+</li>
+</ul>
+<p>可以发现，只有在7001这个master节点上可以执行写操作，7002和7003这两个slave节点只能执行读操作。</p>
+<h2 id="8-搭建哨兵集群"><a href="#8-搭建哨兵集群" class="headerlink" title="8. 搭建哨兵集群"></a>8. 搭建哨兵集群</h2><h3 id="8-1-集群结构"><a href="#8-1-集群结构" class="headerlink" title="8.1. 集群结构"></a>8.1. 集群结构</h3><p>这里我们搭建一个三节点形成的Sentinel集群，来监管之前的Redis主从集群。如图：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022124921029.png" alt="image-20221022124921029"></p>
+<p>三个sentinel实例信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th align="center">IP</th>
+<th align="center">PORT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s1</td>
+<td align="center">112.74.33.85</td>
+<td align="center">27001</td>
+</tr>
+<tr>
+<td>s2</td>
+<td align="center">112.74.33.85</td>
+<td align="center">27002</td>
+</tr>
+<tr>
+<td>s3</td>
+<td align="center">112.74.33.85</td>
+<td align="center">27003</td>
+</tr>
+</tbody></table>
+<h3 id="8-2-准备实例和配置"><a href="#8-2-准备实例和配置" class="headerlink" title="8.2. 准备实例和配置"></a>8.2. 准备实例和配置</h3><p>要在同一台虚拟机开启3个实例，必须准备三份不同的配置文件和目录，配置文件所在目录也就是工作目录。</p>
+<p>我们创建三个文件夹，名字分别叫s1、s2、s3：</p>
+<pre class=" language-sh"><code class="language-sh"># 进入/tmp目录
+cd /tmp
+# 创建目录
+mkdir s1 s2 s3
+</code></pre>
+<p>然后我们在s1目录创建一个sentinel.conf文件，添加下面的内容：</p>
+<pre class=" language-ini"><code class="language-ini">port 27001
+sentinel announce-ip 112.74.33.85
+sentinel monitor mymaster 112.74.33.85 7001 2
+sentinel down-after-milliseconds mymaster 5000
+sentinel failover-timeout mymaster 60000
+dir "/tmp/s1"
+</code></pre>
+<p>解读：</p>
+<ul>
+<li><code>port 27001</code>：是当前sentinel实例的端口</li>
+<li><code>sentinel monitor mymaster 112.74.33.85 7001 2</code>：指定主节点信息<ul>
+<li><code>mymaster</code>：主节点名称，自定义，任意写</li>
+<li><code>112.74.33.85 7001</code>：主节点的ip和端口</li>
+<li><code>2</code>：选举master时的quorum值</li>
+</ul>
+</li>
+</ul>
+<p>然后将s1&#x2F;sentinel.conf文件拷贝到s2、s3两个目录中（在&#x2F;tmp目录执行下列命令）：</p>
+<pre class=" language-sh"><code class="language-sh"># 方式一：逐个拷贝
+cp s1/sentinel.conf s2
+cp s1/sentinel.conf s3
+# 方式二：管道组合命令，一键拷贝
+echo s2 s3 | xargs -t -n 1 cp s1/sentinel.conf
+</code></pre>
+<p>修改s2、s3两个文件夹内的配置文件，将端口分别修改为27002、27003：</p>
+<pre class=" language-sh"><code class="language-sh">sed -i -e 's/27001/27002/g' -e 's/s1/s2/g' s2/sentinel.conf
+sed -i -e 's/27001/27003/g' -e 's/s1/s3/g' s3/sentinel.conf
+</code></pre>
+<h3 id="8-3-启动"><a href="#8-3-启动" class="headerlink" title="8.3. 启动"></a>8.3. 启动</h3><p>为了方便查看日志，我们打开3个ssh窗口，分别启动3个redis实例，启动命令：</p>
+<pre class=" language-sh"><code class="language-sh"># 第1个
+redis-sentinel s1/sentinel.conf
+# 第2个
+redis-sentinel s2/sentinel.conf
+# 第3个
+redis-sentinel s3/sentinel.conf
+</code></pre>
+<p>启动后：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022132842085.png" alt="image-20221022132842085"></p>
+<h3 id="8-4-测试"><a href="#8-4-测试" class="headerlink" title="8.4. 测试"></a>8.4. 测试</h3><p>尝试让master节点7001宕机，查看sentinel日志：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022133634540.png" alt="image-20221022133634540"></p>
+<p>查看7003的日志：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022133649562.png" alt="image-20221022133649562"></p>
+<p>查看7002的日志：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022133659910.png" alt="image-20221022133659910"></p>
+<p>我自己尝试的截图，下图依次是sentinel，7002，7003和后面恢复7001的截图：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022201852160.png" alt="image-20221022201852160"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022201855221.png" alt="image-20221022201855221"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022201857598.png" alt="image-20221022201857598"></p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022202207486.png" alt="image-20221022202207486"></p>
+<h2 id="9-搭建分片集群"><a href="#9-搭建分片集群" class="headerlink" title="9. 搭建分片集群"></a>9. 搭建分片集群</h2><h3 id="9-1-集群结构"><a href="#9-1-集群结构" class="headerlink" title="9.1. 集群结构"></a>9.1. 集群结构</h3><p>分片集群需要的节点数量较多，这里我们搭建一个最小的分片集群，包含3个master节点，每个master包含一个slave节点，结构如下：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221022133748917.png" alt="image-20221022133748917"></p>
+<p>这里我们会在同一台虚拟机中开启6个redis实例，模拟分片集群，信息如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">IP</th>
+<th align="center">PORT</th>
+<th align="center">角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">112.74.33.85</td>
+<td align="center">7001</td>
+<td align="center">master</td>
+</tr>
+<tr>
+<td align="center">112.74.33.85</td>
+<td align="center">7002</td>
+<td align="center">master</td>
+</tr>
+<tr>
+<td align="center">112.74.33.85</td>
+<td align="center">7003</td>
+<td align="center">master</td>
+</tr>
+<tr>
+<td align="center">112.74.33.85</td>
+<td align="center">8001</td>
+<td align="center">slave</td>
+</tr>
+<tr>
+<td align="center">112.74.33.85</td>
+<td align="center">8002</td>
+<td align="center">slave</td>
+</tr>
+<tr>
+<td align="center">112.74.33.85</td>
+<td align="center">8003</td>
+<td align="center">slave</td>
+</tr>
+</tbody></table>
+<h3 id="9-2-准备实例和配置"><a href="#9-2-准备实例和配置" class="headerlink" title="9.2. 准备实例和配置"></a>9.2. 准备实例和配置</h3><p>删除之前的7001、7002、7003这几个目录，重新创建出7001、7002、7003、8001、8002、8003目录：</p>
+<pre class=" language-sh"><code class="language-sh"># 进入/tmp目录
+cd /tmp
+# 删除旧的，避免配置干扰
+rm -rf 7001 7002 7003
+# 创建目录
+mkdir 7001 7002 7003 8001 8002 8003
+</code></pre>
+<p>在&#x2F;tmp下准备一个新的redis.conf文件，内容如下：</p>
+<pre class=" language-ini"><code class="language-ini">port 6379
+# 开启集群功能
+cluster-enabled yes
+# 集群的配置文件名称，不需要我们创建，由redis自己维护
+cluster-config-file /tmp/6379/nodes.conf
+# 节点心跳失败的超时时间
+cluster-node-timeout 5000
+# 持久化文件存放目录
+dir /tmp/6379
+# 绑定地址
+bind 0.0.0.0
+# 让redis后台运行
+daemonize yes
+# 注册的实例ip
+replica-announce-ip 112.74.33.85
+# 保护模式
+protected-mode no
+# 数据库数量
+databases 1
+# 日志
+logfile /tmp/6379/run.log
+</code></pre>
+<p>将这个文件拷贝到每个目录下：</p>
+<pre class=" language-sh"><code class="language-sh"># 进入/tmp目录
+cd /tmp
+# 执行拷贝
+echo 7001 7002 7003 8001 8002 8003 | xargs -t -n 1 cp redis.conf
+</code></pre>
+<p>修改每个目录下的redis.conf，将其中的6379修改为与所在目录一致：</p>
+<pre class=" language-sh"><code class="language-sh"># 进入/tmp目录
+cd /tmp
+# 修改配置文件
+printf '%s\n' 7001 7002 7003 8001 8002 8003 | xargs -I&#123;&#125; -t sed -i 's/6379/&#123;&#125;/g' &#123;&#125;/redis.conf
+</code></pre>
+<h3 id="9-3-启动"><a href="#9-3-启动" class="headerlink" title="9.3. 启动"></a>9.3. 启动</h3><p>因为已经配置了后台启动模式，所以可以直接启动服务：</p>
+<pre class=" language-sh"><code class="language-sh"># 进入/tmp目录
+cd /tmp
+# 一键启动所有服务
+printf '%s\n' 7001 7002 7003 8001 8002 8003 | xargs -I&#123;&#125; -t redis-server &#123;&#125;/redis.conf
+</code></pre>
+<p>通过ps查看状态：</p>
+<pre class=" language-sh"><code class="language-sh">ps -ef | grep redis
+</code></pre>
+<p>发现服务都已经正常启动：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221023120947845.png" alt="image-20221023120947845"></p>
+<p>如果要关闭所有进程，可以执行命令：</p>
+<pre class=" language-sh"><code class="language-sh">ps -ef | grep redis | awk '&#123;print $2&#125;' | xargs kill
+</code></pre>
+<p>或者（推荐这种方式）：</p>
+<pre class=" language-sh"><code class="language-sh">printf '%s\n' 7001 7002 7003 8001 8002 8003 | xargs -I&#123;&#125; -t redis-cli -p &#123;&#125; shutdown
+</code></pre>
+<h3 id="9-4-创建集群"><a href="#9-4-创建集群" class="headerlink" title="9.4. 创建集群"></a>9.4. 创建集群</h3><p>虽然服务启动了，但是目前每个服务之间都是独立的，没有任何关联。</p>
+<p>我们需要执行命令来创建集群，在Redis5.0之前创建集群比较麻烦，5.0之后集群管理命令都集成到了redis-cli中。</p>
+<p>1）Redis5.0之前</p>
+<p>Redis5.0之前集群命令都是用redis安装包下的src&#x2F;redis-trib.rb来实现的。因为redis-trib.rb是有ruby语言编写的所以需要安装ruby环境。</p>
+<pre class=" language-sh"><code class="language-sh"># 安装依赖
+yum -y install zlib ruby rubygems
+gem install redis
+</code></pre>
+<p>然后通过命令来管理集群：</p>
+<pre class=" language-sh"><code class="language-sh"># 进入redis的src目录
+cd /tmp/redis-6.2.4/src
+# 创建集群
+./redis-trib.rb create --replicas 1 112.74.33.85:7001 112.74.33.85:7002 112.74.33.85:7003 112.74.33.85:8001 112.74.33.85:8002 112.74.33.85:8003
+</code></pre>
+<p>2）Redis5.0以后</p>
+<p>我们使用的是Redis6.2.4版本，集群管理以及集成到了redis-cli中，格式如下：</p>
+<pre class=" language-sh"><code class="language-sh">redis-cli --cluster create --cluster-replicas 1 112.74.33.85:7001 112.74.33.85:7002 112.74.33.85:7003 112.74.33.85:8001 112.74.33.85:8002 112.74.33.85:8003
+</code></pre>
+<p>命令说明：</p>
+<ul>
+<li><code>redis-cli --cluster</code>或者<code>./redis-trib.rb</code>：代表集群操作命令</li>
+<li><code>create</code>：代表是创建集群</li>
+<li><code>--replicas 1</code>或者<code>--cluster-replicas 1</code> ：指定集群中每个master的副本个数为1，此时<code>节点总数 ÷ (replicas + 1)</code> 得到的就是master的数量。因此节点列表中的前n个就是master，其它节点都是slave节点，随机分配到不同master</li>
+</ul>
+<blockquote>
+<p>大坑：使用云服务器时，redis集群不仅需要开通redis客户端连接的端口，而且需要开通集群的总线端口，总线端口为redis客户端连接的端口 + 10000</p>
+</blockquote>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221023124803925.png" alt="image-20221023124803925"></p>
+<p>运行后的样子：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221023121648015.png" alt="image-20221023121648015"></p>
+<p>这边是询问是否要按照上面列出的方式来创建集群，如果没问题，输入yes，则集群开始创建：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221023124631334.png" alt="image-20221023124631334"></p>
+<p>通过命令可以查看集群状态：</p>
+<pre class=" language-linux"><code class="language-linux">redis-cli -p 7001 cluster nodes
+</code></pre>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221023124859673.png" alt="image-20221023124859673"></p>
+<h3 id="9-5-测试"><a href="#9-5-测试" class="headerlink" title="9.5. 测试"></a>9.5. 测试</h3><p>尝试连接7001节点，存储一个数据：</p>
+<pre class=" language-sh"><code class="language-sh"># 连接
+redis-cli -p 7001
+# 存储数据
+set num 123
+# 读取数据
+get num
+# 再次存储
+set a 1
+</code></pre>
+<p>结果悲剧了：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221023125116370.png" alt="image-20221023125116370"></p>
+<p>集群操作时，需要给<code>redis-cli</code>加上<code>-c</code>参数才可以：</p>
+<pre class=" language-sh"><code class="language-sh">redis-cli -c -p 7001
+</code></pre>
+<p>这次可以了：</p>
+<p><img src="https://github.com/cflxl/pictures/raw/master/markdown/redis/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E7%9A%84%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/image-20221023125250998.png" alt="image-20221023125250998"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2022/10/17/redis-multi-cache/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="redis-multi-cache">
+                        
+                        <span class="card-title">redis-multi-cache</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/10/06/redis-base/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="redis-base">
+                        
+                        <span class="card-title">redis-base</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h1,h2, h3, h4,h5,h6'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 15px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                                <span id="year">
+                                    2022
+                                </span>
+                                
+                                    <a href="/about" target="_blank">
+                                        cflxl
+                                    </a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/cflxl/cflxl.github.io"
+                                        target="_blank">cflxl</a>
+                                    <br>
+                                    
+                                        &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words
+                                            :&nbsp;<span class="white-color">
+                                                174.7k
+                                            </span>
+                                            
+                                                
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    <span id="busuanzi_container_site_pv">
+                                                                        &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                                                                            <span id="busuanzi_value_site_pv"
+                                                                                class="white-color"></span>
+                                                                    </span>
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_uv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                                                                                    <span id="busuanzi_value_site_uv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                <br>
+
+                                                                                <!-- 运行天数提醒. -->
+                                                                                
+                                                                                    <span id="sitetime"> Loading
+                                                                                        ...</span>
+                                                                                    <script>
+                                                                                        var calcSiteTime = function () {
+                                                                                            var seconds = 1000;
+                                                                                            var minutes = seconds * 60;
+                                                                                            var hours = minutes * 60;
+                                                                                            var days = hours * 24;
+                                                                                            var years = days * 365;
+                                                                                            var today = new Date();
+                                                                                            var startYear = "2022";
+                                                                                            var startMonth = "11";
+                                                                                            var startDate = "15";
+                                                                                            var startHour = "0";
+                                                                                            var startMinute = "0";
+                                                                                            var startSecond = "0";
+                                                                                            var todayYear = today.getFullYear();
+                                                                                            var todayMonth = today.getMonth() + 1;
+                                                                                            var todayDate = today.getDate();
+                                                                                            var todayHour = today.getHours();
+                                                                                            var todayMinute = today.getMinutes();
+                                                                                            var todaySecond = today.getSeconds();
+                                                                                            var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                                                                                            var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                                                                                            var diff = t2 - t1;
+                                                                                            var diffYears = Math.floor(diff / years);
+                                                                                            var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                                                                                            // 区分是否有年份.
+                                                                                            var language = 'en';
+                                                                                            if (startYear === String(todayYear)) {
+                                                                                                document.getElementById("year").innerHTML = todayYear;
+                                                                                                var daysTip = 'This site has been running for ' + diffDays + ' days';
+                                                                                                if (language === 'zh-CN') {
+                                                                                                    daysTip = '本站已运行 ' + diffDays + ' 天';
+                                                                                                } else if (language === 'zh-HK') {
+                                                                                                    daysTip = '本站已運行 ' + diffDays + ' 天';
+                                                                                                }
+                                                                                                document.getElementById("sitetime").innerHTML = daysTip;
+                                                                                            } else {
+                                                                                                document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                                                                                                var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                                                                                    + diffDays + ' days';
+                                                                                                if (language === 'zh-CN') {
+                                                                                                    yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                } else if (language === 'zh-HK') {
+                                                                                                    yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                                                                                                }
+                                                                                                document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                                                                                            }
+                                                                                        }
+
+                                                                                        calcSiteTime();
+                                                                                    </script>
+                                                                                    
+                                                                                        <br>
+                                                                                        
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+                        
+    <a href="https://github.com/cflxl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2261497676@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2261497676" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2261497676" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

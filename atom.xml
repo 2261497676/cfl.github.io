@@ -6,7 +6,7 @@
   <link href="https://cflxl.github.io/atom.xml" rel="self"/>
   
   <link href="https://cflxl.github.io/"/>
-  <updated>2022-11-17T04:37:40.676Z</updated>
+  <updated>2022-11-17T13:17:33.439Z</updated>
   <id>https://cflxl.github.io/</id>
   
   <author>
@@ -17,11 +17,402 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>java11</title>
-    <link href="https://cflxl.github.io/2022/11/17/java11/"/>
-    <id>https://cflxl.github.io/2022/11/17/java11/</id>
+    <title>figureBed</title>
+    <link href="https://cflxl.github.io/2022/11/17/figureBed/"/>
+    <id>https://cflxl.github.io/2022/11/17/figureBed/</id>
+    <published>2022-11-17T13:16:42.000Z</published>
+    <updated>2022-11-17T13:17:33.439Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;搭建免费图床&quot;&gt;&lt;a href=&quot;#搭建免费图床&quot; class=&quot;headerlink&quot; title=&quot;搭建免费图床&quot;&gt;&lt;/a&gt;搭建免费图床&lt;/h1&gt;&lt;h2 id=&quot;1-在github上面新建仓库&quot;&gt;&lt;a href=&quot;#1-在github上面新建仓库&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="figure-bed" scheme="https://cflxl.github.io/tags/figure-bed/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://cflxl.github.io/2022/11/17/hello-world/"/>
+    <id>https://cflxl.github.io/2022/11/17/hello-world/</id>
     <published>2022-11-17T04:35:41.000Z</published>
-    <updated>2022-11-17T04:37:40.676Z</updated>
+    <updated>2022-11-17T13:15:39.241Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="hexo" scheme="https://cflxl.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexoCreateBlog</title>
+    <link href="https://cflxl.github.io/2022/11/15/hexoCreateBlog/"/>
+    <id>https://cflxl.github.io/2022/11/15/hexoCreateBlog/</id>
+    <published>2022-11-15T13:54:04.000Z</published>
+    <updated>2022-11-17T13:54:29.087Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;搭建属于自己的博客&quot;&gt;&lt;a href=&quot;#搭建属于自己的博客&quot; class=&quot;headerlink&quot; title=&quot;搭建属于自己的博客&quot;&gt;&lt;/a&gt;搭建属于自己的博客&lt;/h1&gt;&lt;h2 id=&quot;1-Hexo-Github搭建博客&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="hexo" scheme="https://cflxl.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis-principle</title>
+    <link href="https://cflxl.github.io/2022/10/29/redis-principle/"/>
+    <id>https://cflxl.github.io/2022/10/29/redis-principle/</id>
+    <published>2022-10-29T14:45:12.000Z</published>
+    <updated>2022-11-17T14:45:40.142Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Redis原理篇&quot;&gt;&lt;a href=&quot;#Redis原理篇&quot; class=&quot;headerlink&quot; title=&quot;Redis原理篇&quot;&gt;&lt;/a&gt;Redis原理篇&lt;/h1&gt;&lt;h2 id=&quot;1-原理篇-Redis数据结构&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="redis" scheme="https://cflxl.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis-senior-best-operation</title>
+    <link href="https://cflxl.github.io/2022/10/27/redis-senior-best-operation/"/>
+    <id>https://cflxl.github.io/2022/10/27/redis-senior-best-operation/</id>
+    <published>2022-10-27T14:43:49.000Z</published>
+    <updated>2022-11-17T14:44:12.611Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Redis高级篇之最佳实践&quot;&gt;&lt;a href=&quot;#Redis高级篇之最佳实践&quot; class=&quot;headerlink&quot; title=&quot;Redis高级篇之最佳实践&quot;&gt;&lt;/a&gt;Redis高级篇之最佳实践&lt;/h1&gt;&lt;h2 id=&quot;1-Redis键值设计&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="redis" scheme="https://cflxl.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java8</title>
+    <link href="https://cflxl.github.io/2022/10/25/java8/"/>
+    <id>https://cflxl.github.io/2022/10/25/java8/</id>
+    <published>2022-10-25T13:55:47.000Z</published>
+    <updated>2022-11-17T13:56:22.286Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-概述&quot;&gt;&lt;a href=&quot;#1-概述&quot; class=&quot;headerlink&quot; title=&quot;1. 概述&quot;&gt;&lt;/a&gt;1. 概述&lt;/h1&gt;&lt;h2 id=&quot;1-1-生态&quot;&gt;&lt;a href=&quot;#1-1-生态&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="java" scheme="https://cflxl.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis-multi-cache</title>
+    <link href="https://cflxl.github.io/2022/10/17/redis-multi-cache/"/>
+    <id>https://cflxl.github.io/2022/10/17/redis-multi-cache/</id>
+    <published>2022-10-17T14:42:58.000Z</published>
+    <updated>2022-11-17T14:44:44.603Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;多级缓存&quot;&gt;&lt;a href=&quot;#多级缓存&quot; class=&quot;headerlink&quot; title=&quot;多级缓存&quot;&gt;&lt;/a&gt;多级缓存&lt;/h1&gt;&lt;h2 id=&quot;1-什么是多级缓存&quot;&gt;&lt;a href=&quot;#1-什么是多级缓存&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="redis" scheme="https://cflxl.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis-senior-environment</title>
+    <link href="https://cflxl.github.io/2022/10/12/redis-senior-environment/"/>
+    <id>https://cflxl.github.io/2022/10/12/redis-senior-environment/</id>
+    <published>2022-10-12T14:41:53.000Z</published>
+    <updated>2022-11-17T14:42:22.059Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Redis高级篇的环境搭建&quot;&gt;&lt;a href=&quot;#Redis高级篇的环境搭建&quot; class=&quot;headerlink&quot; title=&quot;Redis高级篇的环境搭建&quot;&gt;&lt;/a&gt;Redis高级篇的环境搭建&lt;/h1&gt;&lt;h2 id=&quot;1-安装Docker&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="redis" scheme="https://cflxl.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis-base</title>
+    <link href="https://cflxl.github.io/2022/10/06/redis-base/"/>
+    <id>https://cflxl.github.io/2022/10/06/redis-base/</id>
+    <published>2022-10-06T14:06:42.000Z</published>
+    <updated>2022-11-17T14:07:16.624Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Redis基础&quot;&gt;&lt;a href=&quot;#Redis基础&quot; class=&quot;headerlink&quot; title=&quot;Redis基础&quot;&gt;&lt;/a&gt;Redis基础&lt;/h1&gt;&lt;h2 id=&quot;1-Redis简单介绍&quot;&gt;&lt;a href=&quot;#1-Redis简单介绍&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="redis" scheme="https://cflxl.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis-senior-distributed-cache</title>
+    <link href="https://cflxl.github.io/2022/09/27/redis-senior-distributed-cache/"/>
+    <id>https://cflxl.github.io/2022/09/27/redis-senior-distributed-cache/</id>
+    <published>2022-09-27T14:40:49.000Z</published>
+    <updated>2022-11-17T14:41:16.222Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;分布式缓存&quot;&gt;&lt;a href=&quot;#分布式缓存&quot; class=&quot;headerlink&quot; title=&quot;分布式缓存&quot;&gt;&lt;/a&gt;分布式缓存&lt;/h1&gt;&lt;p&gt;–</summary>
+        
+      
+    
+    
+    
+    
+    <category term="redis" scheme="https://cflxl.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>activemq</title>
+    <link href="https://cflxl.github.io/2022/09/21/activemq/"/>
+    <id>https://cflxl.github.io/2022/09/21/activemq/</id>
+    <published>2022-09-21T14:03:01.000Z</published>
+    <updated>2022-11-17T14:03:38.422Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MQ之ActiveMQ&quot;&gt;&lt;a href=&quot;#MQ之ActiveMQ&quot; class=&quot;headerlink&quot; title=&quot;MQ之ActiveMQ&quot;&gt;&lt;/a&gt;MQ之ActiveMQ&lt;/h1&gt;&lt;h2 id=&quot;1-入门概述&quot;&gt;&lt;a href=&quot;#1-入门概述&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="activemq" scheme="https://cflxl.github.io/tags/activemq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rabbitmq</title>
+    <link href="https://cflxl.github.io/2022/08/06/rabbitmq/"/>
+    <id>https://cflxl.github.io/2022/08/06/rabbitmq/</id>
+    <published>2022-08-06T14:03:57.000Z</published>
+    <updated>2022-11-17T14:04:27.893Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;RabbitMQ学习&quot;&gt;&lt;a href=&quot;#RabbitMQ学习&quot; class=&quot;headerlink&quot; title=&quot;RabbitMQ学习&quot;&gt;&lt;/a&gt;RabbitMQ学习&lt;/h1&gt;&lt;h2 id=&quot;1-消息队列&quot;&gt;&lt;a href=&quot;#1-消息队列&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="rabbitmq" scheme="https://cflxl.github.io/tags/rabbitmq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker-base</title>
+    <link href="https://cflxl.github.io/2022/07/17/docker-base/"/>
+    <id>https://cflxl.github.io/2022/07/17/docker-base/</id>
+    <published>2022-07-17T13:52:07.000Z</published>
+    <updated>2022-11-17T13:53:35.370Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-Docker概述&quot;&gt;&lt;a href=&quot;#1-Docker概述&quot; class=&quot;headerlink&quot; title=&quot;1. Docker概述&quot;&gt;&lt;/a&gt;1. Docker概述&lt;/h1&gt;&lt;h2 id=&quot;1-1-Docker为什么出现&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="docker" scheme="https://cflxl.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis-operation</title>
+    <link href="https://cflxl.github.io/2022/05/25/redis-operation/"/>
+    <id>https://cflxl.github.io/2022/05/25/redis-operation/</id>
+    <published>2022-05-25T14:05:21.000Z</published>
+    <updated>2022-11-17T14:06:19.982Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Redis实战&quot;&gt;&lt;a href=&quot;#Redis实战&quot; class=&quot;headerlink&quot; title=&quot;Redis实战&quot;&gt;&lt;/a&gt;Redis实战&lt;/h1&gt;&lt;h2 id=&quot;1-短信登录&quot;&gt;&lt;a href=&quot;#1-短信登录&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="redis" scheme="https://cflxl.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker-operation</title>
+    <link href="https://cflxl.github.io/2022/04/17/docker-operation/"/>
+    <id>https://cflxl.github.io/2022/04/17/docker-operation/</id>
+    <published>2022-04-17T13:18:29.000Z</published>
+    <updated>2022-11-17T13:51:32.353Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-安装docker&quot;&gt;&lt;a href=&quot;#1-安装docker&quot; class=&quot;headerlink&quot; title=&quot;1.安装docker&quot;&gt;&lt;/a&gt;1.安装docker&lt;/h1&gt;&lt;h2 id=&quot;1-0-ubuntu安装：使用官方安装脚本自动安装&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="docker" scheme="https://cflxl.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx-base</title>
+    <link href="https://cflxl.github.io/2022/02/14/nginx-base/"/>
+    <id>https://cflxl.github.io/2022/02/14/nginx-base/</id>
+    <published>2022-02-14T13:56:58.000Z</published>
+    <updated>2022-11-17T13:57:28.013Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;NginxStudy&quot;&gt;&lt;a href=&quot;#NginxStudy&quot; class=&quot;headerlink&quot; title=&quot;NginxStudy&quot;&gt;&lt;/a&gt;NginxStudy&lt;/h1&gt;&lt;h2 id=&quot;一-认识Nginx&quot;&gt;&lt;a href=&quot;#一-认识Nginx&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="nginx" scheme="https://cflxl.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javaIO</title>
+    <link href="https://cflxl.github.io/2021/11/10/javaIO/"/>
+    <id>https://cflxl.github.io/2021/11/10/javaIO/</id>
+    <published>2021-11-10T13:54:57.000Z</published>
+    <updated>2022-11-17T13:55:23.427Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-IO简介&quot;&gt;&lt;a href=&quot;#1-IO简介&quot; class=&quot;headerlink&quot; title=&quot;1. IO简介&quot;&gt;&lt;/a&gt;1. IO简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-什么是IO&quot;&gt;&lt;a href=&quot;#1-1-什么是IO&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="java" scheme="https://cflxl.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java11</title>
+    <link href="https://cflxl.github.io/2021/10/17/java11/"/>
+    <id>https://cflxl.github.io/2021/10/17/java11/</id>
+    <published>2021-10-17T04:35:41.000Z</published>
+    <updated>2022-11-17T13:15:17.493Z</updated>
     
     
       
@@ -35,26 +426,7 @@
     
     
     
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://cflxl.github.io/2022/11/15/hello-world/"/>
-    <id>https://cflxl.github.io/2022/11/15/hello-world/</id>
-    <published>2022-11-15T13:37:46.908Z</published>
-    <updated>2022-11-15T13:37:46.908Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
+    <category term="java" scheme="https://cflxl.github.io/tags/java/"/>
     
   </entry>
   
