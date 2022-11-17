@@ -1,0 +1,1303 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="java11, cflxl">
+    <meta name="description" content="1. JShell(java9开始支持)
+用过Python的童鞋都知道，Python 中的读取-求值-打印循环（ Read-Evaluation-Print Loop ）很方便。它的目的在于以即时结果和反馈的形式。java9引入了jshel">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>java11 | cflxl</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="cflxl" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">cflxl</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Contact</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>Friends</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">cflxl</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			Friends
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">java11</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2022-11-17
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
+                    2022-11-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    5.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    22 Min
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1-JShell-java9开始支持"><a href="#1-JShell-java9开始支持" class="headerlink" title="1. JShell(java9开始支持)"></a>1. JShell(java9开始支持)</h1><blockquote>
+<p>用过Python的童鞋都知道，Python 中的读取-求值-打印循环（ Read-Evaluation-Print Loop ）很方便。它的目的在于以即时结果和反馈的形式。<br>java9引入了jshell这个交互性工具，让Java也可以像脚本语言一样来运行，可以从控制台启动 jshell ，在 jshell 中直接输入表达式并查看其执行结果。当需要测试一个方法的运行效果，或是快速的对表达式进行求值时，jshell 都非常实用。<br>除了表达式之外，还可以创建 Java 类和方法。jshell 也有基本的代码完成功能。我们在教人们如何编写 Java 的过程中，不再需要解释 “public static void main（String [] args）” 这句废话。</p>
+</blockquote>
+<h1 id="2-Dynamic-Class-File-Constants类文件新添的一种结构"><a href="#2-Dynamic-Class-File-Constants类文件新添的一种结构" class="headerlink" title="2. Dynamic Class-File Constants类文件新添的一种结构"></a>2. Dynamic Class-File Constants类文件新添的一种结构</h1><blockquote>
+<p>Java的类型文件格式将被拓展，支持一种新的常量池格式：CONSTANT_Dynamic，加载CONSTANT_Dynamic会将创建委托给bootstrap方法。<br>其目标是降低开发新形式的可实现类文件约束带来的成本和干扰。</p>
+</blockquote>
+<h1 id="3-局部变量类型推断（var关键字）-java10-开始支持"><a href="#3-局部变量类型推断（var关键字）-java10-开始支持" class="headerlink" title="3. 局部变量类型推断（var关键字）(java10 开始支持)"></a>3. 局部变量类型推断（var关键字）(java10 开始支持)</h1><p><strong>什么是局部变量类型推断？</strong></p>
+<pre><code>var javastack = &quot;javastack&quot;;
+System.out.println(javastack);
+</code></pre>
+<blockquote>
+<p>大家看出来了，局部变量类型推断就是左边的类型直接使用 var 定义，而不用写具体的类型，编译器能根据右边的表达式自动推断类型，如上面的 String 。</p>
+</blockquote>
+<pre><code>var javastack = &quot;javastack&quot;;
+就等于：
+String javastack = &quot;javastack&quot;;
+</code></pre>
+<p>在声明隐式类型的lambda表达式的形参时允许使用var</p>
+<p>使用var的好处是在使用lambda表达式时给参数加上注解</p>
+<pre><code>(@Deprecated var x, @Nullable var y) -&gt; x.process(y);
+</code></pre>
+<h1 id="4-新加的一些更实用的API"><a href="#4-新加的一些更实用的API" class="headerlink" title="4. 新加的一些更实用的API"></a>4. 新加的一些更实用的API</h1><h2 id="4-1-新的本机不可修改集合API"><a href="#4-1-新的本机不可修改集合API" class="headerlink" title="4.1. 新的本机不可修改集合API"></a>4.1. 新的本机不可修改集合API</h2><blockquote>
+<p>自 Java 9 开始，Jdk 里面为集合（List&#x2F; Set&#x2F; Map）都添加了 of 和 copyOf 方法，它们两个都用来创建不可变的集合，来看下它们的使用和区别。</p>
+</blockquote>
+<p>示例1：</p>
+<pre><code>var list = List.of(&quot;Java&quot;, &quot;Python&quot;, &quot;C&quot;);
+var copy = List.copyOf(list);
+System.out.println(list == copy); // true
+</code></pre>
+<p>示例2：</p>
+<pre><code>var list = new ArrayList&lt;String&gt;();
+var copy = List.copyOf(list);
+System.out.println(list == copy); // false
+</code></pre>
+<p>示例1和2代码差不多，为什么一个为true,一个为false?</p>
+<p>来看下它们的源码：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token operator">&lt;</span>E<span class="token operator">></span> List<span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token function">of</span><span class="token punctuation">(</span>E<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> elements<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>elements<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// implicit null check of elements</span>
+    <span class="token keyword">case</span> <span class="token number">0</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> ImmutableCollections<span class="token punctuation">.</span><span class="token function">emptyList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ImmutableCollections<span class="token punctuation">.</span>List12</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>elements<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ImmutableCollections<span class="token punctuation">.</span>List12</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>elements<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> elements<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ImmutableCollections<span class="token punctuation">.</span>ListN</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>elements<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> <span class="token operator">&lt;</span>E<span class="token operator">></span> List<span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token function">copyOf</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token operator">></span> coll<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> ImmutableCollections<span class="token punctuation">.</span><span class="token function">listCopy</span><span class="token punctuation">(</span>coll<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> <span class="token operator">&lt;</span>E<span class="token operator">></span> List<span class="token operator">&lt;</span>E<span class="token operator">></span> <span class="token function">listCopy</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">E</span><span class="token operator">></span> coll<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>coll <span class="token keyword">instanceof</span> <span class="token class-name">AbstractImmutableList</span> <span class="token operator">&amp;&amp;</span> coll<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> SubList<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>List<span class="token operator">&lt;</span>E<span class="token operator">></span><span class="token punctuation">)</span>coll<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>List<span class="token operator">&lt;</span>E<span class="token operator">></span><span class="token punctuation">)</span>List<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>coll<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<blockquote>
+<p>可以看出 copyOf 方法会先判断来源集合是不是 AbstractImmutableList 类型的，如果是，就直接返回，如果不是，则调用 of 创建一个新的集合。<br>示例2因为用的 new 创建的集合，不属于不可变 AbstractImmutableList 类的子类，所以 copyOf 方法又创建了一个新的实例，所以为false。<br>注意：使用of和copyOf创建的集合为不可变集合，不能进行添加、删除、替换、排序等操作，不然会报 java.lang.UnsupportedOperationException 异常。<br>上面演示了 List 的 of 和 copyOf 方法，Set 和 Map 接口都有。</p>
+</blockquote>
+<p>除了更短和更好阅读之外，这些方法也可以避免您选择特定的集合实现。在创建后，继续添加元素到这些集合会导致 “UnsupportedOperationException” 。</p>
+<h2 id="4-2-Stream-加强"><a href="#4-2-Stream-加强" class="headerlink" title="4.2. Stream 加强"></a>4.2. Stream 加强</h2><p>Stream 是 Java 8 中的新特性，Java 9 开始对 Stream 增加了以下 4 个新方法。</p>
+<ul>
+<li><ol>
+<li>增加单个参数构造方法，可为null</li>
+</ol>
+</li>
+</ul>
+<p>Stream.ofNullable(null).count(); &#x2F;&#x2F; 0</p>
+<ul>
+<li><ol start="2">
+<li>增加 takeWhile 和 dropWhile 方法</li>
+</ol>
+</li>
+</ul>
+<p>Stream.of(1, 2, 3, 2, 1)<br>.takeWhile(n -&gt; n &lt; 3)<br>.collect(Collectors.toList()); &#x2F;&#x2F; [1, 2]<br>从开始计算，当 n &gt;&#x3D; 3 时就截止。</p>
+<p>Stream.of(1, 2, 3, 2, 1)<br>.dropWhile(n -&gt; n &lt; 3)<br>.collect(Collectors.toList()); &#x2F;&#x2F; [3, 2, 1]<br>这个和上面的相反，一旦 n &lt; 3 不成立就开始计算。</p>
+<ul>
+<li>3）iterate重载</li>
+</ul>
+<p>这个 iterate 方法的新重载方法，可以让你提供一个 Predicate (判断条件)来指定什么时候结束迭代。</p>
+<h2 id="4-3-增加了一系列的字符串处理方法"><a href="#4-3-增加了一系列的字符串处理方法" class="headerlink" title="4.3. 增加了一系列的字符串处理方法"></a>4.3. 增加了一系列的字符串处理方法</h2><p>如以下所示。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 判断字符串是否为空白</span>
+<span class="token string">" "</span><span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token comment" spellcheck="true">// 去除首尾空白</span>
+<span class="token string">" Javastack "</span><span class="token punctuation">.</span><span class="token function">strip</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "Javastack"</span>
+<span class="token comment" spellcheck="true">// 去除尾部空格</span>
+<span class="token string">" Javastack "</span><span class="token punctuation">.</span><span class="token function">stripTrailing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// " Javastack"</span>
+<span class="token comment" spellcheck="true">// 去除首部空格</span>
+<span class="token string">" Javastack "</span><span class="token punctuation">.</span><span class="token function">stripLeading</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "Javastack "</span>
+<span class="token comment" spellcheck="true">// 复制字符串</span>
+<span class="token string">"Java"</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// "JavaJavaJava"</span>
+<span class="token comment" spellcheck="true">// 行数统计</span>
+<span class="token string">"A\nB\nC"</span><span class="token punctuation">.</span><span class="token function">lines</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
+</code></pre>
+<h2 id="4-4-Optional-加强"><a href="#4-4-Optional-加强" class="headerlink" title="4.4. Optional 加强"></a>4.4. Optional 加强</h2><pre><code>Opthonal 也增加了几个非常酷的方法，现在可以很方便的将一个 Optional 转换成一个 Stream, 或者当一个空 Optional 时给它一个替代的。
+
+Optional.of(&quot;javastack&quot;).orElseThrow(); // javastack
+Optional.of(&quot;javastack&quot;).stream().count(); // 1
+Optional.ofNullable(null)
+.or(() -&gt; Optional.of(&quot;javastack&quot;))
+.get(); // javastack
+</code></pre>
+<h2 id="4-5-改进的文件API"><a href="#4-5-改进的文件API" class="headerlink" title="4.5. 改进的文件API"></a>4.5. 改进的文件API</h2><p>InputStream 加强</p>
+<p>InputStream 终于有了一个非常有用的方法：transferTo，可以用来将数据直接传输到 OutputStream，这是在处理原始数据流时非常常见的一种用法，如下示例。</p>
+<pre><code>var classLoader = ClassLoader.getSystemClassLoader();
+var inputStream = classLoader.getResourceAsStream(&quot;javastack.txt&quot;);
+var javastack = File.createTempFile(&quot;javastack2&quot;, &quot;txt&quot;);
+try (var outputStream = new FileOutputStream(javastack)) &#123;
+    inputStream.transferTo(outputStream);
+&#125;
+</code></pre>
+<h1 id="5-移除的一些其他内容"><a href="#5-移除的一些其他内容" class="headerlink" title="5. 移除的一些其他内容"></a>5. 移除的一些其他内容</h1><ul>
+<li>移除项<ul>
+<li>移除了com.sun.awt.AWTUtilities</li>
+<li>移除了sun.misc.Unsafe.defineClass，</li>
+<li>使用java.lang.invoke.MethodHandles.Lookup.defineClass来替代</li>
+<li>移除了Thread.destroy()以及 Thread.stop(Throwable)方法</li>
+<li>移除了sun.nio.ch.disableSystemWideOverlappingFileLockCheck、sun.locale.formatasdefault属性</li>
+<li>移除了jdk.snmp模块</li>
+<li>移除了javafx，openjdk估计是从java10版本就移除了，oracle jdk10还尚未移除javafx，而java11版本则oracle的jdk版本也移除了javafx</li>
+<li>移除了Java Mission Control，从JDK中移除之后，需要自己单独下载</li>
+<li>移除了这些Root Certificates ：Baltimore Cybertrust Code Signing CA，SECOM ，AOL and Swisscom</li>
+</ul>
+</li>
+<li>废弃项<ul>
+<li>-XX+AggressiveOpts选项</li>
+<li>-XX:+UnlockCommercialFeatures</li>
+<li>-XX:+LogCommercialFeatures选项也不再需要</li>
+</ul>
+</li>
+</ul>
+<h1 id="6-标准Java异步HTTP客户端"><a href="#6-标准Java异步HTTP客户端" class="headerlink" title="6. 标准Java异步HTTP客户端"></a>6. 标准Java异步HTTP客户端</h1><p>这是 Java 9 开始引入的一个处理 HTTP 请求的的 HTTP Client API，该 API 支持同步和异步，而在 Java 11 中已经为正式可用状态，你可以在 java.net 包中找到这个 API。</p>
+<p>来看一下 HTTP Client 的用法：</p>
+<pre><code>var request = HttpRequest.newBuilder()
+.uri(URI.create(&quot;https://javastack.cn&quot;))
+.GET()
+.build();
+var client = HttpClient.newHttpClient();
+// 同步
+HttpResponse&lt;String&gt; response = client.send(request, HttpResponse.BodyHandlers.ofString());
+System.out.println(response.body());
+// 异步
+client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+.thenApply(HttpResponse::body)
+.thenAccept(System.out::println);
+</code></pre>
+<p>上面的 .GET() 可以省略，默认请求方式为 Get！</p>
+<p>更多使用示例可以看这个 API，后续有机会再做演示。</p>
+<p>现在 Java 自带了这个 HTTP Client API，我们以后还有必要用 Apache 的 HttpClient 工具包吗？</p>
+<h1 id="7-更简化的编译运行"><a href="#7-更简化的编译运行" class="headerlink" title="7. 更简化的编译运行"></a>7. 更简化的编译运行</h1><p>JEP 330 : 增强java启动器支持运行单个java源代码文件的程序.</p>
+<p>注意点 :</p>
+<ul>
+<li>1)执行源文件中的第一个类, 第一个类必须包含主方法</li>
+<li>2)并且不可以使用别源文件中的自定义类, 本文件中的自定义类是可以使用的.</li>
+</ul>
+<p>一个命令编译运行源代码</p>
+<p>看下面的代码。</p>
+<pre><code>// 编译
+javac Javastack.java
+// 运行
+java Javastack
+</code></pre>
+<blockquote>
+<p>在我们的认知里面，要运行一个 Java 源代码必须先编译，再运行，两步执行动作。而在未来的 Java 11 版本中，通过一个 java 命令就直接搞定了，如以下所示。</p>
+</blockquote>
+<pre><code>java Javastack.java
+</code></pre>
+<h1 id="8-Unicode-10"><a href="#8-Unicode-10" class="headerlink" title="8. Unicode 10"></a>8. Unicode 10</h1><blockquote>
+<p>Unicode 10 增加了8518个字符, 总计达到了136690个字符. 并且增加了4个脚本.同时还有56个新的emoji表情符号.</p>
+</blockquote>
+<h1 id="9-Remove-the-JavaEE-and-CORBA-Moudles"><a href="#9-Remove-the-JavaEE-and-CORBA-Moudles" class="headerlink" title="9. Remove the JavaEE and CORBA Moudles"></a>9. Remove the JavaEE and CORBA Moudles</h1><blockquote>
+<p>在java11中移除了不太使用的JavaEE模块和CORBA技术<br>CORBA来自于二十世纪九十年代，Oracle说，现在用CORBA开发现代Java应用程序已经没有意义了，维护CORBA的成本已经超过了保留它带来的好处。</p>
+</blockquote>
+<blockquote>
+<p>但是删除CORBA将使得那些依赖于JDK提供部分CORBA API的CORBA实现无法运行。目前还没有第三方CORBA版本，也不确定是否会有第三方愿意接手CORBA API的维护工作。</p>
+</blockquote>
+<p>在java11中将java9标记废弃的Java EE及CORBA模块移除掉，具体如下：</p>
+<ul>
+<li>（1）xml相关的，<br>java.xml.ws,<br>java.xml.bind，<br>java.xml.ws，<br>java.xml.ws.annotation，<br>jdk.xml.bind，<br>jdk.xml.ws被移除，<br>只剩下java.xml，java.xml.crypto,jdk.xml.dom这几个模块；</li>
+<li>（2）java.corba，<br>java.se.ee，<br>java.activation，<br>java.transaction被移除，<br>但是java11新增一个java.transaction.xa模块</li>
+</ul>
+<h1 id="10-JEP-335-Deprecate-the-Nashorn-JavaScript-Engine"><a href="#10-JEP-335-Deprecate-the-Nashorn-JavaScript-Engine" class="headerlink" title="10. JEP : 335 : Deprecate the Nashorn JavaScript Engine"></a>10. JEP : 335 : Deprecate the Nashorn JavaScript Engine</h1><blockquote>
+<p>废除Nashorn javascript引擎，在后续版本准备移除掉，有需要的可以考虑使用GraalVM</p>
+</blockquote>
+<h1 id="11-JEP-336-Deprecate-the-Pack200-Tools-and-API"><a href="#11-JEP-336-Deprecate-the-Pack200-Tools-and-API" class="headerlink" title="11. JEP : 336 : Deprecate the Pack200 Tools and API"></a>11. JEP : 336 : Deprecate the Pack200 Tools and API</h1><blockquote>
+<p>Java5中带了一个压缩工具:Pack200，这个工具能对普通的jar文件进行高效压缩。其实现原理是根据Java类特有的结构，合并常数池，去掉无用信息等来实现对java类的高效压缩。由于是专门对Java类进行压缩的，所以对普通文件的压缩和普通压缩软件没有什么两样，但是对于Jar文件却能轻易达到10-40%的压缩率。这在Java应用部署中很有用，尤其对于移动Java计算，能够大大减小代码下载量。<br>Java5中还提供了这一技术的API接口，你可以将其嵌入到你的程序中使用。使用的方法很简单，下面的短短几行代码即可以实现jar的压缩和解压：</p>
+</blockquote>
+<p>压缩</p>
+<pre><code>Packer packer=Pack200.newPacker(); 
+OutputStream output=new BufferedOutputStream(new  FileOutputStream(outfile)); 
+packer.pack(new JarFile(jarFile), output); 
+output.close(); 
+</code></pre>
+<p>解压</p>
+<pre><code>Unpacker unpacker=Pack200.newUnpacker(); 
+output=new JarOutputStream(new FileOutputStream(jarFile)); 
+unpacker.unpack(pack200File, output); 
+output.close(); 
+</code></pre>
+<blockquote>
+<p>Pack200的压缩和解压缩速度是比较快的，而且压缩率也是很惊人的，在我是使用的包4.46MB压缩后成了1.44MB（0.322%），而且随着包的越大压缩率会根据明显，据说如果jar包都是class类可以压缩到1&#x2F;9的大小。其实JavaWebStart还有很多功能，例如可以按不同的jar包进行lazy下载和 单独更新，设置可以根据jar中的类变动进行class粒度的下载。</p>
+</blockquote>
+<blockquote>
+<p>但是在java11中废除了pack200以及unpack200工具以及java.util.jar中的Pack200 API。因为Pack200主要是用来压缩jar包的工具，由于网络下载速度的提升以及java9引入模块化系统之后不再依赖Pack200，因此这个版本将其移除掉。</p>
+</blockquote>
+<h1 id="12-新的Epsilon垃圾收集器"><a href="#12-新的Epsilon垃圾收集器" class="headerlink" title="12. 新的Epsilon垃圾收集器"></a>12. 新的Epsilon垃圾收集器</h1><blockquote>
+<p>A NoOp Garbage Collector<br>JDK上对这个特性的描述是: 开发一个处理内存分配但不实现任何实际内存回收机制的GC, 一旦可用堆内存用完, JVM就会退出。<br>如果有System.gc()调用, 实际上什么也不会发生(这种场景下和-XX:+DisableExplicitGC效果一样), 因为没有内存回收, 这个实现可能会警告用户尝试强制GC是徒劳.</p>
+</blockquote>
+<p>用法 : -XX:+UnlockExperimentalVMOptions -XX:+UseEpsilonGC</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Garbage</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">finalize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">+</span> <span class="token string">" : "</span> <span class="token operator">+</span> n <span class="token operator">+</span> <span class="token string">" is dying"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EpsilonTest</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>Garbage<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Garbage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1000000</span> <span class="token operator">&amp;&amp;</span> count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                list<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                count<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"程序结束"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>如果使用选项-XX:+UseEpsilonGC, 程序很快就因为堆空间不足而退出</p>
+<blockquote>
+<p>使用这个选项的原因 :<br>提供完全被动的GC实现, 具有有限的分配限制和尽可能低的延迟开销,但代价是内存占用和内存吞吐量。<br>众所周知, java实现可广泛选择高度可配置的GC实现. 各种可用的收集器最终满足不同的需求, 即使它们的可配置性使它们的功能相交. 有时更容易维护单独的实现, 而不是在现有GC实现上堆积另一个配置选项。  </p>
+</blockquote>
+<ul>
+<li>主要用途如下 :<ul>
+<li>性能测试(它可以帮助过滤掉GC引起的性能假象)</li>
+<li>内存压力测试(例如,知道测试用例 应该分配不超过1GB的内存, 我们可以使用-Xmx1g –XX:+UseEpsilonGC, 如果程序有问题, 则程序会崩溃)</li>
+</ul>
+</li>
+<li>非常短的JOB任务(对象这种任务, 接受GC清理堆那都是浪费空间)<ul>
+<li>VM接口测试</li>
+<li>Last-drop 延迟&amp;吞吐改进</li>
+</ul>
+</li>
+</ul>
+<h1 id="13-新的ZGC垃圾收集器"><a href="#13-新的ZGC垃圾收集器" class="headerlink" title="13. 新的ZGC垃圾收集器"></a>13. 新的ZGC垃圾收集器</h1><p>ZGC, 这应该是JDK11最为瞩目的特性, 没有之一. 但是后面带了Experimental, 说明这还不建议用到生产环境。</p>
+<blockquote>
+<p>ZGC, A Scalable Low-Latency Garbage Collector(Experimental)<br>ZGC, 这应该是JDK11最为瞩目的特性, 没有之一. 但是后面带了Experimental, 说明这还不建议用到生产环境.</p>
+</blockquote>
+<pre><code>GC暂停时间不会超过10ms
+既能处理几百兆的小堆, 也能处理几个T的大堆(OMG)
+和G1相比, 应用吞吐能力不会下降超过15%
+为未来的GC功能和利用colord指针以及Load barriers优化奠定基础
+初始只支持64位系统
+</code></pre>
+<blockquote>
+<p>ZGC的设计目标是：支持TB级内存容量，暂停时间低（&lt;10ms），对整个程序吞吐量的影响小于15%。 将来还可以扩展实现机制，以支持不少令人兴奋的功能，例如多层堆（即热对象置于DRAM和冷对象置于NVMe闪存），或压缩堆。</p>
+</blockquote>
+<blockquote>
+<p>GC是java主要优势之一. 然而, 当GC停顿太长, 就会开始影响应用的响应时间.消除或者减少GC停顿时长, java将对更广泛的应用场景是一个更有吸引力的平台. 此外, 现代系统中可用内存不断增长,用户和程序员希望JVM能够以高效的方式充分利用这些内存, 并且无需长时间的GC暂停时间.</p>
+</blockquote>
+<p>STW – stop the world</p>
+<blockquote>
+<p>ZGC是一个并发, 基于region, 压缩型的垃圾收集器, 只有root扫描阶段会STW, 因此GC停顿时间不会随着堆的增长和存活对象的增长而变长.</p>
+</blockquote>
+<p>ZGC : avg 1.091ms	max:1.681<br><br>G1	 : avg 156.806  max:543.846<br></p>
+<blockquote>
+<p>用法 : -XX:+UnlockExperimentalVMOptions –XX:+UseZGC, 因为ZGC还处于实验阶段, 所以需要通过JVM参数来解锁这个特性</p>
+</blockquote>
+<h1 id="14-完全支持Linux容器（包括Docker）"><a href="#14-完全支持Linux容器（包括Docker）" class="headerlink" title="14. 完全支持Linux容器（包括Docker）"></a>14. 完全支持Linux容器（包括Docker）</h1><blockquote>
+<p>许多运行在Java虚拟机中的应用程序（包括Apache Spark和Kafka等数据服务以及传统的企业应用程序）都可以在Docker容器中运行。但是在Docker容器中运行Java应用程序一直存在一个问题，那就是在容器中运行JVM程序在设置内存大小和CPU使用率后，会导致应用程序的性能下降。这是因为Java应用程序没有意识到它正在容器中运行。随着Java 10的发布，这个问题总算得以解决，JVM现在可以识别由容器控制组（cgroups）设置的约束。可以在容器中使用内存和CPU约束来直接管理Java应用程序，其中包括：</p>
+</blockquote>
+<blockquote>
+<p>遵守容器中设置的内存限制<br>在容器中设置可用的CPU<br>在容器中设置CPU约束<br>Java 10的这个改进在Docker for Mac、Docker for Windows以及Docker Enterprise Edition等环境均有效。</p>
+</blockquote>
+<blockquote>
+<p>遵守容器中设置的内存限制<br>在容器中设置可用的CPU<br>在容器中设置CPU约束<br>Java 10的这个改进在Docker for Mac、Docker for Windows以及Docker Enterprise Edition等环境均有效。</p>
+</blockquote>
+<blockquote>
+<p>Java将服务器类机定义为具有2个CPU和2GB内存，以及默认堆大小为物理内存的1&#x2F;4。例如，Docker企业版安装设置为2GB内存和4个CPU的环境，我们可以比较在这个Docker容器上运行Java 8和Java 10的区别。</p>
+</blockquote>
+<p>首先，对于Java 8：</p>
+<p>docker container run -it -m512 –entrypoint bash openjdk:latest<br>$ docker-java-home&#x2F;bin&#x2F;java -XX:+PrintFlagsFinal -version | grep MaxHeapSize<br>uintx MaxHeapSize                              :&#x3D; 524288000                          {product}<br>openjdk version “1.8.0_162”<br>1<br>2<br>3<br>4<br>最大堆大小为512M或Docker EE安装设置的2GB的1&#x2F;4，而不是容器上设置的512M限制。</p>
+<p>相比之下，在Java 10上运行相同的命令表明，容器中设置的内存限制与预期的128M非常接近：</p>
+<p>docker container run -it -m512M –entrypoint bash openjdk:10-jdk<br>$ docker-java-home&#x2F;bin&#x2F;java -XX:+PrintFlagsFinal -version | grep MaxHeapSize<br>size_t MaxHeapSize                              &#x3D; 134217728                          {product} {ergonomic}<br>openjdk version “10” 2018-03-20<br>1<br>2<br>3<br>4<br>设置可用的CPU<br>默认情况下，每个容器对主机CPU周期的访问是无限的。可以设置各种约束来限制给定容器对主机CPU周期的访问。Java 10可以识别这些限制：</p>
+<p>docker container run -it –cpus 2 openjdk:10-jdk<br>jshell&gt; Runtime.getRuntime().availableProcessors()<br>$1 &#x3D;&#x3D;&gt; 2<br>1<br>2<br>3<br>分配给Docker EE的所有CPU会获得相同比例的CPU周期。这个比例可以通过修改容器的CPU share权重来调整，而CPU share权重与其它所有运行在容器中的权重相关。此比例仅适用于正在运行的CPU密集型的进程。当某个容器中的任务空闲时，其他容器可以使用余下的CPU时间。实际的CPU时间的数量取决于系统上运行的容器的数量。这些可以在Java 10中设置：</p>
+<p>docker container run -it –cpu-shares 2048 openjdk:10-jdk<br>jshell&gt; Runtime.getRuntime().availableProcessors()<br>$1 &#x3D;&#x3D;&gt; 2<br>1<br>2<br>3<br>cpuset约束设置了哪些CPU允许在Java 10中执行。</p>
+<p>docker run -it –cpuset-cpus&#x3D;”1,2,3” openjdk:10-jdk<br>jshell&gt; Runtime.getRuntime().availableProcessors()<br>$1 &#x3D;&#x3D;&gt; 3<br>1<br>2<br>3<br>分配内存和CPU<br>使用Java 10，可以使用容器设置来估算部署应用程序所需的内存和CPU的分配。我们假设已经确定了容器中运行的每个进程的内存堆和CPU需求，并设置了JAVA_OPTS配置。例如，如果有一个跨10个节点分布的应用程序，其中五个节点每个需要512Mb的内存和1024个CPU-shares，另外五个节点每个需要256Mb和512个CPU-shares。</p>
+<p>请注意，1个CPU share比例由1024表示。</p>
+<p>对于内存，应用程序至少需要分配5Gb。</p>
+<p>512Mb × 5 &#x3D; 2.56Gb<br>256Mb × 5 &#x3D; 1.28Gb<br>该应用程序需要8个CPU才能高效运行。</p>
+<p>1024 x 5 &#x3D; 5个CPU<br>512 x 5 &#x3D; 3个CPU<br>最佳实践是建议分析应用程序以确定运行在JVM中的每个进程实际需要多少内存和分配多少CPU。但是，Java 10消除了这种猜测，可以通过调整容器大小以防止Java应用程序出现内存不足的错误以及分配足够的CPU来处理工作负载。</p>
+<h1 id="15-支持G1上的并行完全垃圾收集"><a href="#15-支持G1上的并行完全垃圾收集" class="headerlink" title="15. 支持G1上的并行完全垃圾收集"></a>15. 支持G1上的并行完全垃圾收集</h1><blockquote>
+<p>对于 G1 GC，相比于 JDK 8，升级到 JDK 11 即可免费享受到：并行的 Full GC，快速的 CardTable 扫描，自适应的堆占用比例调整（IHOP），在并发标记阶段的类型卸载等等。这些都是针对 G1 的不断增强，其中串行 Full GC 等甚至是曾经被广泛诟病的短板，你会发现 GC 配置和调优在 JDK11 中越来越方便。</p>
+</blockquote>
+<h1 id="16-免费的低耗能堆分析仪"><a href="#16-免费的低耗能堆分析仪" class="headerlink" title="16. 免费的低耗能堆分析仪"></a>16. 免费的低耗能堆分析仪</h1><p>通过JVMTI的SampledObjectAlloc回调提供了一个开销低的heap分析方式</p>
+<p>提供一个低开销的, 为了排错java应用问题, 以及JVM问题的数据收集框架, 希望达到的目标如下 :<br>    提供用于生产和消费数据作为事件的API<br>    提供缓存机制和二进制数据格式<br>    允许事件配置和事件过滤<br>    提供OS,JVM和JDK库的事件</p>
+<h1 id="17-JEP-329-实现ChaCha20和Poly1305两种加密算法"><a href="#17-JEP-329-实现ChaCha20和Poly1305两种加密算法" class="headerlink" title="17. JEP 329 : 实现ChaCha20和Poly1305两种加密算法"></a>17. JEP 329 : 实现ChaCha20和Poly1305两种加密算法</h1><p>两种加密算法, 代替RC4<br>实现 RFC 7539的ChaCha20 and ChaCha20-Poly1305加密算法</p>
+<p>RFC7748定义的秘钥协商方案更高效, 更安全. JDK增加两个新的接口<br>XECPublicKey 和 XECPrivateKey<br>KeyPairGenerator kpg &#x3D; KeyPairGenerator.getInstance(“XDH”);<br>NamedParameterSpec paramSpec &#x3D; new NamedParameterSpec(“X25519”);<br>kpg.initialize(paramSpec);<br>KeyPair kp &#x3D; kgp.generateKeyPair();</p>
+<p>KeyFactory kf &#x3D; KeyFactory.getInstance(“XDH”);<br>BigInteger u &#x3D; new BigInteger(“xxx”);<br>XECPublicKeySpec pubSpec &#x3D; new XECPublicKeySpec(paramSpec, u);<br>PublicKey pubKey &#x3D; kf.generatePublic(pubSpec);</p>
+<p>KeyAgreement ka &#x3D; KeyAgreement.getInstance(“XDH”);<br>ka.init(kp.getPrivate());<br>ka.doPhase(pubKey, true);<br>byte[] secret &#x3D; ka.generateSecret();</p>
+<h1 id="18-新的默认根权限证书集"><a href="#18-新的默认根权限证书集" class="headerlink" title="18. 新的默认根权限证书集"></a>18. 新的默认根权限证书集</h1><h1 id="19-JEP-332最新的HTTPS安全协议TLS-1-3"><a href="#19-JEP-332最新的HTTPS安全协议TLS-1-3" class="headerlink" title="19. JEP 332最新的HTTPS安全协议TLS 1.3"></a>19. JEP 332最新的HTTPS安全协议TLS 1.3</h1><blockquote>
+<p>实现TLS协议1.3版本, TLS允许客户端和服务器端通过互联网以一种防止窃听, 篡改以及消息伪造的方式进行通信.</p>
+</blockquote>
+<h1 id="20-Java-Flight-Recorder-飞行记录仪"><a href="#20-Java-Flight-Recorder-飞行记录仪" class="headerlink" title="20. Java Flight Recorder 飞行记录仪"></a>20. Java Flight Recorder 飞行记录仪</h1><blockquote>
+<p>Flight Recorder源自飞机的黑盒子</p>
+</blockquote>
+<blockquote>
+<p>Flight Recorder以前是商业版的特性，在java11当中开源出来，它可以导出事件到文件中，之后可以用Java Mission Control来分析。可以在应用启动时配置java -XX:StartFlightRecording，或者在应用启动之后，使用jcmd来录制，比如</p>
+</blockquote>
+<pre><code>$ jcmd &lt;pid&gt; JFR.start
+$ jcmd &lt;pid&gt; JFR.dump filename=recording.jfr
+$ jcmd &lt;pid&gt; JFR.stop
+</code></pre>
+<blockquote>
+<p>是 Oracle 刚刚开源的强大特性。我们知道在生产系统进行不同角度的 Profiling，有各种工具、框架，但是能力范围、可靠性、开销等，大都差强人意，要么能力不全面，要么开销太大，甚至不可靠可能导致 Java 应用进程宕机。<br>而 JFR 是一套集成进入 JDK、JVM 内部的事件机制框架，通过良好架构和设计的框架，硬件层面的极致优化，生产环境的广泛验证，它可以做到极致的可靠和低开销。在 SPECjbb2015 等基准测试中，JFR 的性能开销最大不超过 1%，所以，工程师可以基本没有心理负担地在大规模分布式的生产系统使用，这意味着，我们既可以随时主动开启 JFR 进行特定诊断，也可以让系统长期运行 JFR，用以在复杂环境中进行“After-the-fact”分析。还需要苦恼重现随机问题吗？JFR 让问题简化了很多。<br>在保证低开销的基础上，JFR 提供的能力也令人眼前一亮，例如：我们无需 BCI 就可以进行 Object Allocation Profiling，终于不用担心 BTrace 之类把进程搞挂了。对锁竞争、阻塞、延迟，JVM GC、SafePoint 等领域，进行非常细粒度分析。甚至深入 JIT Compiler 内部，全面把握热点方法、内联、逆优化等等。JFR 提供了标准的 Java、C++ 等扩展 API，可以与各种层面的应用进行定制、集成，为复杂的企业应用栈或者复杂的分布式应用，提供 All-in-One 解决方案。而这一切都是内建在 JDK 和 JVM 内部的，并不需要额外的依赖，开箱即用。</p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">cflxl</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://cflxl.github.io/2022/11/17/java11/">https://cflxl.github.io/2022/11/17/java11/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">cflxl</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/11/17/java11/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="java11">
+                        
+                        <span class="card-title">java11</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/11/15/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            cflxl
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+                <div class="container row center-align"
+                    style="margin-bottom: 0px !important;">
+                    <div class="col s12 m8 l8 copy-right">
+                        Copyright&nbsp;&copy;
+                        
+                                <span id="year">
+                                    2022
+                                </span>
+                                
+                                    <a href="/about" target="_blank">
+                                        cflxl
+                                    </a>
+                                    |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+                                    |&nbsp;Theme&nbsp;<a href="https://github.com/cflxl" target="_blank">cflxl</a>
+                                    <br>
+                                    
+                                        &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words
+                                            :&nbsp;<span class="white-color">
+                                                5.7k
+                                            </span>
+                                            
+                                                
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    <span id="busuanzi_container_site_pv">
+                                                                        &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                                                                            <span id="busuanzi_value_site_pv"
+                                                                                class="white-color"></span>
+                                                                    </span>
+                                                                    
+                                                                        
+                                                                            <span id="busuanzi_container_site_uv">
+                                                                                &nbsp;|&nbsp;<i
+                                                                                    class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                                                                                    <span id="busuanzi_value_site_uv"
+                                                                                        class="white-color"></span>
+                                                                            </span>
+                                                                            
+                                                                                <br>
+
+                                                                                <!-- 运行天数提醒. -->
+                                                                                
+                                                                                        <br>
+                                                                                        
+                    </div>
+                    <div class="col s12 m4 l4 social-link social-statis">
+                        
+    <a href="https://github.com/cflxl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2261497676@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2261497676" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2261497676" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+                    </div>
+                </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
